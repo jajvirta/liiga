@@ -1,0 +1,513 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+table {
+    border-spacing: 2px;
+
+}
+
+
+// Removes Clear-icon form input fields in Internet Explorer
+
+::-ms-clear {
+  display: none;
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+// Typography
+
+h1 {
+  color: $black;
+  font-weight: 900;
+  font-size: 1.5em;
+  margin: 1em 0px;
+}
+
+h2 {
+  font-size: 1.2em;
+  padding: 0.5em 0px;
+  margin: 0px 0px 1em 0px;
+}
+
+h3 {
+  
+}
+
+h4 {
+  
+}
+
+h5 {
+  
+}
+
+h6 {
+  
+}
+
+p {
+  
+}
+
+a {
+  color: $blue;
+  &:visited {
+    color: $blue;
+  }
+  &:hover {
+    color: $blue;
+    text-decoration: underline;
+  }
+}
+
+body {
+  font-size: $base;
+  font-family: $maven;
+  background-color: $light-grey;
+  line-height: 1.42857143;
+}
+
+#container {
+  max-width: none;
+  .row { /* bootsrap override */
+    margin: 0px !important; 
+  }
+}
+.main {
+ max-width: 1440px;
+ 
+ 
+ @include container();
+ margin-top:15px;
+ .row { /* bootsrap override */
+   margin: 0px !important;
+ }
+ @include breakpoint(bp-med) {
+   margin: 130px auto 0px auto;
+ }
+}
+
+.sidebar {
+  width: 100%;
+  @include breakpoint(bp-med) {
+    @include column(3);
+  }
+  @include breakpoint(bp-large3) {
+    @include column(2);
+  }
+}
+.content {
+ width: 100%;
+  @include breakpoint(bp-med) {
+    @include column(9);
+    @include push(3);
+  }
+   @include breakpoint(bp-large3) {
+    @include column(10);
+    @include push(2);
+  }
+}
+.previous {
+  font-family: $maven;
+  font-weight: 900;
+  display: inline-block;
+  position: relative;
+  padding-left: 35px;
+  text-decoration: none;
+  color:  $blue;
+  line-height: 1.4;
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    @include icon (1, 0);
+    background-repeat: no-repeat;
+    left: 0px;
+    top: 0px;
+    width: 28px;
+    height: 23px;
+  }
+}
+
+.page-link {
+  font-family: $maven;
+  font-weight: 900;
+  display: inline-block;
+  position: relative;
+  padding-left: 35px;
+  text-decoration: none;
+  color:  $blue;
+  line-height: 1.4;
+  .previous {
+    
+  }
+  .next {
+    
+  }
+}
+.pdf-link {
+  font-weight: 600;
+  font-size: 1.1em;
+  display: block;
+  padding-left: 65px;
+  position: relative;
+  height: 60px;
+  float: left;
+  line-height: 60px;
+  &:before {
+    content:'';
+    display: inline-block;
+    width: 49px;
+    height: 60px;
+    position: absolute;
+    left: 0px;
+    @include icon(0,15);
+    
+  }
+}
+
+.prev-next-links {
+  margin: 1em 0px 2em 0px;
+  .sivusiirtyma-prev {
+    @include column(6);
+    .sivu-siirtyma-linkki {
+      float: left;
+      &:before {
+        content: "";
+        @include icon(1,0);
+        position: relative;
+        margin-right: 5px;
+        display: inline-block;
+        width: 27px;
+        height: 20px;
+        top: 3px;
+      }
+    }
+  }
+  .sivusiirtyma-next {
+    @include column(6);
+     @include push(6);
+     .sivu-siirtyma-linkki {
+      float: right;
+      &:after {
+        content: "";
+        @include icon(1,1);
+        position: relative;
+        margin-left: 5px;
+        display: inline-block;
+        width: 27px;
+        height: 20px;
+        top: 3px;
+      }
+    }
+  }
+  .sivu-siirtyma-linkki {
+    font-weight: 900;
+  }
+}
+
+.lock {
+  font-weight: 700;
+  border: 0px;
+  color: $blue;
+  background-color: transparent;
+  float: right;
+  position: relative;
+  padding-left: 23px;
+  font-size: 0.9em;
+  
+  &:before {
+    content: "";
+    display: block;
+    
+    width: 15px;
+    height: 18px;
+    position: absolute;
+    left: 0px;
+    @include icon(0,12);
+  }
+}
+
+.character-limit {
+  text-align: right;
+}
+
+// Button styles
+
+button {
+  cursor: pointer;
+  font-size: inherit;
+  text-align: center;
+  border-radius: 4px;
+  border: 0px;
+  color: $white;
+  line-height: inherit;
+  padding: 6px 12px;
+  position: relative;
+  background-color: $blue;
+  height: 34px;
+  &:hover {
+    background-color: $light-blue;
+    color: $white;
+  }
+  &:active {
+    background: $blue;
+    box-shadow: inset 0px 1px 2px 0px rgba(0,0,0,0.48);
+  }
+  &[disabled] {
+    background: $grey-disabled;
+    color: $grey-text-disabled;
+  }
+  &.btn-default {
+    background-color: $blue;
+    border: 0px;
+    color: $white;
+    &:hover {
+      background-color: $light-blue;
+      color: $white;
+    }
+    &:active {
+      background: $blue;
+      box-shadow: inset 0px 1px 2px 0px rgba(0,0,0,0.48);
+    }
+    &[disabled] {
+      background: $grey-disabled;
+      color: $grey-text-disabled;
+    }
+  }
+  &.plus-icon:before {
+    content: "";
+    display: inline-block;
+    @include icon(1,13);
+    width: 14px;
+    height: 14px;
+    margin-right: 10px;
+    position: relative;
+    top: 1px;
+    
+  }
+  &.wide {
+    width: 100%;
+  }
+  &.language {
+    
+  }
+  &.cancel {
+    background-color: $white;
+    border: 2px solid $blue;
+    color: $blue;
+    height: 34px;
+    line-height: 1.2;
+    &:hover {
+      border: 2px solid $light-blue;
+      color: $light-blue;
+      background-color: #E5F5FE;
+    }
+    &[disabled] {
+      background: $grey-disabled;
+      color: $grey-text-disabled;
+    }
+  }
+  &.delete {
+    background-color: $red;
+    color: $white;
+    &:hover {
+      background-color: $light-red;
+    }
+    &[disabled] {
+      background: $grey-disabled;
+      color: $grey-text-disabled;
+    }
+  }
+}
+
+// Form styles
+input[type=text] {
+  background-color: $white;
+  border-radius: 4px;
+  text-align: left;
+  width: 100%;
+  border: 1px solid $mid-grey-c;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  padding: 6px 12px;
+  height: 34px;
+}
+
+input[disabled] {
+  background-color: $mid-grey-e;
+}
+
+input[type=radio] {
+  margin: 4px 10px 0px 0px;
+}
+input[type="checkbox"] {
+  border: 0; 
+  clip: rect(0 0 0 0); 
+  height: 1px;
+  margin: -1px; 
+  overflow: hidden; 
+  padding: 0; 
+  position: absolute; 
+  width: 1px;
+}
+input[type="checkbox"] + span::before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  @include icon(0,16);
+  vertical-align: -0.25em;
+  margin-right: 0.75em;
+  
+}
+input[type="checkbox"]:checked + span::before {
+  @include icon(1,16);
+}
+
+textarea {
+  
+}
+select {
+  width:100%;
+  background-color: $white;
+  border-radius: 4px;
+  border: 1px solid $mid-grey-c;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  padding: 6px 12px;
+  height: 34px;
+}
+
+label {
+  font-weight: bold;
+}
+.dropzone-grid {
+  @include generate_grid_positions('.drop6', 6);
+  .drop12 {
+    @include column(12)
+  }
+  .drop6 {
+    @include column(6)
+  }
+}
+
+.dropzone {
+  border-color: $blue;
+  font-weight: 700;
+  border-spacing: 1px;
+  border-style: dashed;
+  background-color: $white;
+  &.active {
+    background-color: $blue;
+    border: 0px;
+    color: $white;
+    
+    
+  }
+}
+.number-input {
+  border-radius: 4px;
+  text-align: right;
+}
+
+
+.filename-area {
+  text-align: center;
+  background-color: #eee;
+  border-radius: 10px;
+}
+
+// Form Icons
+.inline-icon {
+  display: inline-block;
+  position: relative;
+}
+.user {
+    @include icon(0,9);
+    display: inline-block;
+    width: 51px;
+    height: 60px;
+  }
+.info-sign {
+    @include icon(1,9);
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    display: inline-block;
+    margin-top: 3px;
+  }
+.yhteys-hnkl {
+  @include icon(1,10);
+  width: 27px;
+  height: 23px;
+  top: 7px;
+}
+.vastuu-hnkl {
+  @include icon(1,11);
+  width: 18px;
+  height: 25px;
+  top: 6px;
+}
+.taloushallinto {
+  @include icon(0,11);
+  width: 18px;
+  height: 25px;
+  top: 7px;
+}
+
+// Virheviesti
+
+.virheviesti {
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  z-index: $z7;
+}
+
+// Helper classes
+
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+
+// Grid classes 
+
+
+@include breakpoint(bp-small) {
+  @include generate_helper_classes(bp-small-col, bp-small-push);
+}
+
+@include breakpoint(bp-med) {
+  @include generate_helper_classes(bp-med-col, bp-med-push);
+}
+
+@include breakpoint(bp-large) {
+  @include generate_helper_classes(bp-large-col, bp-large-push);
+}
+
+@include breakpoint(bp-xl) {
+  @include generate_helper_classes(bp-xl-col, bp-xl-push);
+}
+
+@include breakpoint(bp-med) {
+  @include generate_helper_classes(col, push);
+}
+
+
+.grid {
+  @include clearfix;
+}
+

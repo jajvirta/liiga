@@ -1,0 +1,11 @@
+
+
+
+2016-03-12 versionhallinta mukaan. facebook-integraatiota edistetty. 1h
+2016-03-12 paluumatkalla ensimmäiset "tuotantoonsiirtoyritykset", 1,5h
+2016-03-12 junamatkalla, tietokantaa hierottu kasaan ja edistetty
+joukkuenäkymää 1,5h
+2016-03-11 postgre pystyyn ja tietokantayhteys toimimaan 2h
+2016-03-10 puolisen tuntia pikkusäätöä, facebook/oauth2 testailua
+2016-03-09 kolmisen tuntia; kopsattu projekti, laitettu perus frontti/back -kamat pystyyn
+

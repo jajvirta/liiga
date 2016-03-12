@@ -1,0 +1,84 @@
+@font-face {
+  font-family: 'Maven Pro';
+  font-weight: 400;
+  font-style: normal;
+  src: url('../fonts/Maven-Pro-regular.eot');
+  src: url('../fonts/Maven-Pro-regular.eot?#iefix') format('embedded-opentype'),
+       local('Maven Pro Regular'),
+       local('Maven-Pro-regular'),
+       url('../fonts/Maven-Pro-regular.woff2') format('woff2'),
+       url('../fonts/Maven-Pro-regular.woff') format('woff'),
+       url('../fonts/Maven-Pro-regular.ttf') format('truetype'),
+       url('../fonts/Maven-Pro-regular.svg#MavenPro') format('svg');
+}
+
+@font-face {
+  font-family: 'Maven Pro';
+  font-weight: 500;
+  font-style: normal;
+  src: url('../fonts/Maven-Pro-500.eot');
+  src: url('../fonts/Maven-Pro-500.eot?#iefix') format('embedded-opentype'),
+       local('Maven Pro Medium'),
+       local('Maven-Pro-500'),
+       url('../fonts/Maven-Pro-500.woff2') format('woff2'),
+       url('../fonts/Maven-Pro-500.woff') format('woff'),
+       url('../fonts/Maven-Pro-500.ttf') format('truetype'),
+       url('../fonts/Maven-Pro-500.svg#MavenPro') format('svg');
+}
+
+@font-face {
+  font-family: 'Maven Pro';
+  font-weight: 700;
+  font-style: normal;
+  src: url('../fonts/Maven-Pro-700.eot');
+  src: url('../fonts/Maven-Pro-700.eot?#iefix') format('embedded-opentype'),
+       local('Maven Pro Bold'),
+       local('Maven-Pro-700'),
+       url('../fonts/Maven-Pro-700.woff2') format('woff2'),
+       url('../fonts/Maven-Pro-700.woff') format('woff'),
+       url('../fonts/Maven-Pro-700.ttf') format('truetype'),
+       url('../fonts/Maven-Pro-700.svg#MavenPro') format('svg');
+}
+
+@font-face {
+  font-family: 'Maven Pro';
+  font-weight: 900;
+  font-style: normal;
+  src: url('../fonts/Maven-Pro-900.eot');
+  src: url('../fonts/Maven-Pro-900.eot?#iefix') format('embedded-opentype'),
+       local('Maven Pro Black'),
+       local('Maven-Pro-900'),
+       url('../fonts/Maven-Pro-900.woff2') format('woff2'),
+       url('../fonts/Maven-Pro-900.woff') format('woff'),
+       url('../fonts/Maven-Pro-900.ttf') format('truetype'),
+       url('../fonts/Maven-Pro-900.svg#MavenPro') format('svg');
+}
+
+@font-face {
+  font-family: 'Droid Sans';
+  font-weight: 400;
+  font-style: normal;
+  src: url('../fonts/Droid-Sans-regular.eot');
+  src: url('../fonts/Droid-Sans-regular.eot?#iefix') format('embedded-opentype'),
+       local('Droid Sans'),
+       local('Droid-Sans-regular'),
+       url('../fonts/Droid-Sans-regular.woff2') format('woff2'),
+       url('../fonts/Droid-Sans-regular.woff') format('woff'),
+       url('../fonts/Droid-Sans-regular.ttf') format('truetype'),
+       url('../fonts/Droid-Sans-regular.svg#DroidSans') format('svg');
+}
+
+@font-face {
+  font-family: 'Droid Sans';
+  font-weight: 700;
+  font-style: normal;
+  src: url('../fonts/Droid-Sans-700.eot');
+  src: url('../fonts/Droid-Sans-700.eot?#iefix') format('embedded-opentype'),
+       local('Droid Sans Bold'),
+       local('Droid-Sans-700'),
+       url('../fonts/Droid-Sans-700.woff2') format('woff2'),
+       url('../fonts/Droid-Sans-700.woff') format('woff'),
+       url('../fonts/Droid-Sans-700.ttf') format('truetype'),
+       url('../fonts/Droid-Sans-700.svg#DroidSans') format('svg');
+}
+

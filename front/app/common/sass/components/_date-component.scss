@@ -1,0 +1,42 @@
+.range {
+  text-align: center;
+}
+.date-grid {
+  // 
+  .date {
+      @include column(4);
+      &.end {
+        @include push(5);
+      }
+    }
+    .range {
+      @include column(1);
+      @include push(4);
+    }
+    .info {
+      @include column(2);
+      @include push(9);
+    }
+  
+  @include breakpoint(bp-med1) {
+    @include clearfix();
+    @include generate_grid_positions('.col', 6);
+    .col {
+      @include column(6);
+    }
+    .date {
+      @include column(4);
+      &.end {
+        @include push(5);
+      }
+    }
+    .range {
+      @include column(1);
+      @include push(4);
+    }
+    .info {
+      @include column(2);
+      @include push(9);
+    }
+  }
+}

@@ -1,0 +1,57 @@
+// BREAKPOINT MIXIN 
+ 
+ @mixin breakpoint($point) {
+   @if $point == bp-small {
+     @media (max-width: $bp-small) { @content ; }
+  }
+    @else if $point == bp-small2 {
+     @media (min-width: $bp-small2) { @content ; }
+  }
+  @else if $point == bp-small3 {
+     @media (min-width: $bp-small3) { @content ; }
+  }
+   @else if $point == bp-med {
+     @media (min-width: $bp-med) { @content ; }
+  }
+   @else if $point == bp-med1 {
+     @media (min-width: $bp-med1) { @content ; }
+  }
+   @else if $point == bp-large {
+     @media (min-width: $bp-large)  { @content ; }
+  }
+  @else if $point == bp-large1 {
+     @media (min-width: $bp-large1)  { @content ; }
+  }
+  @else if $point == bp-large2 {
+     @media (min-width: $bp-large2)  { @content ; }
+  }
+  @else if $point == bp-large3 {
+     @media (min-width: $bp-large3)  { @content ; }
+  }
+  @else if $point == bp-xl {
+     @media (min-width: $bp-xl)  { @content ; }
+
+  }
+}
+
+
+// ICON SPRITE MIXIN
+// Grid has 2 columns. X selects colums 0 or 1. Y selects row. Grid size (1 icon) is 60px
+
+$gridSize: 60px; 
+$gridData: "../common/img/icon-sprite.svg";
+$gridDataFallBack: "../common/img/icon-sprite.png";
+
+@mixin icon($x, $y) {  
+  background-image: url($gridDataFallBack);
+  background-image: url($gridData), none;
+  background-position:  (-$gridSize * $x) (-$gridSize *  $y);
+}
+
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}

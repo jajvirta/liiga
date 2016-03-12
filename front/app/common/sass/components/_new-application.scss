@@ -1,0 +1,23 @@
+.organisaatio-search {
+  .search-field {
+    @include breakpoint(bp-med) {
+      @include column(10);
+    }
+    
+  }
+  .search-submit {
+    @include breakpoint(bp-med) {
+      @include column(2);
+      @include push(10);
+    }
+   
+    button {
+      width: 100%;
+      @include breakpoint(bp-med) {
+        width: auto;
+        margin-top: 4px;
+      }
+      
+    }
+  }
+}

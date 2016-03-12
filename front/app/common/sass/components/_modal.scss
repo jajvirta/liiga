@@ -1,0 +1,48 @@
+.modal-header {
+  .modal-close {
+    @include icon(1,15);
+    display: block;
+    width: 21px;
+    height: 21px;
+    text-indent: -9999px;
+    overflow: hidden;
+    background-color: $white;
+    &:hover {
+      background-color: $white;
+    }
+  }
+} 
+
+.modal-footer {
+  text-align: left;
+  @include breakpoint(bp-small2) {
+    button+button {
+      margin-left: 5px;
+    }
+  }
+}
+
+.modal-button-col-left {
+  @include breakpoint(bp-small2) {
+    @include column(6);
+    text-align: left;
+  }
+  
+}
+.modal-button-col-right {
+  @include breakpoint(bp-small2) {
+    @include column(6);
+    @include push(6);
+    text-align: right;
+  }
+} 
+
+.modal-body button,
+.modal-footer button {
+    width: 100%;
+    margin-bottom: 15px;
+    @include breakpoint(bp-small2) {
+      width: auto;
+    }
+}
+

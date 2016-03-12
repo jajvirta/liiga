@@ -1,0 +1,53 @@
+// Base pixel size
+$base: 16px;
+
+// FONTS
+// Maven is used in headers, buttons. Droid sans is used in body text 
+$maven: 'Maven Pro', helvetica, arial, sans-serif;
+$droid: 'Droid Sans', helvetica, arial, sans-serif;
+
+// COLORS
+$white: #ffffff;
+$black: #000000;
+$blue: #008fdb;
+$light-blue: #009FED;
+$cancel-blue: #E5F5FE;
+$green: #00a651;
+$red: #ed1c24;
+$light-red: #F45258;
+$dark-grey: #999999;
+$mid-grey: #e2e2e2;
+$mid-grey-c: #cccccc;
+$mid-grey-e: #eeeeee;
+$light-grey: #f5f5f5;
+$grey-disabled: #B4B4B4;
+$grey-text-disabled: #6B6B6B;
+$error: #d9534f;
+
+
+// BREAKPOINTS
+
+$bp-small : 384px;
+$bp-small2: 465px;
+$bp-small3: 685px;
+$bp-med : 768px;
+$bp-med1: 850px;
+$bp-large : 1024px;
+$bp-large1: 1080px;
+$bp-large2: 1100px;
+$bp-large3: 1200px;
+$bp-xl: 1440px;
+
+// Z-INDEX
+
+$z1:  100;
+$z2:  200;
+$z3:  300;
+$z4:  400;
+$z5:  500;
+
+$z6: 1000;
+$z7: 2000;
+$z8: 3000;
+$z9: 4000;
+$z10: 5000;
