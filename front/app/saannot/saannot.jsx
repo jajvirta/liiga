@@ -14,20 +14,13 @@ export default React.createClass({
         Reflux.connect(SaannotStore, 'saannot')
     ],
 
-    handleClick: function() {
-        SaannotService.another();
-        // YhteenvetoService.lahetaHakemus(organisaatiohakemusId, this.state.kielivalinta);
-    },
-
     render: function () {
-        var f = this.state.saannot;
-        console.log('f', f);
         return (
             <div>
                 <h1>Tampereen seudun frisbeegolf-joukkueliigan säännöt</h1>
 
                 <h2>Mikä on Tampereen seudun frisbeegolf-joukkueliiga?</h2>
-                
+
                 <p>
                 Tampereen seudun frisbeegolf-joukkueliiga on Tampereen seudun
                 joukkuepelisarja, jossa etsitään Tampereen seudun parasta
@@ -57,7 +50,7 @@ export default React.createClass({
                 frisbeegolf-joukkueliigaan tapahtuu sähköpostilla osoitteeseen
                 liiga@tfs.fi otsikolla “Ilmoittautuminen Tampereen
                 frisbeegolf-liigaan”.  </p>
-                
+
                 <p> Kerro sähköpostissa joukkueen nimi, yhteyshenkilö
                 yhteystietoineen (puhelinnumero ja sähköpostiosoite) sekä
             joukkueen kotirata. Listaa lisäksi vähintään kolme muuta pelaajaa.
@@ -91,15 +84,62 @@ export default React.createClass({
                 </p>
 
                 <p>
-                Maksuista pääosa (noin 90%) käytetään liigassa parhaiten menestyneiden joukkueiden ja yksilöiden palkitsemiseen. Loput rahat käytetään liigan hallituksen päättämällä tavalla eli pääosin liigan mahdollisesti aiheuttamiin juokseviin kuluihin. Liigassa menestyneitä voidaan palkita tämän lisäksi myös erillisillä sponsoripalkinnoilla, jos sellaisia saadaan järjestettyä.
-                </p>
+                Maksuista pääosa (noin 80-90%) käytetään liigassa parhaiten
+                menestyneiden joukkueiden ja yksilöiden palkitsemiseen. Loput
+                rahat käytetään liigan hallituksen päättämällä tavalla eli
+                pääosin liigan mahdollisesti aiheuttamiin juokseviin kuluihin.
+                Liigassa menestyneitä voidaan palkita tämän lisäksi myös
+                erillisillä sponsoripalkinnoilla, jos sellaisia saadaan
+                järjestettyä.  </p>
+
                 <h2>Sarjatasot ja lohkot</h2>
                 <p>
-                Liigassa on ensimmäisellä kaudella yksi sarjataso. Jos sarjaan ilmoittautuu yli 10 joukkuetta, liigan hallitus päättää miten joukkueet jaetaan useampiiin lohkoihin. Sarjat ja lohkot pyritään jakamaan niin, että otteluita tulee kauden aikana yhteensä enintään n. 10-15. Jos lohkoja on useampi, niin lohkojen parhaat pelaavat kauden lopuksi ratkaisupelit. Tarkka systeemi päätetään kun tiedetään joukkueiden määrä.
-                </p>
+                Liigassa on ensimmäisellä kaudella yksi sarjataso. Jos sarjaan
+                ilmoittautuu yli 10 joukkuetta, liigan hallitus päättää miten
+                joukkueet jaetaan useampiiin lohkoihin. Sarjat ja lohkot
+                pyritään jakamaan niin, että otteluita tulee kauden aikana
+                yhteensä enintään n. 10-15. Jos lohkoja on useampi, niin
+                lohkojen parhaat pelaavat kauden lopuksi ratkaisupelit. Tarkka
+                systeemi päätetään kun tiedetään joukkueiden määrä.  </p>
 
+                <h2>Liigan ja yksittäisten otteluiden aikataulu</h2>
 
+                <p>Liiga pelataan noin huhtikuun puolesta välistä syyskuun puoleen
+                väliin. Pelit aikataulutetaan kiinteästi järjestäjän toimesta.
+                Aikataulu julkistetaan liigan sivuilla. Jos sarjat joudutaan
+                jakamaan useampaan lohkoon, liigan aikataulu suunnitellaan
+                niin, että lohkojen kärkijoukkueet ehtivät pelaamaan
+                ratkaisuottelut syyskuun loppuun mennessä. </p>
 
+                <p>Liigan ottelut pelataan lähtökohtaisesti keskiviikkoisin
+                alkaen kello 18:00. Joukkueet voivat yhteisellä päätöksellä
+                siirtää pelin kyseisellä viikolla jollekin toiselle
+                päivälle.</p>
+
+                <h2>Pelipaikkavaatimukset</h2>
+
+                <p>Joukkueet ilmoittavat ilmoittautuessaan kotiradan. Kotiradan
+                voi vaihtaa kauden aikana erillisellä ilmoituksella liigan
+                hallitukselle.</p>
+
+                <p> Ottelut pelataan lähtökohtaisesti aikataulun mukaisen
+                kotijoukkueen kotiradalla. Joukkueet kuitenkin voivat
+                yhteisellä päätöksellä ja etukäteen sovitusti pelata tietyn
+                ottelun jossain toisessa pelipaikassa.</p>
+
+                <p>Pelipaikan vaatimukset:</p>
+
+                <ul>
+                    <li>radan pitää olla yleisesti käytössä</li>
+                    <li>saa olla maksullinen; ei saa olla yksityinen</li>
+                    <li>jos rata on maksullinen, kotijoukkue hoitaa pelimaksut ja pelioikeuden</li>
+                    <li>ottelussa pelataan radan sillä hetkellä yleisesti käytössä olevalla layoutilla</li>
+                    <li>enintään n. 50 kilometrin päässä Tampereelta</li>
+                    <li>väylien määrää ei ole rajoitettu </li>
+                    <li>radan pitää löytyä frisbeegolfradat.fi -listauksesta</li>
+                </ul>
+
+                <p>Epäselvissä tapauksissa päätöksen pelipaikan soveltuvuudesta tekee liigan hallitus.</p>
             </div>
         );
     }
