@@ -129,7 +129,7 @@ body {
     content: "";
     display: block;
     position: absolute;
-    @include icon (1, 0);
+    // @include icon (1, 0);
     background-repeat: no-repeat;
     left: 0px;
     top: 0px;
@@ -170,7 +170,7 @@ body {
     height: 60px;
     position: absolute;
     left: 0px;
-    @include icon(0,15);
+    // @include icon(0,15);
     
   }
 }
@@ -183,7 +183,7 @@ body {
       float: left;
       &:before {
         content: "";
-        @include icon(1,0);
+        // @include icon(1,0);
         position: relative;
         margin-right: 5px;
         display: inline-block;
@@ -200,7 +200,7 @@ body {
       float: right;
       &:after {
         content: "";
-        @include icon(1,1);
+        // @include icon(1,1);
         position: relative;
         margin-left: 5px;
         display: inline-block;
@@ -233,7 +233,7 @@ body {
     height: 18px;
     position: absolute;
     left: 0px;
-    @include icon(0,12);
+    // @include icon(0,12);
   }
 }
 
@@ -287,7 +287,7 @@ button {
   &.plus-icon:before {
     content: "";
     display: inline-block;
-    @include icon(1,13);
+    // @include icon(1,13);
     width: 14px;
     height: 14px;
     margin-right: 10px;
@@ -365,13 +365,13 @@ input[type="checkbox"] + span::before {
   display: inline-block;
   width: 20px;
   height: 20px;
-  @include icon(0,16);
+  // @include icon(0,16);
   vertical-align: -0.25em;
   margin-right: 0.75em;
   
 }
 input[type="checkbox"]:checked + span::before {
-  @include icon(1,16);
+  // @include icon(1,16);
 }
 
 textarea {
@@ -433,37 +433,19 @@ label {
   position: relative;
 }
 .user {
-    @include icon(0,9);
+    // @include icon(0,9);
     display: inline-block;
     width: 51px;
     height: 60px;
   }
 .info-sign {
-    @include icon(1,9);
+    // @include icon(1,9);
     display: inline-block;
     width: 28px;
     height: 28px;
     display: inline-block;
     margin-top: 3px;
   }
-.yhteys-hnkl {
-  @include icon(1,10);
-  width: 27px;
-  height: 23px;
-  top: 7px;
-}
-.vastuu-hnkl {
-  @include icon(1,11);
-  width: 18px;
-  height: 25px;
-  top: 6px;
-}
-.taloushallinto {
-  @include icon(0,11);
-  width: 18px;
-  height: 25px;
-  top: 7px;
-}
 
 // Virheviesti
 
