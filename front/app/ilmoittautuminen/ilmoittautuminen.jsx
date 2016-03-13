@@ -60,6 +60,10 @@ export default React.createClass({
             <div>
                 <h1>Ilmoittautuminen Tampereen seudun frisbeegolf-joukkueliigaan</h1>
 
+                <p>Ilmoittautuminen alkaa <a href="/login">loggaamalla sisään
+                   Facebook-tunnuksilla</a>. Sovellus ei pyydä mitään erikoisoikeuksia
+                   Facebook-tililtäsi. Se on vain tapa tunnistaa yhteyshenkilöt.</p>
+
                 <Table>
                     <tr>
                         <td>Sarja</td>
