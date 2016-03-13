@@ -1,12 +1,15 @@
 
 todo:
-- ilmo lähettämään shittiä
 -- rakenne liigaan ja sarjaan ja kauteen? (sarja = kausi?)
+- validointi jotta jengi antaa kaikki tiedot
 - facebook/google-integraatio
 - tila storeen frontissa?
+- propsut komentoriviltä jotta saa dev/prod-propsut
 
 2016-03-13 ilmoa kuntoon, 2h
     - vaihdetaan serialisointi gsoniksi ja käytetään immutableja
+    - insertointi kantaan
+    - ilmo lähettämään shittiä
 2016-03-12 versionhallinta mukaan. facebook-integraatiota edistetty. 1h
 2016-03-12 paluumatkalla ensimmäiset "tuotantoonsiirtoyritykset", 1,5h
 2016-03-12 junamatkalla, tietokantaa hierottu kasaan ja edistetty
