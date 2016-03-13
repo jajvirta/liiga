@@ -3,7 +3,6 @@ package fi.tfs.liiga;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.converter.json.GsonHttpMessageConverter;
 
@@ -15,8 +14,7 @@ import com.google.gson.GsonBuilder;
 public class LiigaApplication {
 
     public static void main(String[] args) {
-
-        ApplicationContext ctx = SpringApplication.run(LiigaApplication.class, args);
+        SpringApplication.run(LiigaApplication.class, args);
     }
 
     @Bean
