@@ -13,6 +13,13 @@ export default {
         return Api.post(`api/liiga/something`, IlmoActions.buttonClicked);
     },
 
+    lahetaIlmoittautuminen: function(sarja, nimi, kotirata, yhteyshenkilo, puhelinnumero, sahkoposti) {
+        console.log(sarja, nimi, kotirata, yhteyshenkilo, puhelinnumero, sahkoposti);
+        var data = { nimi: nimi, kotirata: kotirata, yhteyshenkiloNimi: yhteyshenkilo,
+            yhteyshenkiloPuhelinnumero: puhelinnumero, yhteyshenkiloSahkoposti: sahkoposti };
+        return Api.post(`api/liiga/joukkueet/uusi`, IlmoActions.laheta, data);
+    },
+
     another: function() {
         return Api.get(`api/liiga/get`, IlmoActions.buttonClicked);
     }

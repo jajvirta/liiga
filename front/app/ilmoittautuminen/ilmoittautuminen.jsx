@@ -2,7 +2,7 @@ import React from 'react';
 import Router from 'react-router';
 import IlmoStore from './ilmo_store.js';
 import IlmoService from './ilmo_service.js';
-import { Button, Input, Table } from 'react-bootstrap';
+import { Button, Input, Table, Select } from 'react-bootstrap';
 import Reflux from 'reflux';
 
 var RouteHandler = Router.RouteHandler;
@@ -24,22 +24,35 @@ export default React.createClass({
     },
 
     handleClick: function() {
-        console.log("helo!");
-        IlmoService.another();
+        IlmoService.lahetaIlmoittautuminen(
+                'tre_liiga_2016',
+                this.state.nimi,
+                this.state.kotirata,
+                this.state.yhteyshenkilo,
+                this.state.puhelinnumero,
+                this.state.yhteyshenkilo_sahkposti);
+
     },
 
     handleNimiChange: function(event) {
-        // this.setState({ nimi: event.target.value });
-        IlmoService.updateNimi(event.target.value);
-    },
-
-    handleKotirataChange: function(event) {
-        // this.setState({ nimi: event.target.value });
+        this.setState({ nimi: event.target.value });
         // IlmoService.updateNimi(event.target.value);
     },
 
-    handleChange: function(event) {
-        // this.setState({ nimi: event.target.value });
+    handleKotirataChange: function(event) {
+        this.setState({ kotirata: event.target.value });
+    },
+
+    handleYhteyshenkiloChange: function(event) {
+        this.setState({ yhteyshenkilo: event.target.value });
+    },
+
+    handleYhteyshenkiloPuhelinnumeroChange: function(event) {
+        this.setState({ puhelinnumero: event.target.value });
+    },
+
+    handleYhtSahkopostiChange: function(event) {
+        this.setState({ yhteyshenkilo_sahkposti: event.target.value });
     },
 
     render: function () {
@@ -49,31 +62,43 @@ export default React.createClass({
 
                 <Table>
                     <tr>
+                        <td>Sarja</td>
+                        <td>Tampereen seudun frisbeegolf-liiga, 2016 </td>
+                    </tr>
+                     <tr>
                         <td>Joukkueen nimi</td>
                         <td><Input type='text'
                             size='50'
                             onChange={this.handleNimiChange} 
-                            value={ this.state.ilmo.nimi } /></td>
+                            value={ this.state.nimi } /></td>
                     </tr>
                     <tr>
                         <td>Joukkueen kotirata (<em>esim. Vihioja, Kylmäkoski DGP, jne</em>)</td>
                         <td><Input type='text'
                             onChange={this.handleKotirataChange} 
-                            value={ this.state.ilmo.kotirata } /></td>
+                            value={ this.state.kotirata } /></td>
                     </tr>
 
                     <tr>
                         <td>Yhteyshenkilön nimi</td>
                         <td><Input
                                 type='text'
-                                onChange={this.handleChange} 
+                                onChange={this.handleYhteyshenkiloChange} 
                                 value={this.state.yhteyshenkilo}/></td>
                     </tr>
                     <tr>
-                        <td>Yhteyshenkilön sähköposti</td>
-                        <td><Input type='text' onChange={this.handleChange} value={this.state.yhteyshenkilo_sahkposti}/></td>
+                        <td>Yhteyshenkilön puhelinnumero</td>
+                        <td><Input
+                                type='text'
+                                onChange={this.handleYhteyshenkiloPuhelinnumeroChange} 
+                                value={this.state.puhelinnumero}/></td>
                     </tr>
-                    <tr><td></td><td><Button type="submit" onClick={this.handleClick}>Lähetä ilmoittautuminen</Button></td></tr>
+                    <tr>
+                        <td>Yhteyshenkilön sähköposti</td>
+                        <td><Input type='text' onChange={this.handleYhtSahkopostiChange}
+                                value={this.state.yhteyshenkilo_sahkposti}/></td>
+                    </tr>
+                    <tr><td></td><td><Button type="submit" onClick={this.handleClick}>Siirry ilmoittautumisen vahvistamiseen ..</Button></td></tr>
                 </Table>
             </div>
         );
