@@ -25,10 +25,10 @@ var Liiga = React.createClass({
                     <div className="wrapper">
                         <nav className="main clearfix">
                             <div className="back-link">
-                                <a className="previous">linkki</a>
+                                <a className="previous"></a>
                             </div>
                             <div className="save-info">
-                            <h2>Tampereen seudun frisbeegolf-joukkueliiga</h2>
+                            <h2><Link to='etusivu'>Tampereen seudun frisbeegolf-joukkueliiga</Link></h2>
                             </div>
 
                             <div className='back-link'>
@@ -81,6 +81,7 @@ var routes = (
             <Route name='joukkueet' handler={ Joukkueet } />
             <Route name='sarjataulukko' handler={ Sarjataulukko } />
             <Route name='ilmo' handler={ Ilmo } />
+            <DefaultRoute handler={ Etusivu }/>
         </Route>
         <DefaultRoute handler={ Etusivu }/>
     </Route>
