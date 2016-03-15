@@ -140,6 +140,58 @@ export default React.createClass({
                 </ul>
 
                 <p>Epäselvissä tapauksissa päätöksen pelipaikan soveltuvuudesta tekee liigan hallitus.</p>
+                
+                <h2>Ottelu- ja pistejärjestelmä, luovutukset ja vajaalla joukkueella pelaaminen</h2>
+
+                <p>Liigassa yhdessä ottelussa molemmilla joukkueilla pelaa
+                neljä pelaajaa. Otteluissa on oltava paikalla vähintään kolme
+                pelaajaa kummastakin joukkueesta. Muussa tapauksessa koko
+                ottelu tuomitaan luovutetuksi. Myös tulosten ilmoittaminen
+                myöhässä tulkitaan koko ottelun luovuttamiseksi. Tällöin
+                luovutusvoiton saa vierasjoukkue.</p>
+
+                <h2>Yksittäisen ottelun ottelujärjestelmä</h2>
+
+                XXX.
+
+                <h2>Tasapisteissä olevien paremmuuden määräytyminen</h2>
+
+                <p>Joukkueiden pisteiden, otteluvoittojen, tasapelien ja
+                tappioiden ollessa tasan, keskinäinen paremmuus määräytyy
+                voitettujen pelien perusteella. (XXX)</p>
+
+                <h2>Otteluajat ja niiden siirtäminen</h2>
+
+                <p>Sarjatasojen koko yritetään mitoittaa niin, että pelejä
+                tulee keskimäärin kerran noin 1-2 viikossa.
+                Pelitahtia vähennetään juhannuksen ja heinäkuun alun tienoilla.</p>
+
+                <p>Liigan pelipäivä on lähtökohtaisesti keskiviikko.
+                Ottelupäiviä ja -aikoja voi myös joukkueiden keskinäisellä
+                sopimuksella siirtää. Tämä on tehtävä hyvissä ajoin. Ottelut
+                alkavat ohjelmiensa mukaisena päivinä kello 18:00.</p>
+
+                <h2>Joukkueen sulkeminen sarjasta</h2>
+
+                <p>Kolmesta otteluluovutuksesta joukkue suljetaan sarjasta.
+                Joukkueen osallistumismaksua ei palauteta.</p>
+
+                <h2>Tulokset ja
+                niiden ilmoittaminen</h2>
+
+                <p>
+                Ottelun kotijoukkue on velvollinen ilmoittamaan lopputuloksen
+                täydellisine tietoineen Pirkanmaan Frisbeegolf-liigalle.
+                Yhteyshenkilö ilmoittaa tulokset &nbsp;
+                <a href="http://liiga.tfs.fi/">http://liiga.tfs.fi/ -sivustolla</a>.
+                    mieluiten otteluillan aikana mutta viimeistään seuraavaan päivään
+                    klo 20:00 mennessä.</p>
+
+                <h2>Liigan palkinnot</h2>
+
+                <p>Sarjatason ilmoittautumismaksuista muodostetaan palkintopotti, johon laitetaan n. 80-90% osallistumismaksuista riippuen osallistujamäärästä. Parhaat joukkueet palkitaan myös pokaaleilla.</p>
+
+
             </div>
         );
     }
