@@ -44,8 +44,6 @@ export default {
         return fetch(url, options)
             .then(function(response) {
                 var proposedCsrfToken = response.headers.get('XSRF-TOKEN');
-
-                console.log('calculating xsrf..', csrfToken, proposedCsrfToken);
                 if (proposedCsrfToken !== undefined && proposedCsrfToken && proposedCsrfToken !== csrfToken) {
                     csrfToken = proposedCsrfToken;
                 }
