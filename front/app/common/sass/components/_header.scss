@@ -7,13 +7,6 @@
   @include breakpoint(bp-med) {
     position: fixed;
   }
-  .wrapper {
-    background-color: $white;
-     @include breakpoint(bp-small3) {
-      height: 60px;
-      padding: 0px 20px 0px 20px;
-    }
-  }
   nav.main {
     display: block;
     max-width: 1420px;
@@ -23,12 +16,8 @@
     width: 100%;
     position: relative;
     //@include container();
-   
-    
     @include breakpoint(bp-med) {
-     
     }
-    
   }
   .back-link {
     //float: left;
@@ -49,40 +38,6 @@
       @include column(6);
       @include push(3);
       clear: none;
-    }
-    .save-indicator {
-      color: $blue;
-      margin-top: 30px;
-      display: inline-block;
-      position: relative;
-      padding: 0px 20px;
-      text-align: left;
-      div {
-        transition: color 0.6s ease;
-        color: $dark-grey;
-        
-        &.tallennusaika-updated {
-          color: $blue;
-          &:before {
-            content: "";
-            display: block;
-            width: 16px;
-            height: 16px;
-            position: absolute;
-            top: 3px;
-            left: -5px;
-            background-image: url("../common/ajax-loader.gif");  
-          }
-        }
-        .title {
-          display: block;
-          font-weight: 700;
-        }
-        .date {
-          display: block;
-          font-size: 0.8em;
-        }
-      }
     }
   }
   .menu {

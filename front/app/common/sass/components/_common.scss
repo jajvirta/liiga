@@ -401,20 +401,6 @@ label {
   }
 }
 
-.dropzone {
-  border-color: $blue;
-  font-weight: 700;
-  border-spacing: 1px;
-  border-style: dashed;
-  background-color: $white;
-  &.active {
-    background-color: $blue;
-    border: 0px;
-    color: $white;
-    
-    
-  }
-}
 .number-input {
   border-radius: 4px;
   text-align: right;

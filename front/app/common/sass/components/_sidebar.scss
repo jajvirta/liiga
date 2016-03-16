@@ -2,33 +2,24 @@
   margin: 0px;
   padding: 0px;
   list-style-type: none;
-  @include breakpoint(bp-med) {
-    padding: 5px 20px 0px 0px;
-    border-right: 1px solid $mid-grey;
+  @include breakpoint(bp-med) { padding: 5px 20px 0px 0px; border-right: 1px solid $mid-grey;
   }
   
   li {
     padding-bottom: 10px;
     position: relative;
-    
     a {
       display: block;
-      
-      background-color: $white;
-      
-      // box-shadow: 3px 3px 21px 0px rgba(0,0,0,0.09);
+      background-color: #dfdfdf;
+      box-shadow: 3px 3px 21px 0px rgba(0,0,0,0.09);
       position: relative;
-      // text-transform: uppercase;
       color: $black;
       text-decoration: none;
       font-weight: 900;
       padding: 10px;
       position: relative;
       
-      @include breakpoint(bp-med) {
-        padding: 10px 20px 10px 10px;
-        margin-right: 13px;
-        min-height: 65px;
+      @include breakpoint(bp-med) { padding: 10px 20px 10px 10px; margin-right: 13px; min-height: 65px;
         &:after {
           content: "";
           display: block;
@@ -98,20 +89,6 @@
         right: -26px;
         top: 27px;
         
-      }
-    }
-  }
-  li.valmis {
-    &:after {
-      right: 22px;
-      top: 14px;
-      width: 19px;
-      height: 19px;
-    }
-    @include breakpoint(bp-med) {
-      &:after {
-        right: -30px;
-        top: 24px;
       }
     }
   }
