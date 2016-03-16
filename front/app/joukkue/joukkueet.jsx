@@ -26,13 +26,14 @@ export default React.createClass({
                 <h2>Alustavat</h2>
 
                 <Table striped bordered condensed hover>
-                    <thead><tr><th>Nimi</th><th>Kotirata</th></tr></thead>
+                    <thead><tr><th>Nimi</th><th>Yhteyshenkilö</th><th>Kotirata</th></tr></thead>
                     <tbody>
                 { _.chain(this.state.joukkue.joukkueet)
                     .map(function(joukkue) {
                         return (
                                 <tr key={joukkue.id}>
                                     <td> { joukkue.nimi }</td>
+                                    <td> { joukkue.yhteyshenkilo }</td>
                                     <td> { joukkue.kotirata }</td>
                                 </tr>
                             );
