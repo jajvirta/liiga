@@ -22,7 +22,7 @@ public class UserController {
         return principal;
     }
     
-    @RequestMapping("/api/liiga/user")
+    @RequestMapping("/public-api/liiga/user")
     public UserInfo userinfo(Principal principal) {
         OAuth2Authentication oauth = (OAuth2Authentication) principal;
         if (oauth != null && oauth.isAuthenticated()) {
@@ -30,12 +30,9 @@ public class UserController {
             Authentication userAuthentication = oauth.getUserAuthentication();
             Map<String, String> realdetails = (Map<String, String>) userAuthentication.getDetails();
 
-            // Map details = (Map) oauth.getDetails();
-            System.out.println(realdetails);
-
             return new UserInfo(true, realdetails.get("name"));
         } else {
-            return new UserInfo(true, null); 
+            return new UserInfo(false, null); 
         }
     }
  
