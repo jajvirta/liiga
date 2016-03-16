@@ -7,6 +7,7 @@ import Router, { Route, RouteHandler, DefaultRoute } from 'react-router';
 import { Link } from 'react-router';
 import Etusivu from './etusivu.jsx';
 import Saannot from './saannot/saannot.jsx';
+import Tulokset from './tulokset/tulokset.jsx';
 import Sarjataulukko from './sarjataulukko/sarjataulukko.jsx';
 
 import Joukkueet from './joukkue/joukkueet.jsx';
@@ -66,7 +67,7 @@ var Liiga = React.createClass({
                                     <Link to='ilmo'><span className="text">Ilmoittautuminen</span></Link>
                                 </li>
                                 <li className='menu-item'>
-                                    <Link to='ilmo'><span className="text">Tulosten ilmoittaminen</span></Link>
+                                    <Link to='tulokset'><span className="text">Tulosten ilmoittaminen</span></Link>
                                 </li>
                             </ul>
                         </div>
@@ -90,6 +91,7 @@ var routes = (
             <Route name='joukkueet' handler={ Joukkueet } />
             <Route name='sarjataulukko' handler={ Sarjataulukko } />
             <Route name='ilmo' handler={ Ilmo } />
+            <Route name='tulokset' handler={ Tulokset } />
             <DefaultRoute handler={ Etusivu }/>
         </Route>
         <DefaultRoute handler={ Etusivu }/>
