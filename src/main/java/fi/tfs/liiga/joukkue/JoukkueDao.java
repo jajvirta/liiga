@@ -30,17 +30,18 @@ public class JoukkueDao {
 	
 	private class Mapper implements RowMapper<Joukkue> {
 		public Joukkue mapRow(ResultSet rs, int rowNum) throws SQLException {
-			Joukkue dummy = new Joukkue();
-			dummy.setId(rs.getInt("joukkue_id"));
-			dummy.setNimi(rs.getString("nimi"));
-			dummy.setKotirata(rs.getString("kotirata"));
-			return dummy;
+			return new Joukkue(
+			        rs.getString("nimi"),
+			        rs.getString("kotirata"),
+			        rs.getString("hnimi"),
+			        rs.getInt("joukkue_id")
+			        );
 		}
 	}
 	
 	public List<Joukkue> haeJoukkueet() {
 		List<Joukkue> query = jdbcTemplate.query(
-				"select * from joukkue", 
+				"select * from joukkue join henkilo on (joukkue.yhteyshenkilo_id = henkilo.henkilo_id)", 
 				new Mapper());
 
 		return query;
@@ -48,7 +49,10 @@ public class JoukkueDao {
 
 	public List<Joukkue> haeAlustavatJoukkueet() {
 		List<Joukkue> query = jdbcTemplate.query(
-				"select * from joukkue where ilmo_vahvistettu_k_e is null", 
+				"select joukkue.nimi, joukkue.kotirata, henkilo.nimi as hnimi, "
+				+ "joukkue_id from joukkue "
+				+ "join henkilo on (joukkue.yhteyshenkilo_id = henkilo.henkilo_id)"
+				+ " where joukkue.ilmo_vahvistettu_k_e is null", 
 				new Mapper());
 		return query;
 	}
@@ -61,7 +65,7 @@ public class JoukkueDao {
 	}
 
 	@Transactional()
-	public long lisaaJoukkue(LisaaJoukkueCommand lisaa) {
+	public long lisaaJoukkue(LisaaJoukkueCommand lisaa, String userId) {
 		SimpleJdbcInsert henkilo = 
 				new SimpleJdbcInsert(jdbcTemplate)
 				.withTableName("henkilo")
@@ -70,6 +74,7 @@ public class JoukkueDao {
 		Map<String, Object> params = new HashMap<>();
 		params.put("nimi", lisaa.yhteyshenkiloNimi);
 		params.put("sahkoposti", lisaa.yhteyshenkiloSahkoposti);
+		params.put("oauth_tunnus", userId);
 		params.put("puhelinnumero", lisaa.yhteyshenkiloPuhelinnumero);
 		params.put("yhteyshenkilo_k_e", "K");
 

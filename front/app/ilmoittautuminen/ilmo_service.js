@@ -7,6 +7,10 @@ export default {
         IlmoActions.updateNimi.started(nimi);
     },
 
+    updateKotirata: function(kotirata) {
+        IlmoActions.updateKotirata.started(kotirata);
+    },
+
     clickButton: function() {
         console.log('ilmo täältäkin!');
 

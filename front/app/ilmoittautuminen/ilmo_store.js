@@ -14,8 +14,13 @@ export default Reflux.createStore({
     },
 
     onUpdateNimiStarted(nimi) {
-        console.log('store', nimi);
         this.ilmo.nimi = nimi;
+        this.trigger(this.ilmo);
+    },
+
+
+    onUpdateKotirataStarted(kotirata) {
+        this.ilmo.kotirata = kotirata;
         this.trigger(this.ilmo);
     },
 

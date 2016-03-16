@@ -3,6 +3,8 @@ package fi.tfs.liiga.joukkue;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,9 +21,12 @@ public class JoukkueController {
 	
 	@RequestMapping(value="/api/liiga/joukkueet/uusi", method=RequestMethod.POST)
 	public void luoUusiJoukkue(@RequestBody LisaaJoukkueCommand lisaa) {
-		System.out.println(lisaa.nimi + " " + lisaa.kotirata);
+        OAuth2Authentication oauth = (OAuth2Authentication) 
+	            SecurityContextHolder.getContext().getAuthentication();
+	    // Principal principal = (Principal) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		System.out.println(lisaa.nimi + " " + lisaa.kotirata + " " + oauth);
 		
-		dao.lisaaJoukkue(lisaa);
+		dao.lisaaJoukkue(lisaa, oauth.getName());
 	}
 	
 	@RequestMapping("/public-api/liiga/joukkueet")

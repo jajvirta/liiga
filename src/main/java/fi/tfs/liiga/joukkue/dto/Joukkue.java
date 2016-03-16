@@ -2,33 +2,16 @@ package fi.tfs.liiga.joukkue.dto;
 
 public class Joukkue {
 	
-	private String nimi;
-	private String kotirata;
-	private int id;
+	public final String nimi;
+	public final String kotirata;
+	public final String yhteyshenkilo;
+	public final int id;
 
-	public String getNimi() {
-		return nimi;
-	}
-
-	public void setNimi(String nimi) {
-		this.nimi = nimi;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getKotirata() {
-		return kotirata;
-	}
-
-	public void setKotirata(String kotirata) {
-		this.kotirata = kotirata;
-	}
-	
-
+	public Joukkue(String nimi, String kotirata, String yhteyshenkilo, int id) {
+        super();
+        this.nimi = nimi;
+        this.kotirata = kotirata;
+        this.yhteyshenkilo = yhteyshenkilo;
+        this.id = id;
+    }
 }
