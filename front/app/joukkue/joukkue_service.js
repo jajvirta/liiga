@@ -4,7 +4,7 @@ import Api from '../common/api-util';
 export default {
 
     getJoukkueet: function() {
-        return Api.get(`api/liiga/joukkueet/alustavat`, JoukkueActions.getJoukkueet);
+        return Api.get(`public-api/liiga/joukkueet/alustavat`, JoukkueActions.getJoukkueet);
     }
 };
 

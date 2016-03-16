@@ -24,12 +24,12 @@ public class JoukkueController {
 		dao.lisaaJoukkue(lisaa);
 	}
 	
-	@RequestMapping("/api/liiga/joukkueet")
+	@RequestMapping("/public-api/liiga/joukkueet")
 	public List<Joukkue> haeJoukkueet() {
 		return dao.haeJoukkueet();
 	}
 
-	@RequestMapping("/api/liiga/joukkueet/alustavat")
+	@RequestMapping("/public-api/liiga/joukkueet/alustavat")
 	public List<Joukkue> haeAlustavatJoukkueet() {
 		return dao.haeAlustavatJoukkueet();
 	}
