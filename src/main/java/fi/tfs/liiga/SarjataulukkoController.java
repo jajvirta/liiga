@@ -9,7 +9,7 @@ import fi.tfs.liiga.dto.SarjataulukkoRivi;
 @RestController
 public class SarjataulukkoController {
 	
-	@RequestMapping("/api/liiga/sarjataulukko")
+	@RequestMapping("/public-api/liiga/sarjataulukko")
 	public Sarjataulukko sarjataulukko() {
 
 		Sarjataulukko sarjataulukko = new Sarjataulukko();
