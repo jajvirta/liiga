@@ -25,10 +25,9 @@ var Liiga = React.createClass({
                     <div className="wrapper">
                         <nav className="main clearfix">
                             <div className="back-link">
-                                <a className="previous"></a>
                             </div>
                             <div className="save-info">
-                            <h2><Link to='etusivu'>Tampereen seudun frisbeegolf-joukkueliiga</Link></h2>
+                            <h1><Link to='etusivu'>Tampereen seudun frisbeegolf-joukkueliiga</Link></h1>
                             </div>
 
                             <div className='back-link'>
@@ -57,8 +56,17 @@ var Liiga = React.createClass({
                                 <li className='menu-item'>
                                     <Link to='sarjataulukko'><span className="text">Sarjataulukko</span></Link>
                                 </li>
+                                <hr/>
+                                <span className="text">Ilmoittautuminen ja tulosten kirjaus</span>
+                                <br/>
+                                <li className='menu-item'>
+                                    <a href="/login"><span className="text">Kirjaudu Facebook-tunnuksella</span></a>
+                                </li>
                                 <li className='menu-item'>
                                     <Link to='ilmo'><span className="text">Ilmoittautuminen</span></Link>
+                                </li>
+                                <li className='menu-item'>
+                                    <Link to='ilmo'><span className="text">Tulosten ilmoittaminen</span></Link>
                                 </li>
                             </ul>
                         </div>
