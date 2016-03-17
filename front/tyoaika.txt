@@ -7,6 +7,7 @@ todo:
 - propsut komentoriviltä jotta saa dev/prod-propsut
 
 
+2016-03-16 illalla ilmoa ja sitten "tuotantoon"siirtoa 3,5h
 2016-03-15 tunnistautumista kuntoon. oauth-tietoja ja sen huomioimista kälissä 2h
 2016-03-14 pientä säätöä illalla, 1h
 2016-03-13 ilmoa kuntoon, 2h
