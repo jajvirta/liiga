@@ -5,7 +5,7 @@ target
 front/node_modules
 front/dist
 .*sw*
-
+application.yml
 src/main/resources/static/bundle.js
 src/main/resources/static/bundle.js.map
 src/main/resources/static/common
