@@ -6,6 +6,7 @@ front/node_modules
 front/dist
 .*sw*
 application.yml
+google_oauth.json
 src/main/resources/static/bundle.js
 src/main/resources/static/bundle.js.map
 src/main/resources/static/common
