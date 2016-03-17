@@ -92,13 +92,6 @@ export default React.createClass({
             || !this.isValid(this.validateNimi, this.state.yhteyshenkilo);
     },
 
-    validateNimi: function(value) {
-        if (value && value.length < 2 || !value) {
-            return 'error';
-        }
-        return 'success';
-    },
-
     validateEmail: function(value) {
         if (!value) {
             return 'warning';
@@ -145,6 +138,13 @@ export default React.createClass({
         }
 
         return 'Anna numero muodossa +358 1234567 tai 0505555555.'
+    },
+
+    validateNimi: function(value) {
+        if (value && value.length < 2 || !value) {
+            return 'error';
+        }
+        return 'success';
     },
 
     helpNimi: function(validator, value) {
@@ -224,6 +224,25 @@ export default React.createClass({
                                 help={ this.helpEmail(this.validateEmail, this.state.yhteyshenkilo_sahkposti) }
                                 /></td>
                     </tr>
+                    <tr>
+                        <td>Muut pelaajat (alustavasti)</td>
+                        <td><Input type='text' onChange={this.handleYhtSahkopostiChange}
+                                value={this.state.muu_pelaaja_1}
+                                /></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><Input type='text' onChange={this.handleYhtSahkopostiChange}
+                                value={this.state.muu_pelaaja_2}
+                                /></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><Input type='text' onChange={this.handleYhtSahkopostiChange}
+                                value={this.state.muu_pelaaja_3}
+                                /></td>
+                    </tr>
+
                     <tr><td></td><td>
                         <Button 
                           type="submit"
