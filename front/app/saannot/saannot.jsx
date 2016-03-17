@@ -46,18 +46,22 @@ export default React.createClass({
 
                 <h2>Joukkueiden ilmoittautuminen sarjaan</h2>
 
-                <p> Joukkueen ilmoittaminen Tampereen seudun
-                frisbeegolf-joukkueliigaan tapahtuu sähköpostilla osoitteeseen
-                liiga@tfs.fi otsikolla “Ilmoittautuminen Tampereen
-                frisbeegolf-liigaan”.  </p>
+                <p>Joukkueen ilmoittaminen Tampereen seudun
+                frisbeegolf-joukkueliigaan tapahtuu ensisijaisesti liigan kotisivuilla
+                osoitteessa <a href="https://liiga.tfs.fi/">https://liiga.tfs.fi</a>.
+                Jos ilmoittautumisessa on ylitsepääsemättömiä teknisiä ongelmia, niin
+                yhteyshenkilö voi ilmoittaa siitä sähköpostiosoitteeseen jarno.virtanen at iki.fi.
+                </p>
 
-                <p> Kerro sähköpostissa joukkueen nimi, yhteyshenkilö
-                yhteystietoineen (puhelinnumero ja sähköpostiosoite) sekä
-            joukkueen kotirata. Listaa lisäksi vähintään kolme muuta pelaajaa.
-            Joukkueet saavat kuitenkin vapaasti lisätä muita pelaajia kauden
-            aikana. Tietty pelaaja ei saa kuitenkaan pelata kahdessa eri
-            joukkueessa yhden kauden aikana. Pelaajien ei tarvitse kuulua
-            mihinkään jäsenseuraan eikä Frisbeeliittoon.
+                <p>Ilmoittautuminen alkaa kirjautumalla sisään Facebook tai Google-tunnuksella.
+                Tämä yhdistää joukkueen yhteyshenkilön liigan sivuston tietoihin. Ilmoittautumislomake
+                kertoo mitä ilmoittautumiseen vaaditaan.
+                </p>
+
+                <p> Joukkueet saavat vapaasti lisätä muita pelaajia kauden
+                aikana. Tietty pelaaja ei saa kuitenkaan pelata kahdessa eri
+                joukkueessa yhden kauden aikana. Pelaajien ei tarvitse kuulua
+                mihinkään jäsenseuraan eikä Frisbeeliittoon.
                 </p>
 
                 <p>
@@ -152,7 +156,9 @@ export default React.createClass({
 
                 <h2>Yksittäisen ottelun ottelujärjestelmä</h2>
 
-                XXX.
+                <p>
+                (TBD.)
+                </p>
 
                 <h2>Tasapisteissä olevien paremmuuden määräytyminen</h2>
 
@@ -181,15 +187,19 @@ export default React.createClass({
 
                 <p>
                 Ottelun kotijoukkue on velvollinen ilmoittamaan lopputuloksen
-                täydellisine tietoineen Pirkanmaan Frisbeegolf-liigalle.
+                vaadittuine tietoineen Pirkanmaan Frisbeegolf-liigalle. Lopputuloksesta
+                ilmoitetaan tulospelien järjestys ja reikäpelien ottelutulokset.
                 Yhteyshenkilö ilmoittaa tulokset &nbsp;
-                <a href="http://liiga.tfs.fi/">http://liiga.tfs.fi/ -sivustolla</a>.
-                    mieluiten otteluillan aikana mutta viimeistään seuraavaan päivään
+                <a href="http://liiga.tfs.fi/">http://liiga.tfs.fi/ -sivustolla</a>&nbsp;
+                    mahdollisimman nopeasti mutta viimeistään seuraavaan päivään
                     klo 20:00 mennessä.</p>
 
                 <h2>Liigan palkinnot</h2>
 
-                <p>Sarjatason ilmoittautumismaksuista muodostetaan palkintopotti, johon laitetaan n. 80-90% osallistumismaksuista riippuen osallistujamäärästä. Parhaat joukkueet palkitaan myös pokaaleilla.</p>
+                <p>Sarjatason ilmoittautumismaksuista muodostetaan
+                palkintopotti, johon laitetaan n. 80-90% osallistumismaksuista
+                riippuen osallistujamäärästä. Parhaat joukkueet palkitaan myös
+                pokaaleilla.</p>
 
 
             </div>
