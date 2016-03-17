@@ -1,0 +1,44 @@
+---
+
+
+- name: deplaa liigasovelluksen
+  hosts: liiga
+
+  vars:
+    base: ..
+
+  tasks:
+    - debug:
+        var: base
+    - fail:
+        msg: "Anna uusi versio vivulla -e version=<version>"
+      when: version is not defined
+
+    - name: versiobump
+      shell: "mvn -s settings.xml versions:set -DnewVersion={{ version }}"
+      args:
+        chdir: "{{ base }}"
+      delegate_to: localhost
+
+    - file:
+        dest: "{{ base }}/pom.xml.versionsBackup"
+        state: absent
+      delegate_to: localhost
+
+    - name: kommitoi versiobump
+      shell: "git ci -m 'version bump to {{ version }}' pom.xml"
+      args:
+        chdir: "{{ base }}"
+      delegate_to: localhost
+
+    - name: buildaa
+      shell: "mvn -s settings.xml clean package"
+      args:
+        chdir: "{{ base }}"
+      delegate_to: localhost
+
+    - name: kopsaa
+      copy:
+        src: "{{ base }}/target/liiga-{{ version }}.jar"
+        dest: ./liiga-{{ version }}.jar
+
