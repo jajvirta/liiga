@@ -39,6 +39,7 @@ public class JoukkueDao {
 		}
 	}
 	
+	@Transactional
 	public List<Joukkue> haeJoukkueet() {
 		List<Joukkue> query = jdbcTemplate.query(
 				"select * from joukkue join henkilo on (joukkue.yhteyshenkilo_id = henkilo.henkilo_id)", 
@@ -57,6 +58,7 @@ public class JoukkueDao {
 		return query;
 	}
 
+	@Transactional
 	public List<Joukkue> haeVahvistetutJoukkueet() {
 		List<Joukkue> query = jdbcTemplate.query(
 				"select * from joukkue where ilmo_vahvistettu_k_e = 'K'", 
@@ -64,34 +66,48 @@ public class JoukkueDao {
 		return query;
 	}
 
-	@Transactional()
-	public long lisaaJoukkue(LisaaJoukkueCommand lisaa, String userId) {
-		SimpleJdbcInsert henkilo = 
-				new SimpleJdbcInsert(jdbcTemplate)
-				.withTableName("henkilo")
-				.usingGeneratedKeyColumns("henkilo_id");
-		
-		Map<String, Object> params = new HashMap<>();
-		params.put("nimi", lisaa.yhteyshenkiloNimi);
-		params.put("sahkoposti", lisaa.yhteyshenkiloSahkoposti);
-		params.put("oauth_tunnus", userId);
-		params.put("puhelinnumero", lisaa.yhteyshenkiloPuhelinnumero);
-		params.put("yhteyshenkilo_k_e", "K");
+    public Joukkue haeJoukkue(String currentUserOauthId) {
+        // TODO tee tästä kantanäkymä ja vaihda yllekin
+        return jdbcTemplate.
+                queryForObject(
+                        "select joukkue.nimi, joukkue.kotirata, henkilo.nimi as hnimi, "
+                                + "joukkue_id from joukkue "
+                                + "join henkilo on (joukkue.yhteyshenkilo_id = henkilo.henkilo_id)"
+                                + " where oauth_tunnus = ?", 
+                                new Object [] { currentUserOauthId },
+                                new Mapper());
+    }
 
-		Number returnKey = henkilo.executeAndReturnKey(params);
-		
-		SimpleJdbcInsert insert = 
-				new SimpleJdbcInsert(jdbcTemplate)
-				.withTableName("joukkue")
-				.usingGeneratedKeyColumns("joukkue_id");
-		
-		params = new HashMap<>();
-		params.put("nimi", lisaa.nimi);
-		params.put("kotirata", lisaa.kotirata);
-		params.put("yhteyshenkilo_id", returnKey);
+    @Transactional()
+    public long lisaaJoukkue(LisaaJoukkueCommand lisaa, String userId) {
+        SimpleJdbcInsert henkilo = 
+                new SimpleJdbcInsert(jdbcTemplate)
+                .withTableName("henkilo")
+                .usingGeneratedKeyColumns("henkilo_id");
 
-		returnKey = insert.executeAndReturnKey(params);
-		
-		return returnKey.longValue();
-	}
+        Map<String, Object> params = new HashMap<>();
+        params.put("nimi", lisaa.yhteyshenkiloNimi);
+        params.put("sahkoposti", lisaa.yhteyshenkiloSahkoposti);
+        params.put("oauth_tunnus", userId);
+        params.put("puhelinnumero", lisaa.yhteyshenkiloPuhelinnumero);
+        params.put("yhteyshenkilo_k_e", "K");
+
+        Number returnKey = henkilo.executeAndReturnKey(params);
+
+        SimpleJdbcInsert insert = 
+                new SimpleJdbcInsert(jdbcTemplate)
+                .withTableName("joukkue")
+                .usingGeneratedKeyColumns("joukkue_id");
+
+        params = new HashMap<>();
+        params.put("nimi", lisaa.nimi.trim());
+        params.put("kotirata", lisaa.kotirata);
+        params.put("yhteyshenkilo_id", returnKey);
+
+        returnKey = insert.executeAndReturnKey(params);
+
+        return returnKey.longValue();
+    }
+
+
 }
