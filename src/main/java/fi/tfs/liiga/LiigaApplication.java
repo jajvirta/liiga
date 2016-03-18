@@ -57,8 +57,10 @@ public class LiigaApplication extends WebSecurityConfigurerAdapter {
                         ).permitAll()
                 .anyRequest()
                 .authenticated()
+            .and().logout().logoutSuccessUrl("/#/etusivu").permitAll()
             .and().csrf().csrfTokenRepository(csrfTokenRepository())
             .and().addFilterAfter(csrfHeaderFilter(), CsrfFilter.class);
+
     }
     
     @Bean
