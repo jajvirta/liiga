@@ -85,7 +85,7 @@ var Liiga = React.createClass({
 var routes = (
     <Route>
         <Route name='liiga' path='/' handler={ Liiga }>
-            <Route name='from_face' path='_=_' handler={ Etusivu } />
+            <Route name='from_face' path='_=_' handler={ Ilmo } />
             <Route name='etusivu' handler={ Etusivu } />
             <Route name='saannot' handler={ Saannot } />
             <Route name='joukkueet' handler={ Joukkueet } />
