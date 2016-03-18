@@ -3,13 +3,12 @@ package fi.tfs.liiga.joukkue;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import fi.tfs.liiga.CurrentUserUtil;
 import fi.tfs.liiga.joukkue.command.LisaaJoukkueCommand;
 import fi.tfs.liiga.joukkue.dto.Joukkue;
 
@@ -21,12 +20,12 @@ public class JoukkueController {
 	
 	@RequestMapping(value="/api/liiga/joukkueet/uusi", method=RequestMethod.POST)
 	public void luoUusiJoukkue(@RequestBody LisaaJoukkueCommand lisaa) {
-        OAuth2Authentication oauth = (OAuth2Authentication) 
-	            SecurityContextHolder.getContext().getAuthentication();
-	    // Principal principal = (Principal) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		System.out.println(lisaa.nimi + " " + lisaa.kotirata + " " + oauth);
-		
-		dao.lisaaJoukkue(lisaa, oauth.getName());
+		dao.lisaaJoukkue(lisaa, CurrentUserUtil.getCurrentUserOauthId());
+	}
+	
+	@RequestMapping("/api/liiga/joukkueet/kirjautuneen-kayttajan-joukkue")
+	public Joukkue haeJoukkue() {
+	    return dao.haeJoukkue(CurrentUserUtil.getCurrentUserOauthId());
 	}
 	
 	@RequestMapping("/public-api/liiga/joukkueet")
