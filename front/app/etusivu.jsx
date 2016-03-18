@@ -7,6 +7,10 @@ export default React.createClass({
         return (
             <div>
                 <h1>Ajankohtaista frisbeegolf-joukkueliigasta</h1>
+
+                <h2>Ilmoittautuminen aukeaa pian</h2>
+
+                <p><i>pe 17.3.2016</i>: Liigaan ilmoittautuminen aukeaa pian.</p>
             </div>
         );
     }

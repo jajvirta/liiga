@@ -6,6 +6,8 @@ import Reflux from 'reflux';
 import Router, { Route, RouteHandler, DefaultRoute } from 'react-router';
 import { Link } from 'react-router';
 import Etusivu from './etusivu.jsx';
+import Ranking from './ranking/ranking.jsx';
+import Ohjelma from './ohjelma/ohjelma.jsx';
 import Saannot from './saannot/saannot.jsx';
 import Tulokset from './tulokset/tulokset.jsx';
 import Sarjataulukko from './sarjataulukko/sarjataulukko.jsx';
@@ -52,17 +54,20 @@ var Liiga = React.createClass({
                                     <Link to='saannot'><span className="text"><div>Säännöt</div></span></Link>
                                 </li>
                                 <li className='menu-item'>
+                                    <Link to='ohjelma'><span className="text">Otteluohjelma</span></Link>
+                                </li>
+                                <li className='menu-item'>
                                     <Link to='joukkueet'><span className="text">Joukkueet</span></Link>
                                 </li>
                                 <li className='menu-item'>
                                     <Link to='sarjataulukko'><span className="text">Sarjataulukko</span></Link>
                                 </li>
+                                <li className='menu-item'>
+                                    <Link to='ranking'><span className="text">Ranking-listat</span></Link>
+                                </li>
                                 <hr/>
                                 <span className="text">Ilmoittautuminen ja tulosten kirjaus</span>
                                 <br/>
-                                <li className='menu-item'>
-                                    <a href="/login"><span className="text">Kirjaudu Facebook-tunnuksella</span></a>
-                                </li>
                                 <li className='menu-item'>
                                     <Link to='ilmo'><span className="text">Ilmoittautuminen</span></Link>
                                 </li>
@@ -88,6 +93,8 @@ var routes = (
             <Route name='from_face' path='_=_' handler={ Ilmo } />
             <Route name='etusivu' handler={ Etusivu } />
             <Route name='saannot' handler={ Saannot } />
+            <Route name='ranking' handler={ Ranking } />
+            <Route name='ohjelma' handler={ Ohjelma } />
             <Route name='joukkueet' handler={ Joukkueet } />
             <Route name='sarjataulukko' handler={ Sarjataulukko } />
             <Route name='ilmo' handler={ Ilmo } />
