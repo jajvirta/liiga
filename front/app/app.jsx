@@ -33,7 +33,6 @@ var Liiga = React.createClass({
         var t = this;
         KayttajaService.haeKayttaja()
             .then(function(result) {
-                console.log('promisessa', result);
                 t.setState({ nimi: result.name });
                 t.setState({ authenticated: result.authenticated });
             });
