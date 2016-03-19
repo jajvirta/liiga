@@ -19,60 +19,56 @@ import fi.tfs.liiga.joukkue.dto.Joukkue;
 
 @Component
 public class JoukkueDao {
-	
-	private final JdbcTemplate jdbcTemplate;
 
-	
-	@Autowired
-	public JoukkueDao(JdbcTemplate jdbcTemplate) {
-		this.jdbcTemplate = jdbcTemplate;
-	}
-	
-	private class Mapper implements RowMapper<Joukkue> {
-		public Joukkue mapRow(ResultSet rs, int rowNum) throws SQLException {
-			return new Joukkue(
-			        rs.getString("nimi"),
-			        rs.getString("kotirata"),
-			        rs.getString("hnimi"),
-			        rs.getInt("joukkue_id")
-			        );
-		}
-	}
-	
-	@Transactional
-	public List<Joukkue> haeJoukkueet() {
-		List<Joukkue> query = jdbcTemplate.query(
-				"select * from joukkue join henkilo on (joukkue.yhteyshenkilo_id = henkilo.henkilo_id)", 
-				new Mapper());
+    private final JdbcTemplate jdbcTemplate;
 
-		return query;
-	}
 
-	public List<Joukkue> haeAlustavatJoukkueet() {
-		List<Joukkue> query = jdbcTemplate.query(
-				"select joukkue.nimi, joukkue.kotirata, henkilo.nimi as hnimi, "
-				+ "joukkue_id from joukkue "
-				+ "join henkilo on (joukkue.yhteyshenkilo_id = henkilo.henkilo_id)"
-				+ " where joukkue.ilmo_vahvistettu_k_e is null", 
-				new Mapper());
-		return query;
-	}
+    @Autowired
+    public JoukkueDao(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
-	@Transactional
-	public List<Joukkue> haeVahvistetutJoukkueet() {
-		List<Joukkue> query = jdbcTemplate.query(
-				"select * from joukkue where ilmo_vahvistettu_k_e = 'K'", 
-				new Mapper());
-		return query;
-	}
+    private class Mapper implements RowMapper<Joukkue> {
+        public Joukkue mapRow(ResultSet rs, int rowNum) throws SQLException {
+            return new Joukkue(
+                    rs.getString("nimi"),
+                    rs.getString("kotirata"),
+                    rs.getString("henkilo_nimi"),
+                    rs.getString("sahkoposti"),
+                    rs.getString("puhelinnumero"),
+                    rs.getInt("joukkue_id")
+                    );
+        }
+    }
+
+    @Transactional
+    public List<Joukkue> haeJoukkueet() {
+        List<Joukkue> query = jdbcTemplate.query(
+                "select * from joukkue join henkilo on (joukkue.yhteyshenkilo_id = henkilo.henkilo_id)", 
+                new Mapper());
+
+        return query;
+    }
+
+    public List<Joukkue> haeAlustavatJoukkueet() {
+        List<Joukkue> query = jdbcTemplate.query(
+                "select * from yhteyshenkilo_joukkue where ilmo_vahvistettu_k_e is null", 
+                        new Mapper());
+        return query;
+    }
+
+    @Transactional
+    public List<Joukkue> haeVahvistetutJoukkueet() {
+        List<Joukkue> query = jdbcTemplate.query(
+                "select * from joukkue where ilmo_vahvistettu_k_e = 'K'", 
+                new Mapper());
+        return query;
+    }
 
     public Joukkue haeJoukkue(String currentUserOauthId) {
-        // TODO tee tästä kantanäkymä ja vaihda yllekin
         return jdbcTemplate.
                 queryForObject(
-                        "select joukkue.nimi, joukkue.kotirata, henkilo.nimi as hnimi, "
-                                + "joukkue_id from joukkue "
-                                + "join henkilo on (joukkue.yhteyshenkilo_id = henkilo.henkilo_id)"
+                        "select * from yhteyshenkilo_joukkue"
                                 + " where oauth_tunnus = ?", 
                                 new Object [] { currentUserOauthId },
                                 new Mapper());

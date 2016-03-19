@@ -11,10 +11,28 @@ export default {
         IlmoActions.updateKotirata.started(kotirata);
     },
 
-    clickButton: function() {
-        console.log('ilmo täältäkin!');
+    updateYhteyshenkilo: function(yhteyshenkilo) {
+        IlmoActions.updateYhteyshenkilo.started(yhteyshenkilo);
+    },
 
+    updateYhteyshenkiloPuhelinnumero: function(puhnro) {
+        IlmoActions.updateYhteyshenkiloPuhelinnumero.started(puhnro);
+    },
+
+    updateYhteyshenkiloSahkoposti: function(sahkoposti) {
+        IlmoActions.updateYhteyshenkiloSahkoposti.started(sahkoposti);
+    },
+
+    updateMuuPelaaja1: function(nimi) {
+        IlmoActions.updateMuuPelaaja1.started(nimi);
+    },
+
+    clickButton: function() {
         return Api.post(`api/liiga/something`, IlmoActions.buttonClicked);
+    },
+
+    haeIlmoittautumistiedot: function() {
+        return Api.get(`api/liiga/joukkueet/kirjautuneen-kayttajan-joukkue`, IlmoActions.haeIlmoittautumistiedot);
     },
 
     lahetaIlmoittautuminen: function(sarja, nimi, kotirata, yhteyshenkilo, puhelinnumero, sahkoposti) {

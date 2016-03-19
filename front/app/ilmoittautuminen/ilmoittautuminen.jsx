@@ -33,19 +33,19 @@ export default React.createClass({
 
 
     componentWillMount: function() {
-        console.log('mounting..', this);
-
         var t = this;
         KayttajaService.haeKayttaja()
             .then(function(result) {
-                console.log('promisessa', result);
                 t.setState({ yhteyshenkilo: result.name });
+                if (result && result.authenticated) {
+                    console.log('authenticated so getting ilmotiedot');
+                    IlmoService.haeIlmoittautumistiedot();
+                }
             });
     },
 
     handleClick: function() {
         var state = this.state;
-        var t = this;
         IlmoService.lahetaIlmoittautuminen(
                 'tre_liiga_2016',
                 this.state.nimi,
@@ -59,25 +59,27 @@ export default React.createClass({
     },
 
     handleNimiChange: function(event) {
-        this.setState({ nimi: event.target.value });
-        // IlmoService.updateNimi(event.target.value);
+        IlmoService.updateNimi(event.target.value);
     },
 
     handleKotirataChange: function(event) {
         IlmoService.updateKotirata(event.target.value);
-        // this.setState({ kotirata: event.target.value });
+    },
+
+    handleMuuPelaaja1: function(event) {
+        IlmoService.updateMuuPelaaja1(event.target.value);
     },
 
     handleYhteyshenkiloChange: function(event) {
-        this.setState({ yhteyshenkilo: event.target.value });
+        IlmoService.updateYhteyshenkilo(event.target.value);
     },
 
     handleYhteyshenkiloPuhelinnumeroChange: function(event) {
-        this.setState({ puhelinnumero: event.target.value });
+        IlmoService.updateYhteyshenkiloPuhelinnumero(event.target.value);
     },
 
     handleYhtSahkopostiChange: function(event) {
-        this.setState({ yhteyshenkilo_sahkposti: event.target.value });
+        IlmoService.updateYhteyshenkiloSahkoposti(event.target.value);
     },
 
     isValid: function(validate, value) {
@@ -85,10 +87,10 @@ export default React.createClass({
     },
 
     disabled: function() {
-        return !this.isValid(this.validateNimi, this.state.nimi)
+        return !this.isValid(this.validateNimi, this.state.ilmo.nimi)
             || !this.isValid(this.validateNimi, this.state.ilmo.kotirata)
-            || !this.isValid(this.validatePuhelin, this.state.puhelinnumero)
-            || !this.isValid(this.validateEmail, this.state.yhteyshenkilo_sahkposti)
+            || !this.isValid(this.validatePuhelin, this.state.ilmo.yhteyshenkiloPuhelinnumero)
+            || !this.isValid(this.validateEmail, this.state.ilmo.yhteyshenkiloSahkoposti)
             || !this.isValid(this.validateNimi, this.state.yhteyshenkilo);
     },
 
@@ -166,13 +168,19 @@ export default React.createClass({
                     <Modal.Body>
                             <div className='application-section'>
                                 <h2>Ilmoittaumisen lähettäminen</h2>
-                                <p>( .. ohje ..)</p>
+                                <p>
+                                    Lähettäminen listaa joukkueesi alustavassa listassa.
+                                    Kun suoritat ilmoittautumismaksun, niin liigan 
+                                    ylläpito vahvistaa ilmoittautumisesi.
+                                </p>
                                 <button className='' onClick={this.handleClick}>Lähetä</button>
                                 <button className='cancel right' onClick={this.closeModal}>Peru</button>
                             </div>
                         </Modal.Body>
                     </Modal>
-                <h1>Ilmoittautuminen Tampereen seudun frisbeegolf-joukkueliigaan</h1>
+                { this.state.ilmo.onIlmoittautunut ?
+                    <h1>Olet ilmoittanut joukkueesi frisbeegolf-liigaan, alla tiedot</h1> :
+                <h1>Ilmoittautuminen Tampereen seudun frisbeegolf-joukkueliigaan</h1> }
 
                 <Table>
                     <tr>
@@ -184,9 +192,9 @@ export default React.createClass({
                         <td><Input type='text'
                             size='70'
                             onChange={this.handleNimiChange}
-                            value={ this.state.nimi }
-                            bsStyle={ this.validateNimi(this.state.nimi) }
-                            help={ this.helpNimi(this.validateNimi, this.state.nimi) }
+                            value={ this.state.ilmo.nimi }
+                            bsStyle={ this.validateNimi(this.state.ilmo.nimi) }
+                            help={ this.helpNimi(this.validateNimi, this.state.ilmo.nimi) }
                             /></td>
                     </tr>
                     <tr>
@@ -204,42 +212,42 @@ export default React.createClass({
                         <td><Input
                                 type='text'
                                 onChange={this.handleYhteyshenkiloChange} 
-                                value={this.state.yhteyshenkilo}/></td>
+                                value={this.state.ilmo.yhteyshenkilo}/></td>
                     </tr>
                     <tr>
                         <td>Yhteyshenkilön puhelinnumero</td>
                         <td><Input
                                 type='text'
                                 onChange={this.handleYhteyshenkiloPuhelinnumeroChange} 
-                                value={this.state.puhelinnumero}
-                                bsStyle={ this.validatePuhelin(this.state.puhelinnumero) }
-                                help={ this.helpPuhelin(this.validatePuhelin, this.state.puhelinnumero) }
+                                value={this.state.ilmo.yhteyshenkiloPuhelinnumero}
+                                bsStyle={ this.validatePuhelin(this.state.ilmo.yhteyshenkiloPuhelinnumero) }
+                                help={ this.helpPuhelin(this.validatePuhelin, this.state.ilmo.yhteyshenkiloPuhelinnumero) }
                                 /></td>
                     </tr>
                     <tr>
                         <td>Yhteyshenkilön sähköposti</td>
                         <td><Input type='text' onChange={this.handleYhtSahkopostiChange}
-                                value={this.state.yhteyshenkilo_sahkposti}
-                                bsStyle={ this.validateEmail(this.state.yhteyshenkilo_sahkposti) }
-                                help={ this.helpEmail(this.validateEmail, this.state.yhteyshenkilo_sahkposti) }
+                                value={this.state.ilmo.yhteyshenkiloSahkoposti}
+                                bsStyle={ this.validateEmail(this.state.ilmo.yhteyshenkiloSahkoposti) }
+                                help={ this.helpEmail(this.validateEmail, this.state.ilmo.yhteyshenkiloSahkoposti) }
                                 /></td>
                     </tr>
                     <tr>
                         <td>Muut pelaajat (alustavasti)</td>
-                        <td><Input type='text' onChange={this.handleYhtSahkopostiChange}
-                                value={this.state.muu_pelaaja_1}
+                        <td><Input type='text' onChange={this.handleMuuPelaaja1}
+                                value={this.state.ilmo.muu_pelaaja_1}
                                 /></td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td><Input type='text' onChange={this.handleYhtSahkopostiChange}
-                                value={this.state.muu_pelaaja_2}
+                        <td><Input type='text' onChange={this.handleMuuPelaaja2}
+                                value={this.state.ilmo.muu_pelaaja_2}
                                 /></td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td><Input type='text' onChange={this.handleYhtSahkopostiChange}
-                                value={this.state.muu_pelaaja_3}
+                        <td><Input type='text' onChange={this.handleMuuPelaaja3}
+                                value={this.state.ilmo.muu_pelaaja_3}
                                 /></td>
                     </tr>
 
@@ -279,10 +287,9 @@ export default React.createClass({
             <div>
                 { this.state.kayttaja.authenticated ?
                     this.renderIlmo() :
-                        this.renderLogin() }
+                    this.renderLogin() 
+                }
                         <hr/>
-
- 
            </div>
         );
     }
