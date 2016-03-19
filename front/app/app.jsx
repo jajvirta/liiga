@@ -54,8 +54,11 @@ var Liiga = React.createClass({
                             <div className="back-link">
                                 { this.state.authenticated ?
                                     <div>
-                                    <small>Kirjautuneena: { this.state.nimi }</small>
-                                    <br/><small><Button bsSize='xsmall' onClick={this.logout}>Kirjaudu ulos</Button></small> 
+                                        <small>Kirjautuneena: { this.state.nimi }</small>
+                                        <br/>
+                                        <small>
+                                            <Button bsSize='xsmall' onClick={this.logout}>Kirjaudu ulos</Button>
+                                        </small>
                                     </div>
                                     :
                                 <small><a href="/login">Kirjaudu sisään</a></small> }
