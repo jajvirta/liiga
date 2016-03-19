@@ -23,8 +23,21 @@ export default React.createClass({
         SarjataulukkoService.getSarjataulukko();
     },
 
+    pick: function(o) {
+        return o.pelit; 
+    },
+
+    voitot: function(o) { return o.pelit; },
+
+    sortBy: function(which) {
+        // 
+    },
+
     render: function () {
         var f = this.state.sarjataulukko;
+        var uirivit = this.state.sarjataulukko.rivit;
+        uirivit = _.sortBy(uirivit, function(o) { return o.pelit; });
+
         return (
             <div>
                 <h1>Sarjataulukko ja pistetilanne</h1>
@@ -34,7 +47,7 @@ export default React.createClass({
                 <thead>
                     <tr key='jee'>
                         <th>Nimi</th><th>Pelit</th>
-                        <th>Voitot</th>
+                        <th><span onClick={ this.sortBy(this.voitot) }>Voitot</span></th>
                         <th>Tasapelit</th>
                         <th>Häviöt</th>
                         <th>Pisteet</th>
@@ -42,7 +55,7 @@ export default React.createClass({
                 </thead>
 
                 <tbody>
-                { _.chain(this.state.sarjataulukko.rivit)
+                { _.chain(uirivit)
                     .map(function(rivi) {
                         return (
                                 <tr key={rivi.joukkue}>
