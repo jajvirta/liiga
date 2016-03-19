@@ -5,21 +5,46 @@ import React from 'react/addons';
 import Reflux from 'reflux';
 import Router, { Route, RouteHandler, DefaultRoute } from 'react-router';
 import { Link } from 'react-router';
+import { Button } from 'react-bootstrap';
+
 import Etusivu from './etusivu.jsx';
 import Ranking from './ranking/ranking.jsx';
 import Ohjelma from './ohjelma/ohjelma.jsx';
 import Saannot from './saannot/saannot.jsx';
 import Tulokset from './tulokset/tulokset.jsx';
 import Sarjataulukko from './sarjataulukko/sarjataulukko.jsx';
-
 import Joukkueet from './joukkue/joukkueet.jsx';
-
 import Ilmo from './ilmoittautuminen/ilmoittautuminen.jsx';
+
+import KayttajaService from './kayttaja/kayttaja_service.js';
 
 var Liiga = React.createClass({
     mixins: [
         Router.State
     ],
+
+    getInitialState: function() {
+        return {
+            nimi: "",
+            authenticated: false };
+    },
+
+    componentWillMount: function() {
+        var t = this;
+        KayttajaService.haeKayttaja()
+            .then(function(result) {
+                console.log('promisessa', result);
+                t.setState({ nimi: result.name });
+                t.setState({ authenticated: result.authenticated });
+            });
+    },
+
+    logout: function() {
+        KayttajaService.logout().
+            then(function() {
+                window.location.href = "/";
+            });
+    },
 
     render() {
         return (
@@ -28,6 +53,13 @@ var Liiga = React.createClass({
                     <div className="wrapper">
                         <nav className="main clearfix">
                             <div className="back-link">
+                                { this.state.authenticated ?
+                                    <div>
+                                    <small>Kirjautuneena: { this.state.nimi }</small>
+                                    <br/><small><Button bsSize='xsmall' onClick={this.logout}>Kirjaudu ulos</Button></small> 
+                                    </div>
+                                    :
+                                <small><a href="/login">Kirjaudu sisään</a></small> }
                             </div>
                             <div className="save-info">
                             <h1><Link to='etusivu'>Tampereen seudun frisbeegolf-joukkueliiga</Link></h1>
@@ -48,7 +80,7 @@ var Liiga = React.createClass({
                         <div id='navigation' className="sidebar">
                             <ul className='side-navigation'>
                                 <li className='menu-item'>
-                                    <Link to='etusivu'><span className="text">Yleistä tietoa</span></Link>
+                                    <Link to='etusivu'><span className="text">Ajankohtaista</span></Link>
                                 </li>
                                 <li className='menu-item'>
                                     <Link to='saannot'><span className="text"><div>Säännöt</div></span></Link>
@@ -90,7 +122,7 @@ var Liiga = React.createClass({
 var routes = (
     <Route>
         <Route name='liiga' path='/' handler={ Liiga }>
-            <Route name='from_face' path='_=_' handler={ Ilmo } />
+            <Route name='from_face' path='_=_' handler={ Etusivu } />
             <Route name='etusivu' handler={ Etusivu } />
             <Route name='saannot' handler={ Saannot } />
             <Route name='ranking' handler={ Ranking } />

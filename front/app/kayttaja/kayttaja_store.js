@@ -7,6 +7,12 @@ export default Reflux.createStore({
 
     kayttaja: { authenticated: false },
 
+    onLogoutCompleted: function(result) {
+        this.kayttaja.authenticated = false;
+        this.kayttaja.nimi = '';
+        this.trigger(this.kayttaja);
+    },
+
     onHaeKayttajaCompleted: function(result) {
         if (result.authenticated) { console.log('authd'); }
         if (!result.authenticated) { console.log('not authd'); }

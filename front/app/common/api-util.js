@@ -58,6 +58,29 @@ export default {
             }).catch(error => handleError(options.method, error, action));
     },
 
+    plainPost: function(url, action, data) {
+        action.started(data);
+
+        const options = {
+            method: 'post',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'X-XSRF-TOKEN': csrfToken
+            },
+            credentials: 'same-origin',
+            body: JSON.stringify(data)
+        };
+
+        return fetch(url, options)
+            .then(checkStatus)
+            .then(function (result) {
+                action.completed({});
+                return result;
+            })
+            .catch(error => handleError(options.method, error, action, data));
+    },
+
     post: function(url, action, data) {
         action.started(data);
 
