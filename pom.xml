@@ -5,7 +5,7 @@
 
 	<groupId>org.springframework</groupId>
 	<artifactId>liiga</artifactId>
-	<version>0.3.0</version>
+	<version>0.3.1</version>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -17,6 +17,10 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>	
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security.oauth</groupId>
@@ -33,21 +37,7 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-			<!-- 
-			<exclusions>
-				<exclusion>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-starter-tomcat</artifactId>
-				</exclusion>
-			</exclusions>
-			-->
 		</dependency>
-		<!-- 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-undertow</artifactId>
-		</dependency>
-		-->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -73,16 +63,16 @@
 	<build>
 		<plugins>
 			<plugin>
-                <groupId>org.flywaydb</groupId>
-                <artifactId>flyway-maven-plugin</artifactId>
-                <version>4.0</version>
-                <configuration>
-                    <url>jdbc:postgresql://localhost:5432/testidb</url>
-                    <user>testi</user>
-                    <password>testi</password>
-                    <baselineOnMigrate>true</baselineOnMigrate>
-                </configuration>
-            </plugin>
+				<groupId>org.flywaydb</groupId>
+				<artifactId>flyway-maven-plugin</artifactId>
+				<version>4.0</version>
+				<configuration>
+					<url>jdbc:postgresql://localhost:5432/testidb</url>
+					<user>testi</user>
+					<password>testi</password>
+					<baselineOnMigrate>true</baselineOnMigrate>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
@@ -125,5 +115,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
