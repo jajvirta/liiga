@@ -5,5 +5,5 @@ jdk:
 cache:
     directories:
     - $HOME/.m2
-
+    - ./front/node_modules
 
