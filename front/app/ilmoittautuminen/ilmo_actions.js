@@ -11,5 +11,6 @@ export default Actions.createAsyncActions([
     'updateMuuPelaaja2',
     'updateMuuPelaaja3',
     'haeIlmoittautumistiedot',
-    'laheta'
+    'laheta',
+    'poista'
 ]);

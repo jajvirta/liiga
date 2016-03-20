@@ -1,6 +1,4 @@
 
-drop view yhteyshenkilo_joukkue; 
-
 create or replace  view 
   yhteyshenkilo_joukkue as 
   select *

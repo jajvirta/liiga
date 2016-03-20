@@ -16,14 +16,30 @@ export default Reflux.createStore({
     },
 
     onHaeIlmoittautumistiedotCompleted: function(result) {
-        if (result && result.yhteyshenkilo) {
+        console.log(result, result.length);
+        if (result && result.length === 1) {
+            var ilmo = result[0];
             this.ilmo.onIlmoittautunut = true;
-            this.ilmo.nimi = result.nimi
-            this.ilmo.kotirata = result.kotirata;
-            this.ilmo.yhteyshenkilo = result.yhteyshenkilo;
-            this.ilmo.yhteyshenkiloSahkoposti = result.yhteyshenkiloSahkoposti;
-            this.ilmo.yhteyshenkiloPuhelinnumero = result.yhteyshenkiloPuhelinnumero;
+            this.ilmo.joukkueId = ilmo.joukkueId;
+            this.ilmo.nimi = ilmo.nimi
+            this.ilmo.kotirata = ilmo.kotirata;
+            this.ilmo.yhteyshenkilo = ilmo.yhteyshenkilo;
+            this.ilmo.yhteyshenkiloSahkoposti = ilmo.yhteyshenkiloSahkoposti;
+            this.ilmo.yhteyshenkiloPuhelinnumero = ilmo.yhteyshenkiloPuhelinnumero;
         }
+
+        this.trigger(this.ilmo);
+    },
+
+    onPoistaCompleted(result) {
+        console.log('poista compl', result);
+        this.ilmo.onIlmoittautunut = false;
+        // this.ilmo.joukkueId = '';
+        // this.ilmo.nimi = '';
+        // this.ilmo.kotirata = '';
+        // this.ilmo.yhteyshenkilo = '';
+        // this.ilmo.yhteyshenkiloSahkoposti = '';
+        // this.ilmo.yhteyshenkiloPuhelinnumero = '';
 
         this.trigger(this.ilmo);
     },

@@ -20,7 +20,10 @@ export default React.createClass({
     getInitialState: function() {
         return {
             nimi: "",
-            showModal: false };
+            showModal: false,
+            showPoistoModal: false,
+            showUpdateModal: false
+        };
     },
 
     openModal: function() {
@@ -31,6 +34,21 @@ export default React.createClass({
         this.setState({ showModal: false });
     },
 
+    openUpdateModal: function() {
+        this.setState({ showUpdateModal: true });
+    },
+
+    closeUpdateModal: function() {
+        this.setState({ showUpdateModal: false });
+    },
+
+    openPoistoModal: function() {
+        this.setState({ showPoistoModal: true });
+    },
+
+    closePoistoModal: function() {
+        this.setState({ showPoistoModal: false });
+    },
 
     componentWillMount: function() {
         var t = this;
@@ -38,22 +56,40 @@ export default React.createClass({
             .then(function(result) {
                 t.setState({ yhteyshenkilo: result.name });
                 if (result && result.authenticated) {
-                    console.log('authenticated so getting ilmotiedot');
                     IlmoService.haeIlmoittautumistiedot();
                 }
             });
     },
 
-    handleClick: function() {
+    poistaIlmoittautuminen: function() {
+        var t = this;
+        IlmoService.poistaIlmoittautuminen(this.state.ilmo.joukkueId)
+            .then(function() {
+                console.log('promising');
+                t.setState({ showPoistoModal: false });
+                window.location.href = "/#/ilmo";
+                // IlmoService.haeIlmoittautumistiedot();
+                // t.setState({ showPoistoModal: false });
+            });
+    },
+
+    lahetaIlmoittautuminen: function() {
         var state = this.state;
+        var t = this;
+        // TODO laheta vain this.state.ilmo ja kasittele sita mukaa servicessa
         IlmoService.lahetaIlmoittautuminen(
                 'tre_liiga_2016',
-                this.state.nimi,
+                this.state.ilmo.nimi,
                 this.state.ilmo.kotirata,
-                this.state.yhteyshenkilo,
-                this.state.puhelinnumero,
-                this.state.yhteyshenkilo_sahkposti).
+                this.state.ilmo.yhteyshenkilo,
+                this.state.ilmo.yhteyshenkiloPuhelinnumero,
+                this.state.ilmo.yhteyshenkiloSahkoposti,
+                this.state.ilmo.muu_pelaaja_1,
+                this.state.ilmo.muu_pelaaja_2,
+                this.state.ilmo.muu_pelaaja_3,
+                ).
             then(function() {
+                IlmoService.haeIlmoittautumistiedot();
                 t.closeModal();
             });
     },
@@ -68,6 +104,14 @@ export default React.createClass({
 
     handleMuuPelaaja1: function(event) {
         IlmoService.updateMuuPelaaja1(event.target.value);
+    },
+
+    handleMuuPelaaja2: function(event) {
+        IlmoService.updateMuuPelaaja2(event.target.value);
+    },
+
+    handleMuuPelaaja3: function(event) {
+        IlmoService.updateMuuPelaaja3(event.target.value);
     },
 
     handleYhteyshenkiloChange: function(event) {
@@ -86,12 +130,12 @@ export default React.createClass({
         return validate(value) === 'success';
     },
 
-    disabled: function() {
-        return !this.isValid(this.validateNimi, this.state.ilmo.nimi)
-            || !this.isValid(this.validateNimi, this.state.ilmo.kotirata)
-            || !this.isValid(this.validatePuhelin, this.state.ilmo.yhteyshenkiloPuhelinnumero)
-            || !this.isValid(this.validateEmail, this.state.ilmo.yhteyshenkiloSahkoposti)
-            || !this.isValid(this.validateNimi, this.state.yhteyshenkilo);
+    validForSubmission: function() {
+        return this.isValid(this.validateNimi, this.state.ilmo.nimi)
+            && this.isValid(this.validateNimi, this.state.ilmo.kotirata)
+            && this.isValid(this.validatePuhelin, this.state.ilmo.yhteyshenkiloPuhelinnumero)
+            && this.isValid(this.validateEmail, this.state.ilmo.yhteyshenkiloSahkoposti)
+            && this.isValid(this.validateNimi, this.state.yhteyshenkilo);
     },
 
     validateEmail: function(value) {
@@ -169,20 +213,44 @@ export default React.createClass({
                             <div className='application-section'>
                                 <h2>Ilmoittaumisen lähettäminen</h2>
                                 <p>
-                                    Lähettäminen listaa joukkueesi alustavassa listassa.
-                                    Kun suoritat ilmoittautumismaksun, niin liigan 
-                                    ylläpito vahvistaa ilmoittautumisesi.
+                                    Lähettäminen lisää joukkueesi liigan tietokantaan. 
+                                    Kun maksatte ilmoittautumismaksun, niin liigan ylläpito
+                                    vahvistaa ilmoittautumisen ja päivittää tiedon liigan
+                                    sivustolle.
                                 </p>
-                                <button className='' onClick={this.handleClick}>Lähetä</button>
+                                <button className='' onClick={this.lahetaIlmoittautuminen}>Lähetä</button>
                                 <button className='cancel right' onClick={this.closeModal}>Peru</button>
                             </div>
-                        </Modal.Body>
-                    </Modal>
+                   </Modal.Body>
+                </Modal>
+                <Modal container={this}
+                       onHide={this.closePoistoModal}
+                       show={this.state.showPoistoModal}
+                       close={this.closePoistoModal}>
+                    <Modal.Body>
+                            <div className='application-section'>
+                                <h2>Ilmoittautumisen peruminen: { this.state.ilmo.nimi }</h2>
+                                <p>
+                                    Haluatko varmasti poistaa joukkueesi ilmoittautumisen?
+                                </p>
+                                <button className='delete' onClick={this.poistaIlmoittautuminen}>Poista</button>
+                                <button className='cancel right' onClick={this.closePoistoModal}>Sulje ikkuna</button>
+                            </div>
+                   </Modal.Body>
+                </Modal>
+
                 { this.state.ilmo.onIlmoittautunut ?
                     <h1>Olet ilmoittanut joukkueesi frisbeegolf-liigaan, alla tiedot</h1> :
                 <h1>Ilmoittautuminen Tampereen seudun frisbeegolf-joukkueliigaan</h1> }
 
+                { this.state.ilmo.onIlmoittautunut && this.state.ilmo.onVahvistettu ?
+                    <p>Joukkueen ilmoittautuminen on vahvistettu</p> : null }
+
+                { this.state.ilmo.onIlmoittautunut && !this.state.ilmo.onVahvistettu ?
+                  <p className='delete'>Ilmoittautumista ei ole vielä vahvistettu. Maksa osmaksu ..</p> : null }
+
                 <Table>
+                    <tbody>
                     <tr>
                         <td>Sarja</td>
                         <td>Tampereen seudun frisbeegolf-liiga, 2016 </td>
@@ -233,7 +301,8 @@ export default React.createClass({
                                 /></td>
                     </tr>
                     <tr>
-                        <td>Muut pelaajat (alustavasti)</td>
+                        <td>Joukkueen muita pelaajia. Listaa tähän max 3.<br/>(Alustavasti tiedoksi muille joukkueille.
+                                Pelaajia saa lisätä vapaasti kauden aikana.)</td>
                         <td><Input type='text' onChange={this.handleMuuPelaaja1}
                                 value={this.state.ilmo.muu_pelaaja_1}
                                 /></td>
@@ -252,13 +321,36 @@ export default React.createClass({
                     </tr>
 
                     <tr><td></td><td>
-                        <Button 
+                    { this.state.ilmo.onIlmoittautunut && false ?
+                        <Button
                           type="submit"
-                          disabled={ this.disabled() }
+                          disabled={ !this.validForSubmission()  }
                           onClick={this.openModal}>
-                              Siirry ilmoittautumisen vahvistamiseen
+                              Päivitä joukkueen tietoja
                         </Button>
+                        :
+                        <Button
+                          type="submit"
+                          disabled={ !this.validForSubmission() || this.state.ilmo.onIlmoittautunut }
+                          onClick={this.openModal}>
+                              Siirry lähettämään ilmoittautuminen
+                        </Button>
+                    }
                     </td></tr>
+                    { this.state.ilmo.onIlmoittautunut ?  <tr><td colSpan='2'><hr/></td></tr> : null }
+                    { this.state.ilmo.onIlmoittautunut && !this.state.ilmo.onVahvistettu ?
+                        <tr>
+                            <td></td>
+                            <td>
+                                &nbsp;<Button
+                                    type="submit"
+                                    onClick={ this.openPoistoModal }
+                                    className="delete">Poista joukkue ..</Button>
+                            </td></tr>
+                        : null
+                    }
+
+                </tbody>
                 </Table>
 
                 </div>
@@ -275,7 +367,14 @@ export default React.createClass({
                         tunnistustietoa yhdistääkseen yhteyshenkilön joukkueensa.
                     </p>
                     <p>
+                        <b>Huom.</b>: valitse se kirjautumistapa, jolla haluat jatkossa ylläpitää
+                        joukkueesi kotipelien tuloksia. Yhteystietosi yhdistetään Facebook- tai
+                        Google-tiliisi ja tulosten kirjaaminen tapahtuu jatkossa kirjautumalla
+                        tuolla saman tilin kautta.
+                    </p>
+                    <p>
                         <a href="/login">Kirjaudu sisään Facebook-tunnuksella</a>.<br/>
+                        <b>tai</b><br/>
                         Kirjaudu sisään Google/Gmail-tunnuksella. (Ei ole vielä toteutettu.)
                     </p>
                 </div>);

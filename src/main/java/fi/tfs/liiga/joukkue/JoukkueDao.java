@@ -31,12 +31,12 @@ public class JoukkueDao {
     private class Mapper implements RowMapper<Joukkue> {
         public Joukkue mapRow(ResultSet rs, int rowNum) throws SQLException {
             return new Joukkue(
+                    rs.getInt("joukkue_id"),
                     rs.getString("nimi"),
                     rs.getString("kotirata"),
                     rs.getString("henkilo_nimi"),
                     rs.getString("sahkoposti"),
-                    rs.getString("puhelinnumero"),
-                    rs.getInt("joukkue_id")
+                    rs.getString("puhelinnumero")
                     );
         }
     }
@@ -65,11 +65,11 @@ public class JoukkueDao {
         return query;
     }
 
-    public Joukkue haeJoukkue(String currentUserOauthId) {
+    public List<Joukkue> haeJoukkue(String currentUserOauthId) {
         return jdbcTemplate.
-                queryForObject(
+                query(
                         "select * from yhteyshenkilo_joukkue"
-                                + " where oauth_tunnus = ?", 
+                       + " where oauth_tunnus = ?", 
                                 new Object [] { currentUserOauthId },
                                 new Mapper());
     }
@@ -82,7 +82,7 @@ public class JoukkueDao {
                 .usingGeneratedKeyColumns("henkilo_id");
 
         Map<String, Object> params = new HashMap<>();
-        params.put("nimi", lisaa.yhteyshenkiloNimi);
+        params.put("henkilo_nimi", lisaa.yhteyshenkiloNimi);
         params.put("sahkoposti", lisaa.yhteyshenkiloSahkoposti);
         params.put("oauth_tunnus", userId);
         params.put("puhelinnumero", lisaa.yhteyshenkiloPuhelinnumero);
@@ -105,5 +105,11 @@ public class JoukkueDao {
         return returnKey.longValue();
     }
 
-
+    @Transactional
+    public void poistaJoukkue(int joukkueId, String currentUserOauthId) {
+        String sql = "delete from joukkue where joukkue_id = "
+                + "(select joukkue_id from yhteyshenkilo_joukkue where oauth_tunnus = ?)";
+        jdbcTemplate.update(sql, currentUserOauthId);
+        
+    }
 }

@@ -27,25 +27,39 @@ export default {
         IlmoActions.updateMuuPelaaja1.started(nimi);
     },
 
-    clickButton: function() {
-        return Api.post(`api/liiga/something`, IlmoActions.buttonClicked);
+    updateMuuPelaaja2: function(nimi) {
+        IlmoActions.updateMuuPelaaja2.started(nimi);
+    },
+
+    updateMuuPelaaja3: function(nimi) {
+        IlmoActions.updateMuuPelaaja3.started(nimi);
     },
 
     haeIlmoittautumistiedot: function() {
         return Api.get(`api/liiga/joukkueet/kirjautuneen-kayttajan-joukkue`, IlmoActions.haeIlmoittautumistiedot);
     },
 
-    lahetaIlmoittautuminen: function(sarja, nimi, kotirata, yhteyshenkilo, puhelinnumero, sahkoposti) {
-        console.log(sarja, nimi, kotirata, yhteyshenkilo, puhelinnumero, sahkoposti);
-        var data = { nimi: nimi, kotirata: kotirata, yhteyshenkiloNimi: yhteyshenkilo,
-            yhteyshenkiloPuhelinnumero: puhelinnumero, yhteyshenkiloSahkoposti: sahkoposti };
-        return Api.post(`api/liiga/joukkueet/uusi`, IlmoActions.laheta, data);
+    poistaIlmoittautuminen: function(joukkueId) {
+        return Api.httpDelete(`api/liiga/joukkueet/${joukkueId}`, IlmoActions.poista)
     },
 
-    another: function() {
-        return Api.get(`api/liiga/get`, IlmoActions.buttonClicked);
-    }
-
+    lahetaIlmoittautuminen: function(
+                                    sarja, nimi, kotirata, yhteyshenkilo,
+                                    puhelinnumero, sahkoposti,
+                                    muuPelaaja1, muuPelaaja2, muuPelaaja3
+                                    ) {
+        var data = {
+            nimi: nimi,
+            kotirata: kotirata,
+            yhteyshenkiloNimi: yhteyshenkilo,
+            yhteyshenkiloPuhelinnumero: puhelinnumero,
+            yhteyshenkiloSahkoposti: sahkoposti,
+            muuPelaaja1: muuPelaaja1,
+            muuPelaaja2: muuPelaaja2,
+            muuPelaaja3: muuPelaaja3,
+        };
+        return Api.post(`api/liiga/joukkueet/uusi`, IlmoActions.laheta, data);
+    },
 };
 
 
