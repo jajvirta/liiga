@@ -8,28 +8,25 @@
     base: ..
 
   tasks:
-    - debug:
-        var: base
-    - fail:
-        msg: "Anna uusi versio vivulla -e version=<version>"
-      when: version is not defined
-
     - name: versiobump
       shell: "mvn -s settings.xml versions:set -DnewVersion={{ version }}"
       args:
         chdir: "{{ base }}"
       delegate_to: localhost
+      when: bump is defined and bump
 
     - file:
         dest: "{{ base }}/pom.xml.versionsBackup"
         state: absent
       delegate_to: localhost
+      when: bump is defined
 
     - name: kommitoi versiobump
       shell: "git ci -m 'version bump to {{ version }}' pom.xml"
       args:
         chdir: "{{ base }}"
       delegate_to: localhost
+      when: bump is defined
 
     - name: buildaa
       shell: "mvn -s settings.xml clean package"
