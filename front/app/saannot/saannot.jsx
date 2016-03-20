@@ -22,13 +22,14 @@ export default React.createClass({
                 <h2>Mikä on Tampereen seudun frisbeegolf-joukkueliiga?</h2>
 
                 <p>
-                Tampereen seudun frisbeegolf-joukkueliiga on Tampereen seudun
+                Tampereen seudun frisbeegolf-joukkueliiga on <b>kaikille avoin</b> Tampereen seudun
                 joukkuepelisarja, jossa etsitään Tampereen seudun parasta
                 frisbeegolf-joukkuetta. Joukkueet pelaavat kauden aikana kaikki
-                kaikkia vastaan koti- ja vierasottelun, joissa neljän pelaajan
+                kaikkia vastaan koti- ja vierasottelun, joissa neljä pelaajaa
                 joukkueet ratkovat paremmuuden yhdeksän väylän tulospelissä ja
-                yhdeksän väylän reikäpeleissä. Kauden lopuksi eniten pisteitä
-                keränneet joukkueet palkitaan. Sarjan järjestää Tampereen
+                yhdeksän väylän reikäpeleissä. Joukkueissa voi olla kauden aikana vapaa
+                määrä pelaajia, mutta yksittäiset ottelut pelataan aina nelihenkisesti. 
+                Kauden lopuksi eniten pisteitä keränneet joukkueet palkitaan. Sarjan järjestää ensimmäisellä kaudella Tampereen
                 Frisbeeseura Ry.
                 </p>
 
@@ -50,7 +51,7 @@ export default React.createClass({
                 frisbeegolf-joukkueliigaan tapahtuu ensisijaisesti liigan kotisivuilla
                 osoitteessa <a href="https://liiga.tfs.fi/">https://liiga.tfs.fi</a>.
                 Jos ilmoittautumisessa on ylitsepääsemättömiä teknisiä ongelmia, niin
-                yhteyshenkilö voi ilmoittaa siitä sähköpostiosoitteeseen jarno.virtanen at iki.fi.
+                yhteyshenkilö voi ilmoittaa siitä sähköpostiosoitteeseen <code>liiga@tfs.fi</code>.
                 </p>
 
                 <p>Ilmoittautuminen alkaa kirjautumalla sisään Facebook tai Google-tunnuksella.
@@ -186,20 +187,25 @@ export default React.createClass({
                 niiden ilmoittaminen</h2>
 
                 <p>
-                Ottelun kotijoukkue on velvollinen ilmoittamaan lopputuloksen
-                vaadittuine tietoineen Pirkanmaan Frisbeegolf-liigalle. Lopputuloksesta
+                <b>Kotijoukkue</b> on velvollinen ilmoittamaan lopputuloksen
+                vaadittuine tietoineen liigalle. Lopputuloksesta
                 ilmoitetaan tulospelien järjestys ja reikäpelien ottelutulokset.
                 Yhteyshenkilö ilmoittaa tulokset &nbsp;
                 <a href="http://liiga.tfs.fi/">http://liiga.tfs.fi/ -sivustolla</a>&nbsp;
                     mahdollisimman nopeasti mutta viimeistään seuraavaan päivään
                     klo 20:00 mennessä.</p>
 
+                <p>Jos tulosten ilmoittaminen ei toimi liigan sivustolla, niin joukkue
+                voi lähettää tulokset osoitteeseen liiga@tfs.fi</p>
+
                 <h2>Liigan palkinnot</h2>
 
                 <p>Sarjatason ilmoittautumismaksuista muodostetaan
                 palkintopotti, johon laitetaan n. 80-90% osallistumismaksuista
-                riippuen osallistujamäärästä. Parhaat joukkueet palkitaan myös
-                pokaaleilla.</p>
+                (riippuen osallistujamäärästä). Parhaat joukkueet palkitaan myös
+                pokaaleilla. Tarkemmat tiedot palkinnoista julkaistaan heti kun
+                tiedetään lopullinen osallistujamäärä. 
+                </p>
 
 
             </div>
