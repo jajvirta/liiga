@@ -74,8 +74,6 @@ var Liiga = React.createClass({
                             </div>
                         </nav>
                     </div>
-
-                    <div className="stripe"></div>
                 </div>
                 <div>
                     <div className="main">
