@@ -8,7 +8,6 @@ export default {
     },
 
     logout: function() {
-        console.log('target', `/logout`);
         return Api.plainPost('/logout', KayttajaActions.logout, {});
     }
 };

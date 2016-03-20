@@ -362,12 +362,12 @@ export default React.createClass({
                         <b>Huom.</b>: valitse se kirjautumistapa, jolla haluat jatkossa ylläpitää
                         joukkueesi kotipelien tuloksia. Yhteystietosi yhdistetään Facebook- tai
                         Google-tiliisi ja tulosten kirjaaminen tapahtuu jatkossa kirjautumalla
-                        tuolla saman tilin kautta.
+                        tuon saman tilin kautta.
                     </p>
                     <p>
-                        <a href="/login">Kirjaudu sisään Facebook-tunnuksella</a>.<br/>
+                        <a href="/login/facebook">Kirjaudu sisään Facebook-tunnuksella</a>.<br/>
                         <b>tai</b><br/>
-                        Kirjaudu sisään Google/Gmail-tunnuksella. (Ei ole vielä toteutettu.)
+                        <a href="/login/google">Kirjaudu sisään Google/Gmail-tunnuksella</a>.
                     </p>
                 </div>);
     },

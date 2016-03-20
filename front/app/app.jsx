@@ -61,7 +61,9 @@ var Liiga = React.createClass({
                                         </small>
                                     </div>
                                     :
-                                <small><a href="/login">Kirjaudu sisään</a></small> }
+                                <small><a href="/login/facebook">Facebook-login</a>
+                                <br/><a href="/login/google">Google-login</a>
+                                </small> }
                             </div>
                             <div className="save-info">
                             <h1><Link to='etusivu'>Tampereen seudun frisbeegolf-joukkueliiga</Link></h1>
