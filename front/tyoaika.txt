@@ -1,5 +1,7 @@
 
 todo:
+- ei voi modaa tekstejä keskeltä kenttää :-(
+- yhthenk nimi ei tule automaagic
 - onblur onchangen sijaan?
 - bäkkäriin validoinnit ja kokojen tarkistus
 - ohjaus ilmo-sivulle loggauksen jälkeen

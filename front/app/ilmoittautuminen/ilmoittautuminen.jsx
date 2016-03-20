@@ -54,7 +54,7 @@ export default React.createClass({
         var t = this;
         KayttajaService.haeKayttaja()
             .then(function(result) {
-                t.setState({ yhteyshenkilo: result.name });
+                t.state.ilmo.yhteyshenkilo = result.name;
                 if (result && result.authenticated) {
                     IlmoService.haeIlmoittautumistiedot();
                 }
@@ -111,11 +111,13 @@ export default React.createClass({
     },
 
     validForSubmission: function() {
-        return this.isValid(this.validateNimi, this.state.ilmo.nimi)
+        var value = this.isValid(this.validateNimi, this.state.ilmo.nimi)
             && this.isValid(this.validateNimi, this.state.ilmo.kotirata)
             && this.isValid(this.validatePuhelin, this.state.ilmo.yhteyshenkiloPuhelinnumero)
             && this.isValid(this.validateEmail, this.state.ilmo.yhteyshenkiloSahkoposti)
-            && this.isValid(this.validateNimi, this.state.yhteyshenkilo);
+            && this.isValid(this.validateNimi, this.state.ilmo.yhteyshenkilo);
+        console.log('value', value);
+        return value;
     },
 
     validateEmail: function(value) {
