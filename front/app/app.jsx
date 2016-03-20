@@ -83,7 +83,7 @@ var Liiga = React.createClass({
                                     <Link to='etusivu'><span className="text">Ajankohtaista</span></Link>
                                 </li>
                                 <li className='menu-item'>
-                                    <Link to='saannot'><span className="text"><div>Säännöt</div></span></Link>
+                                    <Link to='saannot'><span className="text"><div>Lyhyt kuvaus & säännöt</div></span></Link>
                                 </li>
                                 <li className='menu-item'>
                                     <Link to='ohjelma'><span className="text">Otteluohjelma</span></Link>
