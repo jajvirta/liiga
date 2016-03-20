@@ -36,7 +36,8 @@ public class JoukkueDao {
                     rs.getString("kotirata"),
                     rs.getString("henkilo_nimi"),
                     rs.getString("sahkoposti"),
-                    rs.getString("puhelinnumero")
+                    rs.getString("puhelinnumero"),
+                    rs.getString("joukkue_kuvaus")
                     );
         }
     }
@@ -98,6 +99,8 @@ public class JoukkueDao {
         params = new HashMap<>();
         params.put("nimi", lisaa.nimi.trim());
         params.put("kotirata", lisaa.kotirata);
+        params.put("joukkue_kuvaus", lisaa.kuvaus);
+
         params.put("yhteyshenkilo_id", returnKey);
 
         returnKey = insert.executeAndReturnKey(params);

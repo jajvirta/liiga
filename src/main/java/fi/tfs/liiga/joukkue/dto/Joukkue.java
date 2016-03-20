@@ -8,6 +8,7 @@ public class Joukkue {
     public final String yhteyshenkilo;
     public final String yhteyshenkiloSahkoposti;
     public final String yhteyshenkiloPuhelinnumero;
+    public final String kuvaus;
 
     public Joukkue(
             int id,
@@ -15,7 +16,8 @@ public class Joukkue {
             String kotirata, 
             String yhteyshenkilo, 
             String yhteyshenkiloSahkoposti,
-            String yhteyshenkiloPuhelinnumero) {
+            String yhteyshenkiloPuhelinnumero,
+            String kuvaus) {
         super();
         this.nimi = nimi;
         this.kotirata = kotirata;
@@ -23,5 +25,6 @@ public class Joukkue {
         this.yhteyshenkiloSahkoposti = yhteyshenkiloSahkoposti;
         this.yhteyshenkiloPuhelinnumero = yhteyshenkiloPuhelinnumero;
         this.joukkueId = id;
+        this.kuvaus = kuvaus;
     }
 }
