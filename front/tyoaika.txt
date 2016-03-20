@@ -1,6 +1,7 @@
 
 todo:
-- ei haeta kirjautuneen kayttajan joukkuetta jos silla ei ole sita!
+- onblur onchangen sijaan?
+- bäkkäriin validoinnit ja kokojen tarkistus
 - ohjaus ilmo-sivulle loggauksen jälkeen
 - nimen ja yhteyshenkilön tarkistukset uuden joukkueen ilmoittamiseen
 - automaattinen uloskirjautuminen ei päivitä yläpalkin kirjautumistietoa
@@ -36,3 +37,4 @@ done
 - validointi jotta jengi antaa kaikki tiedot
 - facebook/google-integraatio
 - tila storeen frontissa?
+- ei haeta kirjautuneen kayttajan joukkuetta jos silla ei ole sita!

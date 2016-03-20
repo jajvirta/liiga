@@ -4,7 +4,7 @@ import IlmoStore from './ilmo_store.js';
 import KayttajaService from '../kayttaja/kayttaja_service.js';
 import KayttajaStore from '../kayttaja/kayttaja_store.js';
 import IlmoService from './ilmo_service.js';
-import { Modal, Button, Input, Table, Select } from 'react-bootstrap';
+import { Modal, Textarea, Button, Input, Table, Select } from 'react-bootstrap';
 import Reflux from 'reflux';
 
 var RouteHandler = Router.RouteHandler;
@@ -90,16 +90,8 @@ export default React.createClass({
         IlmoService.updateKotirata(event.target.value);
     },
 
-    handleMuuPelaaja1: function(event) {
-        IlmoService.updateMuuPelaaja1(event.target.value);
-    },
-
-    handleMuuPelaaja2: function(event) {
-        IlmoService.updateMuuPelaaja2(event.target.value);
-    },
-
-    handleMuuPelaaja3: function(event) {
-        IlmoService.updateMuuPelaaja3(event.target.value);
+    handleKuvaus: function(event) {
+        IlmoService.updateKuvaus(event.target.value);
     },
 
     handleYhteyshenkiloChange: function(event) {
@@ -246,7 +238,7 @@ export default React.createClass({
                      <tr>
                         <td>Joukkueen nimi</td>
                         <td><Input type='text'
-                            size='70'
+                            maxLength='100'
                             onChange={this.handleNimiChange}
                             value={ this.state.ilmo.nimi }
                             bsStyle={ this.validateNimi(this.state.ilmo.nimi) }
@@ -258,6 +250,7 @@ export default React.createClass({
                         <td><Input type='text'
                             onChange={this.handleKotirataChange}
                             value={ this.state.ilmo.kotirata }
+                            maxLength='100'
                             bsStyle={ this.validateNimi(this.state.ilmo.kotirata) }
                             help={ this.helpNimi(this.validateNimi, this.state.ilmo.kotirata) }
                             /></td>
@@ -267,6 +260,7 @@ export default React.createClass({
                         <td>Yhteyshenkilön nimi</td>
                         <td><Input
                                 type='text'
+                                maxLength='100'
                                 onChange={this.handleYhteyshenkiloChange} 
                                 value={this.state.ilmo.yhteyshenkilo}/></td>
                     </tr>
@@ -274,6 +268,7 @@ export default React.createClass({
                         <td>Yhteyshenkilön puhelinnumero</td>
                         <td><Input
                                 type='text'
+                                maxLength='100'
                                 onChange={this.handleYhteyshenkiloPuhelinnumeroChange} 
                                 value={this.state.ilmo.yhteyshenkiloPuhelinnumero}
                                 bsStyle={ this.validatePuhelin(this.state.ilmo.yhteyshenkiloPuhelinnumero) }
@@ -283,31 +278,19 @@ export default React.createClass({
                     <tr>
                         <td>Yhteyshenkilön sähköposti</td>
                         <td><Input type='text' onChange={this.handleYhtSahkopostiChange}
+                                maxLength='100'
                                 value={this.state.ilmo.yhteyshenkiloSahkoposti}
                                 bsStyle={ this.validateEmail(this.state.ilmo.yhteyshenkiloSahkoposti) }
                                 help={ this.helpEmail(this.validateEmail, this.state.ilmo.yhteyshenkiloSahkoposti) }
                                 /></td>
                     </tr>
                     <tr>
-                        <td>Joukkueen muita pelaajia. Listaa tähän max 3.<br/>(Alustavasti tiedoksi muille joukkueille.
-                                Pelaajia saa lisätä vapaasti kauden aikana.)</td>
-                        <td><Input type='text' onChange={this.handleMuuPelaaja1}
-                                value={this.state.ilmo.muu_pelaaja_1}
+                        <td>Vapaamuotoinen kuvaus joukkueesta. Voit esim. kertoa keitä <br/>muita pelaajia
+                            on joukkueeseen tulossa. Näkyy joukkueen profiilissa.</td>
+                        <td><Input type='textarea' maxLength='500' onChange={this.handleKuvaus}
+                                value={this.state.ilmo.kuvaus}
                                 /></td>
                     </tr>
-                    <tr>
-                        <td></td>
-                        <td><Input type='text' onChange={this.handleMuuPelaaja2}
-                                value={this.state.ilmo.muu_pelaaja_2}
-                                /></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td><Input type='text' onChange={this.handleMuuPelaaja3}
-                                value={this.state.ilmo.muu_pelaaja_3}
-                                /></td>
-                    </tr>
-
                     <tr><td></td><td>
                     { this.state.ilmo.onIlmoittautunut && false ?
                         <Button
