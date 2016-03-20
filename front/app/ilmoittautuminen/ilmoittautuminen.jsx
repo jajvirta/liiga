@@ -19,7 +19,12 @@ export default React.createClass({
 
     getInitialState: function() {
         return {
-            nimi: "",
+            nimi: '',
+            kotirata: '',
+            yhteyshenkilo: '',
+            yhteyshenkiloSahkoposti: '',
+            yhteyshenkiloPuhelinnumero: '',
+            kuvaus: '',
             showModal: false,
             showPoistoModal: false,
             showUpdateModal: false
@@ -54,9 +59,22 @@ export default React.createClass({
         var t = this;
         KayttajaService.haeKayttaja()
             .then(function(result) {
-                t.state.ilmo.yhteyshenkilo = result.name;
+                t.state.yhteyshenkilo = result.name; // default-arvoksi oauthista saatu
                 if (result && result.authenticated) {
-                    IlmoService.haeIlmoittautumistiedot();
+                    IlmoService.haeIlmoittautumistiedot()
+                        .then(function(result) {
+                            if (result && result.length === 1) {
+                                var ilmo = result[0];
+                                t.setState(
+                                  { nimi: ilmo.nimi,
+                                    kotirata: ilmo.kotirata,
+                                    yhteyshenkilo: ilmo.yhteyshenkilo,
+                                    yhteyshenkiloSahkoposti: ilmo.yhteyshenkiloSahkoposti,
+                                    yhteyshenkiloPuhelinnumero: ilmo.yhteyshenkiloPuhelinnumero,
+                                    kuvaus: ilmo.kuvaus
+                                  });
+                            }
+                        });
                 }
             });
     },
@@ -65,17 +83,15 @@ export default React.createClass({
         var t = this;
         IlmoService.poistaIlmoittautuminen(this.state.ilmo.joukkueId)
             .then(function() {
-                console.log('promising');
                 t.setState({ showPoistoModal: false });
                 window.location.href = "/#/ilmo";
                 // IlmoService.haeIlmoittautumistiedot();
-                // t.setState({ showPoistoModal: false });
             });
     },
 
     lahetaIlmoittautuminen: function() {
         var t = this;
-        IlmoService.lahetaIlmoittautuminen( 'tre_liiga_2016', this.state.ilmo)
+        IlmoService.lahetaIlmoittautuminen('tre_liiga_2016', this.state)
             .then(function() {
                 IlmoService.haeIlmoittautumistiedot();
                 t.closeModal();
@@ -83,11 +99,12 @@ export default React.createClass({
     },
 
     handleNimiChange: function(event) {
-        IlmoService.updateNimi(event.target.value);
+        this.setState({ nimi: event.target.value });
+        // IlmoService.updateNimi(event.target.value);
     },
 
     handleKotirataChange: function(event) {
-        IlmoService.updateKotirata(event.target.value);
+        this.setState({ kotirata: event.target.value });
     },
 
     handleKuvaus: function(event) {
@@ -95,15 +112,15 @@ export default React.createClass({
     },
 
     handleYhteyshenkiloChange: function(event) {
-        IlmoService.updateYhteyshenkilo(event.target.value);
+        this.setState({ yhteyshenkilo: event.target.value });
     },
 
     handleYhteyshenkiloPuhelinnumeroChange: function(event) {
-        IlmoService.updateYhteyshenkiloPuhelinnumero(event.target.value);
+        this.setState({ yhteyshenkiloPuhelinnumero: event.target.value });
     },
 
     handleYhtSahkopostiChange: function(event) {
-        IlmoService.updateYhteyshenkiloSahkoposti(event.target.value);
+        this.setState({ yhteyshenkiloSahkoposti: event.target.value });
     },
 
     isValid: function(validate, value) {
@@ -111,12 +128,11 @@ export default React.createClass({
     },
 
     validForSubmission: function() {
-        var value = this.isValid(this.validateNimi, this.state.ilmo.nimi)
-            && this.isValid(this.validateNimi, this.state.ilmo.kotirata)
-            && this.isValid(this.validatePuhelin, this.state.ilmo.yhteyshenkiloPuhelinnumero)
-            && this.isValid(this.validateEmail, this.state.ilmo.yhteyshenkiloSahkoposti)
-            && this.isValid(this.validateNimi, this.state.ilmo.yhteyshenkilo);
-        console.log('value', value);
+        var value = this.isValid(this.validateNimi, this.state.nimi)
+            && this.isValid(this.validateNimi, this.state.kotirata)
+            && this.isValid(this.validatePuhelin, this.state.yhteyshenkiloPuhelinnumero)
+            && this.isValid(this.validateEmail, this.state.yhteyshenkiloSahkoposti)
+            && this.isValid(this.validateNimi, this.state.yhteyshenkilo);
         return value;
     },
 
@@ -242,19 +258,19 @@ export default React.createClass({
                         <td><Input type='text'
                             maxLength='100'
                             onChange={this.handleNimiChange}
-                            value={ this.state.ilmo.nimi }
-                            bsStyle={ this.validateNimi(this.state.ilmo.nimi) }
-                            help={ this.helpNimi(this.validateNimi, this.state.ilmo.nimi) }
+                            value={ this.state.nimi }
+                            bsStyle={ this.validateNimi(this.state.nimi) }
+                            help={ this.helpNimi(this.validateNimi, this.state.nimi) }
                             /></td>
                     </tr>
                     <tr>
                         <td>Joukkueen kotirata (<em>esim. Vihioja, Kylmäkoski DGP, jne</em>)</td>
                         <td><Input type='text'
                             onChange={this.handleKotirataChange}
-                            value={ this.state.ilmo.kotirata }
+                            value={ this.state.kotirata }
                             maxLength='100'
-                            bsStyle={ this.validateNimi(this.state.ilmo.kotirata) }
-                            help={ this.helpNimi(this.validateNimi, this.state.ilmo.kotirata) }
+                            bsStyle={ this.validateNimi(this.state.kotirata) }
+                            help={ this.helpNimi(this.validateNimi, this.state.kotirata) }
                             /></td>
                     </tr>
 
@@ -264,7 +280,10 @@ export default React.createClass({
                                 type='text'
                                 maxLength='100'
                                 onChange={this.handleYhteyshenkiloChange} 
-                                value={this.state.ilmo.yhteyshenkilo}/></td>
+                                value={this.state.yhteyshenkilo}
+                                bsStyle={ this.validateNimi(this.state.yhteyshenkilo) }
+                                help={ this.helpNimi(this.validateNimi, this.state.yhteyshenkilo) }
+                                /></td>
                     </tr>
                     <tr>
                         <td>Yhteyshenkilön puhelinnumero</td>
@@ -272,25 +291,25 @@ export default React.createClass({
                                 type='text'
                                 maxLength='100'
                                 onChange={this.handleYhteyshenkiloPuhelinnumeroChange} 
-                                value={this.state.ilmo.yhteyshenkiloPuhelinnumero}
-                                bsStyle={ this.validatePuhelin(this.state.ilmo.yhteyshenkiloPuhelinnumero) }
-                                help={ this.helpPuhelin(this.validatePuhelin, this.state.ilmo.yhteyshenkiloPuhelinnumero) }
+                                value={this.state.yhteyshenkiloPuhelinnumero}
+                                bsStyle={ this.validatePuhelin(this.state.yhteyshenkiloPuhelinnumero) }
+                                help={ this.helpPuhelin(this.validatePuhelin, this.state.yhteyshenkiloPuhelinnumero) }
                                 /></td>
                     </tr>
                     <tr>
                         <td>Yhteyshenkilön sähköposti</td>
                         <td><Input type='text' onChange={this.handleYhtSahkopostiChange}
                                 maxLength='100'
-                                value={this.state.ilmo.yhteyshenkiloSahkoposti}
-                                bsStyle={ this.validateEmail(this.state.ilmo.yhteyshenkiloSahkoposti) }
-                                help={ this.helpEmail(this.validateEmail, this.state.ilmo.yhteyshenkiloSahkoposti) }
+                                value={this.state.yhteyshenkiloSahkoposti}
+                                bsStyle={ this.validateEmail(this.state.yhteyshenkiloSahkoposti) }
+                                help={ this.helpEmail(this.validateEmail, this.state.yhteyshenkiloSahkoposti) }
                                 /></td>
                     </tr>
                     <tr>
                         <td>Vapaamuotoinen kuvaus joukkueesta. Voit esim. kertoa keitä <br/>muita pelaajia
                             on joukkueeseen tulossa. Näkyy joukkueen profiilissa.</td>
                         <td><Input type='textarea' maxLength='500' onChange={this.handleKuvaus}
-                                value={this.state.ilmo.kuvaus}
+                                value={this.state.kuvaus}
                                 /></td>
                     </tr>
                     <tr><td></td><td>

@@ -14,8 +14,6 @@ export default Reflux.createStore({
     },
 
     onHaeKayttajaCompleted: function(result) {
-        if (result.authenticated) { console.log('authd'); }
-        if (!result.authenticated) { console.log('not authd'); }
         this.kayttaja.authenticated = result.authenticated;
         this.kayttaja.name = result.name;
         this.trigger(this.kayttaja);

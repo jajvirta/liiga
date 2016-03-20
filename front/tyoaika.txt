@@ -1,7 +1,6 @@
 
 todo:
 - ei voi modaa tekstejä keskeltä kenttää :-(
-- yhthenk nimi ei tule automaagic
 - onblur onchangen sijaan?
 - bäkkäriin validoinnit ja kokojen tarkistus
 - ohjaus ilmo-sivulle loggauksen jälkeen
@@ -40,3 +39,4 @@ done
 - facebook/google-integraatio
 - tila storeen frontissa?
 - ei haeta kirjautuneen kayttajan joukkuetta jos silla ei ole sita!
+- yhthenk nimi ei tule automaagic

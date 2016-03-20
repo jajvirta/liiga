@@ -16,7 +16,6 @@ export default Reflux.createStore({
     },
 
     onHaeIlmoittautumistiedotCompleted: function(result) {
-        console.log(result, result.length);
         if (result && result.length === 1) {
             var ilmo = result[0];
             this.ilmo.onIlmoittautunut = true;
