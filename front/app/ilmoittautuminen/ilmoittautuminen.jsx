@@ -100,7 +100,6 @@ export default React.createClass({
 
     handleNimiChange: function(event) {
         this.setState({ nimi: event.target.value });
-        // IlmoService.updateNimi(event.target.value);
     },
 
     handleKotirataChange: function(event) {
@@ -108,7 +107,7 @@ export default React.createClass({
     },
 
     handleKuvaus: function(event) {
-        IlmoService.updateKuvaus(event.target.value);
+        this.setState({ kuvaus: event.target.value });
     },
 
     handleYhteyshenkiloChange: function(event) {
@@ -209,7 +208,7 @@ export default React.createClass({
                        close={this.closeModal}>
                     <Modal.Body>
                             <div className='application-section'>
-                                <h2>Ilmoittaumisen lähettäminen</h2>
+                                <h2>Ilmoittautumisen lähettäminen</h2>
                                 <p>
                                     Lähettäminen lisää joukkueesi liigan tietokantaan. 
                                     Kun maksatte ilmoittautumismaksun, niin liigan ylläpito
@@ -257,6 +256,7 @@ export default React.createClass({
                         <td>Joukkueen nimi</td>
                         <td><Input type='text'
                             maxLength='100'
+                            size='70'
                             onChange={this.handleNimiChange}
                             value={ this.state.nimi }
                             bsStyle={ this.validateNimi(this.state.nimi) }
@@ -378,7 +378,7 @@ export default React.createClass({
             <div>
                 { this.state.kayttaja.authenticated ?
                     this.renderIlmo() :
-                    this.renderLogin() 
+                    this.renderLogin()
                 }
                         <hr/>
            </div>
