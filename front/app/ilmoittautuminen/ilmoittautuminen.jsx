@@ -74,21 +74,9 @@ export default React.createClass({
     },
 
     lahetaIlmoittautuminen: function() {
-        var state = this.state;
         var t = this;
-        // TODO laheta vain this.state.ilmo ja kasittele sita mukaa servicessa
-        IlmoService.lahetaIlmoittautuminen(
-                'tre_liiga_2016',
-                this.state.ilmo.nimi,
-                this.state.ilmo.kotirata,
-                this.state.ilmo.yhteyshenkilo,
-                this.state.ilmo.yhteyshenkiloPuhelinnumero,
-                this.state.ilmo.yhteyshenkiloSahkoposti,
-                this.state.ilmo.muu_pelaaja_1,
-                this.state.ilmo.muu_pelaaja_2,
-                this.state.ilmo.muu_pelaaja_3,
-                ).
-            then(function() {
+        IlmoService.lahetaIlmoittautuminen( 'tre_liiga_2016', this.state.ilmo)
+            .then(function() {
                 IlmoService.haeIlmoittautumistiedot();
                 t.closeModal();
             });

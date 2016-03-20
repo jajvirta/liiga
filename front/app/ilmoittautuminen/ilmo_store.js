@@ -32,14 +32,7 @@ export default Reflux.createStore({
     },
 
     onPoistaCompleted(result) {
-        console.log('poista compl', result);
         this.ilmo.onIlmoittautunut = false;
-        // this.ilmo.joukkueId = '';
-        // this.ilmo.nimi = '';
-        // this.ilmo.kotirata = '';
-        // this.ilmo.yhteyshenkilo = '';
-        // this.ilmo.yhteyshenkiloSahkoposti = '';
-        // this.ilmo.yhteyshenkiloPuhelinnumero = '';
 
         this.trigger(this.ilmo);
     },

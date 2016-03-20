@@ -43,20 +43,14 @@ export default {
         return Api.httpDelete(`api/liiga/joukkueet/${joukkueId}`, IlmoActions.poista)
     },
 
-    lahetaIlmoittautuminen: function(
-                                    sarja, nimi, kotirata, yhteyshenkilo,
-                                    puhelinnumero, sahkoposti,
-                                    muuPelaaja1, muuPelaaja2, muuPelaaja3
-                                    ) {
+    lahetaIlmoittautuminen: function(sarja, ilmo) {
         var data = {
-            nimi: nimi,
-            kotirata: kotirata,
-            yhteyshenkiloNimi: yhteyshenkilo,
-            yhteyshenkiloPuhelinnumero: puhelinnumero,
-            yhteyshenkiloSahkoposti: sahkoposti,
-            muuPelaaja1: muuPelaaja1,
-            muuPelaaja2: muuPelaaja2,
-            muuPelaaja3: muuPelaaja3,
+            nimi: ilmo.nimi,
+            kotirata: ilmo.kotirata,
+            yhteyshenkiloNimi: ilmo.yhteyshenkilo,
+            yhteyshenkiloPuhelinnumero: ilmo.yhteyshenkiloPuhelinnumero,
+            yhteyshenkiloSahkoposti: ilmo.yhteyshenkiloSahkoposti,
+            muuPelaaja1: ''
         };
         return Api.post(`api/liiga/joukkueet/uusi`, IlmoActions.laheta, data);
     },
