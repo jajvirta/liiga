@@ -1,12 +1,18 @@
 
 todo:
--- rakenne liigaan ja sarjaan ja kauteen? (sarja = kausi?)
-- validointi jotta jengi antaa kaikki tiedot
-- facebook/google-integraatio
-- tila storeen frontissa?
-- propsut komentoriviltä jotta saa dev/prod-propsut
+- ei haeta kirjautuneen kayttajan joukkuetta jos silla ei ole sita!
+- ohjaus ilmo-sivulle loggauksen jälkeen
+- nimen ja yhteyshenkilön tarkistukset uuden joukkueen ilmoittamiseen
+- automaattinen uloskirjautuminen ei päivitä yläpalkin kirjautumistietoa
+- kantaconstraintteja: unique nimi, unique oauth_id jne
+- rakenne liigaan ja sarjaan ja kauteen? (sarja = kausi?)
+- google-integraatio
+- kuka tahansa voi ilmoittaa mutta yhteyshenkilö tai hänen apuhenkilö vahvistaa
 
 
+2016-03-19 ilmolomakkeen viilausta, 3h
+2016-03-18 day off. whew.
+2016-03-17 ansible/asennushommat 1,5h
 2016-03-16 illalla ilmoa ja sitten "tuotantoon"siirtoa 3,5h
 2016-03-15 tunnistautumista kuntoon. oauth-tietoja ja sen huomioimista kälissä 2h
 2016-03-14 pientä säätöä illalla, 1h
@@ -23,3 +29,10 @@ joukkuenäkymää 1,5h
 2016-03-09 kolmisen tuntia; kopsattu projekti, laitettu perus frontti/back
 -kamat pystyyn 3h
 
+done
+
+- leiska menee pilalle jos liian kapea
+- propsut komentoriviltä jotta saa dev/prod-propsut
+- validointi jotta jengi antaa kaikki tiedot
+- facebook/google-integraatio
+- tila storeen frontissa?
