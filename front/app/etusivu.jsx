@@ -8,9 +8,10 @@ export default React.createClass({
             <div>
                 <h1>Ajankohtaista frisbeegolf-joukkueliigasta</h1>
 
-                <h2>Ilmoittautuminen aukeaa pian</h2>
+                <h2><i>pe 17.3.2016</i>: Ilmoittautuminen aukeaa pian</h2>
 
-                <p><i>pe 17.3.2016</i>: Liigaan ilmoittautuminen aukeaa pian.</p>
+                <p>Liigaan ilmoittautuminen aukeaa pian.  </p>
+                <p>Stay tuned. Pysykää vireessä.</p>
             </div>
         );
     }
