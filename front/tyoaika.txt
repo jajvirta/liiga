@@ -1,7 +1,5 @@
 
 todo:
-- ei voi modaa tekstejä keskeltä kenttää :-(
-- onblur onchangen sijaan?
 - bäkkäriin validoinnit ja kokojen tarkistus
 - ohjaus ilmo-sivulle loggauksen jälkeen
 - nimen ja yhteyshenkilön tarkistukset uuden joukkueen ilmoittamiseen
@@ -10,9 +8,10 @@ todo:
 - rakenne liigaan ja sarjaan ja kauteen? (sarja = kausi?)
 - google-integraatio
 - kuka tahansa voi ilmoittaa mutta yhteyshenkilö tai hänen apuhenkilö vahvistaa
+- onblur onchangen sijaan?
 
 
-2016-03-19 ilmolomakkeen viilausta, 3h
+2016-03-19 ilmolomakkeen viilausta, 5h
 2016-03-18 day off. whew.
 2016-03-17 ansible/asennushommat 1,5h
 2016-03-16 illalla ilmoa ja sitten "tuotantoon"siirtoa 3,5h
@@ -40,3 +39,4 @@ done
 - tila storeen frontissa?
 - ei haeta kirjautuneen kayttajan joukkuetta jos silla ei ole sita!
 - yhthenk nimi ei tule automaagic
+- ei voi modaa tekstejä keskeltä kenttää :-(
