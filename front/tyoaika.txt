@@ -11,6 +11,10 @@ todo:
 - onblur onchangen sijaan?
 
 
+
+
+2016-03-21 day off. whew.
+2016-03-20 google/facebook sisäänloggaus taisteltiin kasaan, 5h
 2016-03-19 ilmolomakkeen viilausta, 5h
 2016-03-18 day off. whew.
 2016-03-17 ansible/asennushommat 1,5h
@@ -32,6 +36,8 @@ joukkuenäkymää 1,5h
 
 done
 
+tämän takia meni redirect vituix:
+  http://stackoverflow.com/questions/33812471/spring-oauth-redirect-uri-not-using-https
 - leiska menee pilalle jos liian kapea
 - propsut komentoriviltä jotta saa dev/prod-propsut
 - validointi jotta jengi antaa kaikki tiedot
