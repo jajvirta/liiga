@@ -65,11 +65,8 @@ var Liiga = React.createClass({
                                 <br/><a href="/login/google">Google-login</a>
                                 </small> }
                             </div>
-                            <div className="save-info">
+                            <div className="main-title">
                             <h1><Link to='etusivu'>Tampereen seudun frisbeegolf-joukkueliiga</Link></h1>
-                            </div>
-
-                            <div className='back-link'>
                             </div>
 
                             <div className="alert-field clearfix">
@@ -88,20 +85,16 @@ var Liiga = React.createClass({
                                     <Link to='saannot'><span className="text"><div>Lyhyt kuvaus & säännöt</div></span></Link>
                                 </li>
                                 <li className='menu-item'>
-                                    <Link to='ohjelma'><span className="text">Otteluohjelma</span></Link>
+                                    <Link to='joukkueet'><span className="text">Joukkueet & Otteluohjelma</span></Link>
                                 </li>
                                 <li className='menu-item'>
-                                    <Link to='joukkueet'><span className="text">Joukkueet</span></Link>
+                                    <Link to='sarjataulukko'><span className="text">Sarjataulukko & ranking-listat</span></Link>
                                 </li>
                                 <li className='menu-item'>
-                                    <Link to='sarjataulukko'><span className="text">Sarjataulukko</span></Link>
+                                <img src="/common/img/logo-pieni.png"/>
                                 </li>
-                                <li className='menu-item'>
-                                    <Link to='ranking'><span className="text">Ranking-listat</span></Link>
-                                </li>
-                                <hr/>
-                                <span className="text">Ilmoittautuminen ja tulosten kirjaus</span>
-                                <br/>
+
+
                                 <li className='menu-item'>
                                     <Link to='ilmo'><span className="text">Ilmoittautuminen</span></Link>
                                 </li>
@@ -113,6 +106,7 @@ var Liiga = React.createClass({
                         <div className='content'>
 
                             <RouteHandler/>
+
                         </div>
                     </div>
                 </div>

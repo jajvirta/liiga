@@ -20,7 +20,7 @@
     }
   }
   .back-link {
-    //float: left;
+    float: right;
     @include column(3);
     width: auto;
     .previous {
@@ -30,13 +30,27 @@
       }
     }
   }
-  .save-info {
+  .logo {
+    float: right;
+    @include column(6);
+    @include push(8);
+    width: auto;
+    .previous {
+      margin-top: 5px;
+      @include breakpoint(bp-small3) {
+        margin-top: 30px;
+      }
+    }
+  }
+ 
+  .main-title {
     width: 100%;
     clear: both;
+    color: #ffaabb;
     text-align: center;
     @include breakpoint(bp-small3) {
       @include column(6);
-      @include push(3);
+      @include push(2);
       clear: none;
     }
   }
@@ -112,27 +126,6 @@
       }
     }
     
-  }
-  .logout {
-    float: right;
-    clear: both;
-    margin-top: 10px;
-    a {
-      text-decoration: none;
-      color: $blue;
-      font-weight: 700;
-      position: relative;
-      padding-right: 25px;
-      &:after {
-        content: "";
-        display: block;
-        width: 20px;
-        height: 19px;
-        top: 0px;
-        right: 0px;
-        position: absolute;
-      }
-    }
   }
 }
 

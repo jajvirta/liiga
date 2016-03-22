@@ -59,12 +59,12 @@ p {
 }
 
 a {
-  color: $blue;
+  color: #65aa90;
   &:visited {
-    color: $blue;
+    color: #65aa90;
   }
   &:hover {
-    color: $blue;
+    color: #65aa90;
     text-decoration: underline;
   }
 }
@@ -102,7 +102,7 @@ body {
     @include column(3);
   }
   @include breakpoint(bp-large3) {
-    @include column(2);
+    @include column(3);
   }
 }
 .content {
@@ -112,8 +112,8 @@ body {
     @include push(3);
   }
    @include breakpoint(bp-large3) {
-    @include column(10);
-    @include push(2);
+    @include column(9);
+    @include push(3);
   }
 }
 .previous {
