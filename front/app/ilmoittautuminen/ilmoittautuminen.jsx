@@ -200,7 +200,11 @@ export default React.createClass({
 
     renderIlmo: function() {
         return (
-                <div><i>Olet kirjautunut sisään käyttäjänä: { this.state.kayttaja.name }</i>
+                <div>
+                <br/>
+                <p>
+                <i>Olet kirjautunut sisään käyttäjänä: { this.state.kayttaja.name }</i>
+                </p>
                 <br/>
                 <Modal container={this}
                        onHide={this.closeModal}

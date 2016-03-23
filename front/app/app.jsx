@@ -80,6 +80,7 @@ var Liiga = React.createClass({
                 <div>
                     <div className="main">
                         <div id='navigation' className="sidebar">
+                            <br/>
                             <ul className='side-navigation'>
                                 <li className='menu-item'>
                                     <Link to='etusivu'><span className="text">Ajankohtaista</span></Link>
