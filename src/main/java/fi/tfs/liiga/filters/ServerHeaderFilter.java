@@ -10,7 +10,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletResponse;
 
-public class HideServerHeaderFilter implements Filter {
+public class ServerHeaderFilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
