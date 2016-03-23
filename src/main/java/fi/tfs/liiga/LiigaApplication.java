@@ -43,7 +43,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import fi.tfs.liiga.filters.HideServerHeaderFilter;
+import fi.tfs.liiga.filters.ServerHeaderFilter;
 
 @SpringBootApplication
 // @EnableOAuth2Sso
@@ -137,7 +137,7 @@ public class LiigaApplication extends WebSecurityConfigurerAdapter {
     @Bean
     public FilterRegistrationBean hideServerHeaderFilter() {
         FilterRegistrationBean registration = new FilterRegistrationBean();
-        Filter myFilter = new HideServerHeaderFilter();
+        Filter myFilter = new ServerHeaderFilter();
         beanFactory.autowireBean(myFilter);
         registration.setFilter(myFilter);
         registration.addUrlPatterns("/*");
