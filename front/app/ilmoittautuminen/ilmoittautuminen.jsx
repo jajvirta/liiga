@@ -248,7 +248,18 @@ export default React.createClass({
                     <p>Joukkueen ilmoittautuminen on vahvistettu</p> : null }
 
                 { this.state.ilmo.onIlmoittautunut && !this.state.ilmo.onVahvistettu ?
-                  <p className='delete'>Ilmoittautumista ei ole vielä vahvistettu. Maksa osmaksu ..</p> : null }
+                    <div>
+                        <p className='delete'>Ilmoittautumista ei ole vielä vahvistettu.
+                        Maksa osallistumismaksu alla näkyvin tiedoin, niin ilmoittautuminen
+                        vahvistetaan heti kun liigan ylläpito näkee tilisuorituksen.
+                        </p>
+                        <blockquote>
+                            Tilinumero: FI17 8330 0710 4436 19<br/>
+                            Saaja: Tampereen Frisbeeseura<br/>
+                            Viestiin: Frisbeegolfliiga, osallistumismaksu. Joukkue { this.state.nimi }<br/>
+                            Summa: 60 euroa<br/>
+                        </blockquote>
+                      </div> : null }
 
                 <Table>
                     <tbody>
