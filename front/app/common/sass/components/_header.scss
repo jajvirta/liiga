@@ -33,7 +33,7 @@
   .logo {
     float: right;
     @include column(6);
-    @include push(8);
+    @include push(9);
     width: auto;
     .previous {
       margin-top: 5px;

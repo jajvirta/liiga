@@ -69,7 +69,10 @@ var Liiga = React.createClass({
                             <h1><Link to='etusivu'>Tampereen seudun frisbeegolf-joukkueliiga</Link></h1>
                             </div>
 
-                            <div className="alert-field clearfix">
+                            <div className="logo">
+                              <a href="http://www.innovastore.fi/">
+                              <img src='/common/img/innovastore_logo_pieni.png'/>
+                              </a>
                             </div>
                         </nav>
                     </div>
