@@ -66,10 +66,10 @@ export default React.createClass({
                 </p>
 
                 <p>
-                Tämän jälkeen joukkueen tulee suorittaa <b>maanantaihin 11.4.
+                Tämän jälkeen joukkueen tulee suorittaa <b>perjantaihin 15.4.
                 mennessä osallistumismaksu</b> (ks. kohta Osallistumismaksu
                         liigaan) alla olevin tiedoin. Jos maksu ei näy TFS:n
-                tilillä viimeistään maanantain 11.4. aikana, niin joukkueella
+                tilillä viimeistään perjantain 15.4. aikana, niin joukkueella
                 ei ole pelioikeutta liigassa. (Myöhässä ilmoittautuneille ja
                         siksi sarjasta suljetuille palautetaan maksamansa
                         osallistumismaksu.) </p>
@@ -158,14 +158,49 @@ export default React.createClass({
                 <h2>Yksittäisen ottelun ottelujärjestelmä</h2>
 
                 <p>
-                (TBD.)
+                Yksittäinen sarjaottelu koostuu tulososuudesta ja reikäpeliosuudesta.
+                </p>
+
+                <p>
+                Tulospelissä pelaajat jaetaan kahteen neljän hengen ryhmään, joissa molemmilta
+                joukkueilta on kaksi pelaajaa. Ryhmät arvotaan. Ryhmät kirjaavat tuloksensa ja
+                tarkistavat ne ryhmäkohtaisesti yhdeksän väylän jälkeen. Jos eri joukkueen pelaajilla on sama
+                tulos ryhmän sisällä, niin he ratkaisevat järjestyksen kotijoukkueen määräämällä CTP-väylällä.
+                </p>
+
+                <p>
+                Ryhmän pelaajat sijoitetaan tämän jälkeen ryhmän tulosjärjestykseen. Ryhmän voittaja saa
+                kolme pistettä, toinen kaksi pistettä, kolmas yhden pisteen, neljäs nolla. Molempien ryhmien
+                tulokset lasketaan lopputulokseen yhteen.
+                </p>
+
+                <p>
+                Molempien joukkueiden parhaiten sijoittunut pelaaja sijoitetaan
+                ensimmäiseen reikäpeliin, toinen toiseen, jne. Tasatuloksessa joukkue määrää itse
+                järjestyksen. Kotijoukkueen pitää sijoittaa pelaajat ensin listaan.
+                </p>
+
+                <p>
+                Reikäpeleistä saa ottelun voitosta kaksi pistettä ja tasapelistä yhden pisteen.
+                </p>
+
+                <p>
+                Lopuksi sekä tulososuuden että reikäpelien pisteet lasketaan yhteen ja enemmän pisteitä
+                saanut joukkue voittaa. Ottelu voi päättyä myös tasan. Koko ottelun voitosta saa kolme
+                pistettä sarjataulukossa, tasapelistä saa yhden pisteen.
                 </p>
 
                 <h2>Tasapisteissä olevien paremmuuden määräytyminen</h2>
 
-                <p>Joukkueiden pisteiden, otteluvoittojen, tasapelien ja
-                tappioiden ollessa tasan, keskinäinen paremmuus määräytyy
-                voitettujen pelien perusteella. (XXX)</p>
+                <p>
+                Järjestys sarjassa määräytyy alla mainitun mukaan:
+                </p>
+                <ol>
+                    <li>joukkueen pisteet otteluista (3 voitosta, 1 tasapelistä, 0 voitosta.)</li>
+                    <li>joukkueen otteluiden kokonaistulosten pisteet (10-2, 9-3, jne)</li>
+                    <li>tulosotteluiden pisteet</li>
+                    <li>voitettujen reikäpelien määrä</li>
+                </ol>
 
                 <h2>Otteluajat ja niiden siirtäminen</h2>
 

@@ -98,6 +98,15 @@ export default React.createClass({
             });
     },
 
+    paivitaIlmoittautuminen: function() {
+        var t = this;
+        IlmoService.paivitaIlmoittautuminen(this.state)
+            .then(function() {
+                IlmoService.haeIlmoittautumistiedot();
+                t.closeModal();
+            });
+    },
+
     handleNimiChange: function(event) {
         this.setState({ nimi: event.target.value });
     },
@@ -245,7 +254,7 @@ export default React.createClass({
                 <h1>Ilmoittautuminen Tampereen seudun frisbeegolf-joukkueliigaan</h1> }
 
                 { this.state.ilmo.onIlmoittautunut && this.state.ilmo.onVahvistettu ?
-                    <p>Joukkueen ilmoittautuminen on vahvistettu</p> : null }
+                    <p>Joukkueen ilmoittautuminen on vahvistettu.</p> : null }
 
                 { this.state.ilmo.onIlmoittautunut && !this.state.ilmo.onVahvistettu ?
                     <div>

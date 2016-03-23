@@ -1,9 +1,8 @@
 import React from 'react';
 import Router from 'react-router';
 import Reflux from 'reflux';
-import { Table } from 'react-bootstrap';
+import { Modal, Textarea, Button, Input, Table, Select } from 'react-bootstrap';
 import _ from 'lodash';
-var RouteHandler = Router.RouteHandler;
 import TuloksetStore from './tulokset_store.js';
 import TuloksetService from './tulokset_service.js';
 
@@ -23,6 +22,30 @@ export default React.createClass({
                 <h1>Tulosten ilmoittaminen</h1>
 
                 <p>TBD.</p>
+                <Table>
+                    <tbody>
+                        <tr>
+                            <td>
+                            <Input
+                                type='text'
+                                size='40'
+                                maxLength='40'
+                                onChange={ this.addNimi }
+                                value={ this.state.nimi }/>
+                            </td>
+                            <td>
+                            <Input
+                                type='text'
+                                size='40'
+                                maxLength='40'
+                                onChange={ this.addNimi }
+                                value={ this.state.nimi }/>
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+                </Table>
 
             </div>
         );
