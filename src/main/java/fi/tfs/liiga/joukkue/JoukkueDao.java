@@ -61,7 +61,7 @@ public class JoukkueDao {
     @Transactional
     public List<Joukkue> haeVahvistetutJoukkueet() {
         List<Joukkue> query = jdbcTemplate.query(
-                "select * from joukkue where ilmo_vahvistettu_k_e = 'K'", 
+                "select * from yhteyshenkilo_joukkue where ilmo_vahvistettu_k_e = 'K'", 
                 new Mapper());
         return query;
     }
@@ -114,5 +114,9 @@ public class JoukkueDao {
                 + "(select joukkue_id from yhteyshenkilo_joukkue where oauth_tunnus = ?)";
         jdbcTemplate.update(sql, currentUserOauthId);
         
+    }
+
+    public Joukkue getJoukkue(long joukkueId) {
+        return jdbcTemplate.queryForObject("select * from yhteyshenkilo_joukkue where joukkue_id = ?", new Mapper(), joukkueId);
     }
 }

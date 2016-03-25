@@ -1,5 +1,7 @@
 import Actions from '../common/actions.js';
 
 export default Actions.createAsyncActions([
-    'getJoukkueet'
+    'getAlustavatJoukkueet',
+    'getVahvistetutJoukkueet',
+    'getJoukkue'
 ]);

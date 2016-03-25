@@ -5,10 +5,24 @@ export default Reflux.createStore({
 
     listenables: [JoukkueActions],
 
-    joukkue: {},
+    joukkue: {
+        alustavat: [],
+        vahvistetut: [],
+        valittu: {}
+    },
 
-    onGetJoukkueetCompleted: function(result) {
-        this.joukkue.joukkueet = result;
+    onGetJoukkueCompleted: function(result) {
+        this.joukkue.valittu = result;
+        this.trigger(this.joukkue);
+    },
+
+    onGetAlustavatJoukkueetCompleted: function(result) {
+        this.joukkue.alustavat = result;
+        this.trigger(this.joukkue);
+    },
+
+    onGetVahvistetutJoukkueetCompleted: function(result) {
+        this.joukkue.vahvistetut = result;
         this.trigger(this.joukkue);
     },
 

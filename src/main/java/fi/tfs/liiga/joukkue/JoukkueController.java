@@ -18,6 +18,9 @@ public class JoukkueController {
 
     @Autowired
     private JoukkueDao dao;
+    
+    @Autowired
+    private JoukkueService joukkueService;
 
     @RequestMapping(value="/api/liiga/joukkueet/uusi", method=RequestMethod.POST)
     public void luoUusiJoukkue(@RequestBody LisaaJoukkueCommand lisaa) {
@@ -40,9 +43,18 @@ public class JoukkueController {
         return dao.haeJoukkueet();
     }
 
+    @RequestMapping("/public-api/liiga/joukkue/{joukkueId}")
+    public Joukkue haeJoukkue(@PathVariable Long joukkueId) {
+        return joukkueService.getJoukkue(joukkueId.longValue());
+    }
 
     @RequestMapping("/public-api/liiga/joukkueet/alustavat")
     public List<Joukkue> haeAlustavatJoukkueet() {
-        return dao.haeAlustavatJoukkueet();
+        return joukkueService.haeAlustavatJoukkueet();
+    }
+
+    @RequestMapping("/public-api/liiga/joukkueet/vahvistetut")
+    public List<Joukkue> haeVahvistetutJoukkueet() {
+        return joukkueService.haeVahvistetutJoukkueet();
     }
 }

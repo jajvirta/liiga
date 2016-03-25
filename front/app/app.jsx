@@ -14,6 +14,7 @@ import Saannot from './saannot/saannot.jsx';
 import Tulokset from './tulokset/tulokset.jsx';
 import Sarjataulukko from './sarjataulukko/sarjataulukko.jsx';
 import Joukkueet from './joukkue/joukkueet.jsx';
+import Joukkue from './joukkue/joukkue.jsx';
 import Ilmo from './ilmoittautuminen/ilmoittautuminen.jsx';
 
 import KayttajaService from './kayttaja/kayttaja_service.js';
@@ -128,6 +129,7 @@ var routes = (
             <Route name='ranking' handler={ Ranking } />
             <Route name='ohjelma' handler={ Ohjelma } />
             <Route name='joukkueet' handler={ Joukkueet } />
+            <Route name='joukkue/:joukkueid' handler={ Joukkue } />
             <Route name='sarjataulukko' handler={ Sarjataulukko } />
             <Route name='ilmo' handler={ Ilmo } />
             <Route name='tulokset' handler={ Tulokset } />
