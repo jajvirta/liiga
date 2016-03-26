@@ -8,8 +8,18 @@
     base: ..
 
   tasks:
+    - shell: "python bumped.py {{ base }}/pom.xml"
+      register: new_version
+      delegate_to: localhost
+      when: bump is defined and bump
+
+    - shell: "python bumped.py {{ base }}/pom.xml dontbump"
+      register: new_version
+      delegate_to: localhost
+      when: bump is not defined or not bump
+
     - name: versiobump
-      shell: "mvn -s settings.xml versions:set -DnewVersion={{ version }}"
+      shell: "mvn -s settings.xml versions:set -DnewVersion={{ new_version.stdout }}"
       args:
         chdir: "{{ base }}"
       delegate_to: localhost
@@ -22,7 +32,7 @@
       when: bump is defined
 
     - name: kommitoi versiobump
-      shell: "git ci -m 'version bump to {{ version }}' pom.xml"
+      shell: "git ci -m 'version bump to {{ new_version.stdout }}' pom.xml"
       args:
         chdir: "{{ base }}"
       delegate_to: localhost
@@ -36,6 +46,6 @@
 
     - name: kopsaa
       copy:
-        src: "{{ base }}/target/liiga-{{ version }}.jar"
-        dest: ./liiga-{{ version }}.jar
+        src: "{{ base }}/target/liiga-{{ new_version.stdout }}.jar"
+        dest: ./liiga-{{ new_version.stdout }}.jar
 
