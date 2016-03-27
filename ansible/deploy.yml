@@ -14,7 +14,7 @@
       when: bump is defined and bump
 
     - shell: "python bumped.py {{ base }}/pom.xml dontbump"
-      register: new_version
+      register: version
       delegate_to: localhost
       when: bump is not defined or not bump
 
@@ -44,8 +44,15 @@
         chdir: "{{ base }}"
       delegate_to: localhost
 
-    - name: kopsaa
+    - name: kopsaa jarri kohdekoneelle
       copy:
         src: "{{ base }}/target/liiga-{{ new_version.stdout }}.jar"
         dest: ./liiga-{{ new_version.stdout }}.jar
+      when: bump is defined
+
+    - name: kopsaa jarri kohdekoneelle
+      copy:
+        src: "{{ base }}/target/liiga-{{ version.stdout }}.jar"
+        dest: ./liiga-{{ version.stdout }}.jar
+      when: bump is not defined
 
