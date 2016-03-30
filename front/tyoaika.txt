@@ -2,6 +2,7 @@
 todo:
 - bäkkäriin validoinnit ja kokojen tarkistus
 - nimen ja yhteyshenkilön tarkistukset uuden joukkueen ilmoittamiseen
+- pelaajien nimet eivät voi olla uniikkeja, näytä autocompletessa esim. sposti
 - automaattinen uloskirjautuminen ei päivitä yläpalkin kirjautumistietoa
 - kantaconstraintteja: unique nimi, unique oauth_id jne
 - rakenne liigaan ja sarjaan ja kauteen? (sarja = kausi?)
