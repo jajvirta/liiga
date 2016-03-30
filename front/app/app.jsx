@@ -47,6 +47,7 @@ var Liiga = React.createClass({
     },
 
     render() {
+        var img = { horizontalAlign: 'middle' };
         return (
             <div>
                 <div className="header">
@@ -96,7 +97,7 @@ var Liiga = React.createClass({
                                     <Link to='sarjataulukko'><span className="text">Sarjataulukko & ranking-listat</span></Link>
                                 </li>
                                 <li className='menu-item'>
-                                <img src="/common/img/logo-pieni.png"/>
+                                <img className='front-logo' src='/common/img/logo-pieni.png'/>
                                 </li>
 
 
