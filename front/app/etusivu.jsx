@@ -21,10 +21,11 @@ export default React.createClass({
 
                 <p>
                 Joukkueet pelaavat kauden aikana sarjan, jossa joukkue pelaa
-                kaikkia muita joukkueita vastaan koti- ja vierasottelun.
-                Yhdessä ottelussa <b>neljän pelaajaan joukkueet</b> ratkovat
-                paremmuuden yhdeksän väylän tulospelissä ja yhdeksän väylän
-                reikäpeleissä.
+                kaikkia muita joukkueita vastaan koti- ja vierasottelun. Pelejä tulee
+                noin kerran viikkoon tai kahteen. Pelipäivä on normaalisti keskiviikko ja peliaika
+                18:00. Yhdessä ottelussa <b>neljän pelaajaan joukkueet</b> ratkovat 
+                paremmuuden yhdeksän väylän tulospelissä ja yhdeksän
+                väylän reikäpeleissä.
                 </p>
 
                 <p>
@@ -32,6 +33,11 @@ export default React.createClass({
                 yksittäiset ottelut pelataan aina nelihenkisesti. Kauden
                 lopuksi eniten pisteitä keränneet joukkueet palkitaan. Sarjan
                 järjestää ensimmäisellä kaudella Tampereen Frisbeeseura Ry.
+                </p>
+
+                <p>
+                Ilmoittautuminen tehdään osoitteessa <a
+                href="http://liiga.tfs.fi/#/ilmo">http://liiga.tfs.fi/#/ilmo</a>.
                 </p>
 
 
