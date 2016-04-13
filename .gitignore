@@ -2,6 +2,7 @@ target
 .project
 .classpath
 .settings
+.DS_Store
 front/node_modules
 front/dist
 .*sw*
