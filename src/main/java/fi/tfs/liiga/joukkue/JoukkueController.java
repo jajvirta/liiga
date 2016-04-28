@@ -109,4 +109,29 @@ public class JoukkueController {
     public List<Joukkue> haeVahvistetutJoukkueet() {
         return joukkueService.haeVahvistetutJoukkueet();
     }
+
+    @RequestMapping(value="/public-api/liiga/generoi-testijoukkueet", method=RequestMethod.GET)
+    public String generoiJoukkueet() {
+        if (env != null && "development".equals(env)) {
+            LisaaJoukkueCommand l = 
+                    new LisaaJoukkueCommand("tfsliiga", "Woodpeckers", "Kylmis", "Marko", "12", "f@b.fo", "");
+            dao.lisaaJoukkue(l, "123");
+            dao.lisaaJoukkue(new LisaaJoukkueCommand("tfsliiga", "Sasta FG", "Häntyri", "Marko", "12", "f@b.fo", ""), "124");
+            dao.lisaaJoukkue(new LisaaJoukkueCommand("tfsliiga", "HV", "Vihnu", "Jarno", "12", "f@b.fo", ""), "125");
+            dao.lisaaJoukkue(new LisaaJoukkueCommand("tfsliiga", "Herwanta DGG", "Hervanta", "Mikko", "12", "f@b.fo", ""), "124");
+            dao.lisaaJoukkue(new LisaaJoukkueCommand("tfsliiga", "Nelosketju", "Epilä", "Mika", "12", "f@b.fo", ""), "124");
+            dao.lisaaJoukkue(new LisaaJoukkueCommand("tfsliiga", "Maajoukkue 2", "Vihku", "Mika", "12", "f@b.fo", ""), "124");
+            dao.lisaaJoukkue(new LisaaJoukkueCommand("tfsliiga", "Äetsä", "Äetsä", "M", "12", "f@b.fo", ""), "124");
+            dao.lisaaJoukkue(new LisaaJoukkueCommand("tfsliiga", "Ylöjärven Ryhti", "Julku", "Marko", "12", "f@b.fo", ""), "124");
+            dao.lisaaJoukkue(new LisaaJoukkueCommand("tfsliiga", "Aviaattorit", "Pirkkala", "Marko", "12", "f@b.fo", ""), "124");
+            dao.lisaaJoukkue(new LisaaJoukkueCommand("tfsliiga", "Brutal Force", "Hämeenkyrö", "Marko", "12", "f@b.fo", ""), "124");
+            dao.lisaaJoukkue(new LisaaJoukkueCommand("tfsliiga", "DG Keijjot", "Julku", "Marko", "12", "f@b.fo", ""), "124");
+            dao.lisaaJoukkue(new LisaaJoukkueCommand("tfsliiga", "Kiakkogosset", "Valkeakoski", "Marko", "12", "f@b.fo", ""), "124");
+            dao.lisaaJoukkue(new LisaaJoukkueCommand("tfsliiga", "VlkDG", "Valkeakosi", "Marko", "12", "f@b.fo", ""), "124");
+            return "OK"; 
+        } else {
+            return "not dev, doing nothing";
+        }
+        
+    }
 }
