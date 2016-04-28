@@ -18,6 +18,7 @@ export default React.createClass({
     componentWillMount: function() {
         JoukkueService.getAlustavatJoukkueet();
         JoukkueService.getVahvistetutJoukkueet();
+        JoukkueService.getOttelut();
     },
 
     renderJoukkue: function(joukkue) {
@@ -31,10 +32,53 @@ export default React.createClass({
             );
     },
 
+    renderOttelu: function(ottelu) {
+        var polku = '/joukkue/' + ottelu.otteluId;
+        return (
+                <tr key={ottelu.otteluId}>
+                    <td> <Link to={ polku }>{ ottelu.ajankohta } kello 18:00</Link></td>
+                    <td> { ottelu.kotijoukkue }</td>
+                    <td> { ottelu.vierasjoukkue }</td>
+                </tr>
+            );
+    },
+
+
     render: function () {
         var t = this;
         return (
             <div>
+                <h1>Alustavat otteluohjelma</h1>
+
+                <p><b>Huom</b>.: otteluohjelmat eivät ole vielä lopullisia.</p>
+
+                <Table striped bordered condensed hover>
+                    <thead>
+                    <tr><th colSpan='3'><h2>Länsilohko</h2></th></tr>
+                    </thead>
+                    <tr><th>Ajankohta</th><th>Kotijoukkue</th><th>Vierasjoukkue</th></tr>
+                    <tbody>
+                { _.chain(this.state.joukkue.ottelut)
+                    .filter(function(o) { return o.lohkoId === 1; })
+                    .map(t.renderOttelu).value() }
+                    </tbody>
+                </Table>
+ 
+                <h2>Itälohko</h2>
+
+                <Table striped bordered condensed hover>
+                    <thead>
+                    <tr><th colSpan='3'><h2>Itälohko</h2></th></tr>
+                    </thead>
+                    <tr><th>Ajankohta</th><th>Kotijoukkue</th><th>Vierasjoukkue</th></tr>
+                    <tbody>
+                { _.chain(this.state.joukkue.ottelut)
+                    .filter(function(o) { return o.lohkoId === 2; })
+                    .map(t.renderOttelu).value() }
+                    </tbody>
+                </Table>
+ 
+
                 <h1>Liigaan ilmoittautuneet joukkueet</h1>
 
                 <Table striped bordered condensed hover>
