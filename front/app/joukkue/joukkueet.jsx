@@ -65,7 +65,7 @@ export default React.createClass({
                     <tr><th>Ajankohta</th><th>Kotijoukkue</th><th>Vierasjoukkue</th></tr>
                     <tbody>
                 { _.chain(this.state.joukkue.ottelut)
-                    .filter(function(o) { return o.lohkoId === 3; })
+                    .filter(function(o) { return o.lohkoId === 1; })
                     .map(t.renderOttelu).value() }
                     </tbody>
                 </Table>
@@ -77,7 +77,7 @@ export default React.createClass({
                     <tr><th>Ajankohta</th><th>Kotijoukkue</th><th>Vierasjoukkue</th></tr>
                     <tbody>
                 { _.chain(this.state.joukkue.ottelut)
-                    .filter(function(o) { return o.lohkoId === 4; })
+                    .filter(function(o) { return o.lohkoId === 2; })
                     .map(t.renderOttelu).value() }
                     </tbody>
                 </Table>
