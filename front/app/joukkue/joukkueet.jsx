@@ -16,9 +16,13 @@ export default React.createClass({
     ],
 
     componentWillMount: function() {
+        var foo = this.getParams().joku;
+
         JoukkueService.getAlustavatJoukkueet();
         JoukkueService.getVahvistetutJoukkueet();
+        if (foo) {
         JoukkueService.getOttelut();
+        }
     },
 
     renderJoukkue: function(joukkue) {
@@ -34,11 +38,13 @@ export default React.createClass({
 
     renderOttelu: function(ottelu) {
         var polku = '/joukkue/' + ottelu.otteluId;
+        var kj = '/joukkue/' + ottelu.kotijoukkueId;
+        var vj = '/joukkue/' + ottelu.vierasjoukkueId;
         return (
                 <tr key={ottelu.otteluId}>
-                    <td> <Link to={ polku }>{ ottelu.ajankohta } kello 18:00</Link></td>
-                    <td> { ottelu.kotijoukkue }</td>
-                    <td> { ottelu.vierasjoukkue }</td>
+                    <td> keskiviikko { ottelu.formattedPelipaiva } kello 18:00</td>
+                    <td> <Link to={ kj }>{ ottelu.kotijoukkue }</Link></td>
+                    <td> <Link to={ vj }>{ ottelu.vierasjoukkue }</Link></td>
                 </tr>
             );
     },
@@ -59,12 +65,10 @@ export default React.createClass({
                     <tr><th>Ajankohta</th><th>Kotijoukkue</th><th>Vierasjoukkue</th></tr>
                     <tbody>
                 { _.chain(this.state.joukkue.ottelut)
-                    .filter(function(o) { return o.lohkoId === 1; })
+                    .filter(function(o) { return o.lohkoId === 3; })
                     .map(t.renderOttelu).value() }
                     </tbody>
                 </Table>
- 
-                <h2>Itälohko</h2>
 
                 <Table striped bordered condensed hover>
                     <thead>
@@ -73,11 +77,11 @@ export default React.createClass({
                     <tr><th>Ajankohta</th><th>Kotijoukkue</th><th>Vierasjoukkue</th></tr>
                     <tbody>
                 { _.chain(this.state.joukkue.ottelut)
-                    .filter(function(o) { return o.lohkoId === 2; })
+                    .filter(function(o) { return o.lohkoId === 4; })
                     .map(t.renderOttelu).value() }
                     </tbody>
                 </Table>
- 
+
 
                 <h1>Liigaan ilmoittautuneet joukkueet</h1>
 

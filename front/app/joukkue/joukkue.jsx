@@ -25,7 +25,6 @@ export default React.createClass({
     render: function () {
         var current = this.state.joukkue.valittu;
         var kayttaja = this.state.kayttaja;
-        console.log(kayttaja);
         return (
             <div>
             <h1>Joukkue: { current.nimi }</h1>
