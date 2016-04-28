@@ -8,6 +8,21 @@ export default React.createClass({
         return (
             <div>
 
+                <h1>Ajankohtaista frisbeegolf-joukkueliigasta</h1>
+
+                <ul>
+                <li>Ilmoittautumisen deadlineä on siirretty. Se on nyt <b>keskiviikko 27.4.</b> Maksun
+                pitää näkyä tuon päivän aikana tilillä tai joukkue ei pääse sarjaan.</li>
+                <li>Näillä näkymin pidämme myös lyhyen infotilaisuuden keskiviikkona 27.4., jolloin 
+                joukkueiden yhteyshenkilöt ja muut kiinnostuneet voivat tulla paikan päälle juttelemaan
+                liigaan liittyvistä aiheista.</li>
+                <li>Itse sarja alkaa <b>keskiviikkona 4.5.</b> kello 18:00.</li>
+                <li>Joukkueet jaetaan näillä näkymin kahteen lohkoon, jotka jaotellaan osittain
+                maantieteellisesti jotta joukkueille ei tule kohtuuttoman pitkiä vieraspelimatkoja.</li>
+                <li>Kolme parasta joukkuetta palkitaan rahapalkinnoin ja pokaalein. Myös ranking-listan
+                kaksi parasta palkitaan.</li>
+                </ul>
+
                 <h1>Mikä on Tampereen seudun frisbeegolf-joukkueliiga?</h1>
 
                 <p>
