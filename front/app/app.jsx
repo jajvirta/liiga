@@ -130,7 +130,6 @@ var routes = (
             <Route name='ranking' handler={ Ranking } />
             <Route name='ohjelma' handler={ Ohjelma } />
             <Route name='joukkueet' handler={ Joukkueet } />
-            <Route name='testi/:joku' handler={ Joukkueet } />
             <Route name='joukkue/:joukkueid' handler={ Joukkue } />
             <Route name='sarjataulukko' handler={ Sarjataulukko } />
             <Route name='ilmo' handler={ Ilmo } />

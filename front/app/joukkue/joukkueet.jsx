@@ -16,13 +16,9 @@ export default React.createClass({
     ],
 
     componentWillMount: function() {
-        var foo = this.getParams().joku;
-
         JoukkueService.getAlustavatJoukkueet();
         JoukkueService.getVahvistetutJoukkueet();
-        if (foo) {
         JoukkueService.getOttelut();
-        }
     },
 
     renderJoukkue: function(joukkue) {
@@ -54,9 +50,9 @@ export default React.createClass({
         var t = this;
         return (
             <div>
-                <h1>Alustavat otteluohjelma</h1>
+                <h1>Liigan kevätkauden otteluohjelma</h1>
 
-                <p><b>Huom</b>.: otteluohjelmat eivät ole vielä lopullisia.</p>
+                <p>(29.4.) Otteluohjelma on lopullinen. <b>Huom</b>.: otteluohjelmaan tehdään tarvittaessa kuitenkin korjauksia</p>
 
                 <Table striped bordered condensed hover>
                     <thead>

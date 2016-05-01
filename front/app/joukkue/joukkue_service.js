@@ -15,6 +15,10 @@ export default {
         return Api.get(`public-api/liiga/1/ottelut/tulevat`, JoukkueActions.getOttelut);
     },
 
+    getJoukkueenOttelut: function(joukkueId) {
+        return Api.get(`public-api/liiga/1/ottelut/tulevat/${joukkueId}`, JoukkueActions.getJoukkueenOttelut);
+    },
+
     getJoukkue: function(joukkueId) {
         return Api.get(`public-api/liiga/joukkue/${joukkueId}`, JoukkueActions.getJoukkue);
     }

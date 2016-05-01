@@ -30,7 +30,8 @@ public class OtteluDao {
                     rs.getLong("kj_id"),
                     rs.getString("kotinimi"),
                     rs.getLong("vj_id"),
-                    rs.getString("vierasnimi")
+                    rs.getString("vierasnimi"),
+                    rs.getString("kotirata")
                     );
         }
     }
@@ -38,7 +39,7 @@ public class OtteluDao {
 
     public List<TulevaOttelu> haeTulevatOttelut() {
         List<TulevaOttelu> query = jdbcTemplate.query(
-                " select o.ottelu_id, lj.lohkojoukkue_lohko_id lohko_id, o.pelipaiva, kj.joukkue_id kj_id, "
+                " select o.ottelu_id, lj.lohkojoukkue_lohko_id lohko_id, o.pelipaiva, kj.joukkue_id kj_id, kj.kotirata, "
                 + "kj.nimi kotinimi, vj.joukkue_id vj_id, vj.nimi vierasnimi from "
                 + "ottelu o "
                 + " join joukkue kj on (o.kotijoukkue_id = kj.joukkue_id) "
@@ -48,5 +49,20 @@ public class OtteluDao {
 
         return query;
     }
+
+    public List<TulevaOttelu> haeTulevatOttelut(long joukkueId) {
+        List<TulevaOttelu> query = jdbcTemplate.query(
+                " select o.ottelu_id, lj.lohkojoukkue_lohko_id lohko_id, o.pelipaiva, kj.joukkue_id kj_id, kj.kotirata, "
+                + "kj.nimi kotinimi, vj.joukkue_id vj_id, vj.nimi vierasnimi from "
+                + "ottelu o "
+                + " join joukkue kj on (o.kotijoukkue_id = kj.joukkue_id) "
+                + " join joukkue vj on (o.vierasjoukkue_id = vj.joukkue_id) "
+                + " join lohko_joukkue lj on (o.kotijoukkue_id = lj.lohkojoukkue_joukkue_id)"
+                + " where (o.kotijoukkue_id = ? or o.vierasjoukkue_id = ?)",
+                new Mapper(), joukkueId, joukkueId);
+
+        return query;
+    }
+
 
 }

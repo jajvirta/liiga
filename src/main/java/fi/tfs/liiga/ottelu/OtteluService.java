@@ -7,7 +7,6 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import fi.tfs.liiga.joukkue.dto.Joukkue;
 import fi.tfs.liiga.ottelu.dto.TulevaOttelu;
 
 @Component
@@ -20,5 +19,10 @@ public class OtteluService {
     @Transactional
     public List<TulevaOttelu> haeTulevatOttelut() {
         return dao.haeTulevatOttelut();
+    }
+
+    @Transactional
+    public List<TulevaOttelu> haeTulevatOttelut(long joukkueId) {
+        return dao.haeTulevatOttelut(joukkueId);
     }
 }

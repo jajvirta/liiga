@@ -4,5 +4,6 @@ export default Actions.createAsyncActions([
     'getAlustavatJoukkueet',
     'getVahvistetutJoukkueet',
     'getJoukkue',
-    'getOttelut'
+    'getOttelut',
+    'getJoukkueenOttelut'
 ]);

@@ -31,6 +31,11 @@ export default Reflux.createStore({
         this.trigger(this.joukkue);
     },
 
+    onGetJoukkueenOttelutCompleted: function(result) {
+        this.joukkue.ottelut = result;
+        this.trigger(this.joukkue);
+    },
+
     getInitialState: function() {
         return this.joukkue;
     }
