@@ -10,12 +10,28 @@ export default React.createClass({
 
                 <h1>Ajankohtaista frisbeegolf-joukkueliigasta</h1>
 
+                <h2>su 1.5.: Ottelupäiväkirja löytyy nyt sivuilta</h2>
+
+                <p>
+                  Ottelupöytäkirja löytyy sivulta <Link to='joukkueet'>Joukkueet &amp; Otteluohjelma</Link>.
+                  Suora linkki <a href='/common/joukkueliiga-ottelupoytakirja.pdf'>ottelupöytäkirjaan (pdf)</a>.
+                </p>
+
+                <h2>pe 29.4. Otteluohjelma julkistettu</h2>
+
+                <p>Löytyy sivulta Joukkueet &amp; Otteluohjelma</p>
+
+                <h2>pe 29.4. Liigan epävirallinen infotilaisuus on Vihiojalla maanantaina 2.5. 17:15</h2>
+
+                <p>Ennen legendaarisia viikkokisoja. Ilmoittaudu sinne
+                &nbsp;<a href="http://kisa.tfs.fi/">TFS:n viikkokisakoneessa</a>.
+                </p>
+
+                <h2>Päätettyjä asioita</h2>
+
                 <ul>
                 <li>Ilmoittautumisen deadlineä on siirretty. Se on nyt <b>keskiviikko 27.4.</b> Maksun
                 pitää näkyä tuon päivän aikana tilillä tai joukkue ei pääse sarjaan.</li>
-                <li>Näillä näkymin pidämme myös lyhyen infotilaisuuden keskiviikkona 27.4., jolloin 
-                joukkueiden yhteyshenkilöt ja muut kiinnostuneet voivat tulla paikan päälle juttelemaan
-                liigaan liittyvistä aiheista.</li>
                 <li>Itse sarja alkaa <b>keskiviikkona 4.5.</b> kello 18:00.</li>
                 <li>Joukkueet jaetaan näillä näkymin kahteen lohkoon, jotka jaotellaan osittain
                 maantieteellisesti jotta joukkueille ei tule kohtuuttoman pitkiä vieraspelimatkoja.</li>

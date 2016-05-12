@@ -36,11 +36,15 @@ export default React.createClass({
         var polku = '/joukkue/' + ottelu.otteluId;
         var kj = '/joukkue/' + ottelu.kotijoukkueId;
         var vj = '/joukkue/' + ottelu.vierasjoukkueId;
+        var tulos = ottelu.kpiste + ' - ' + ottelu.vpiste;
         return (
                 <tr key={ottelu.otteluId}>
-                    <td> keskiviikko { ottelu.formattedPelipaiva } kello 18:00</td>
+                    <td> { ottelu.formattedPelipaiva } kello 18:00</td>
                     <td> <Link to={ kj }>{ ottelu.kotijoukkue }</Link></td>
                     <td> <Link to={ vj }>{ ottelu.vierasjoukkue }</Link></td>
+                    <td>
+                        { (ottelu.kpiste === 0 && ottelu.vpiste === 0) ?  '' : tulos }
+                    </td>
                 </tr>
             );
     },
@@ -52,13 +56,17 @@ export default React.createClass({
             <div>
                 <h1>Liigan kevätkauden otteluohjelma</h1>
 
+                <ul>
+                  <li><a href='/common/joukkueliiga-ottelupoytakirja.pdf'>Ottelupöytäkirja (PDF)</a></li>
+                </ul>
+
                 <p>(29.4.) Otteluohjelma on lopullinen. <b>Huom</b>.: otteluohjelmaan tehdään tarvittaessa kuitenkin korjauksia</p>
 
                 <Table striped bordered condensed hover>
                     <thead>
                     <tr><th colSpan='3'><h2>Länsilohko</h2></th></tr>
                     </thead>
-                    <tr><th>Ajankohta</th><th>Kotijoukkue</th><th>Vierasjoukkue</th></tr>
+                    <tr><th>Ajankohta</th><th>Kotijoukkue</th><th>Vierasjoukkue</th><th>Tulos</th></tr>
                     <tbody>
                 { _.chain(this.state.joukkue.ottelut)
                     .filter(function(o) { return o.lohkoId === 1; })
@@ -70,7 +78,7 @@ export default React.createClass({
                     <thead>
                     <tr><th colSpan='3'><h2>Itälohko</h2></th></tr>
                     </thead>
-                    <tr><th>Ajankohta</th><th>Kotijoukkue</th><th>Vierasjoukkue</th></tr>
+                    <tr><th>Ajankohta</th><th>Kotijoukkue</th><th>Vierasjoukkue</th><th>Tulos</th></tr>
                     <tbody>
                 { _.chain(this.state.joukkue.ottelut)
                     .filter(function(o) { return o.lohkoId === 2; })

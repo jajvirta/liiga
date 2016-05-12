@@ -37,11 +37,15 @@ export default React.createClass({
         var polku = '/joukkue/' + ottelu.otteluId;
         var kj = '/joukkue/' + ottelu.kotijoukkueId;
         var vj = '/joukkue/' + ottelu.vierasjoukkueId;
+        var tulos = ottelu.kpiste + ' - ' + ottelu.vpiste;
         return (
                 <tr key={ottelu.otteluId}>
-                    <td> keskiviikko { ottelu.formattedPelipaiva } kello 18:00</td>
+                    <td> { ottelu.formattedPelipaiva } kello 18:00</td>
                     <td>{ ottelu.kotijoukkue }</td>
                     <td>{ ottelu.vierasjoukkue }</td>
+                    <td>
+                        { (ottelu.kpiste === 0 && ottelu.vpiste === 0) ?  '' : tulos }
+                    </td>
                 </tr>
             );
     },

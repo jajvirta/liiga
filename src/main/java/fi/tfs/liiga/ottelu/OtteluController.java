@@ -80,7 +80,9 @@ public class OtteluController {
             calendar.getComponents().add(ve);
         }
        
-        System.out.println(calendar.toString());
+
+        System.out.println("Printataan kalenteri " + joukkueId);
+        // System.out.println(calendar.toString());
 
         return calendar.toString();
     }

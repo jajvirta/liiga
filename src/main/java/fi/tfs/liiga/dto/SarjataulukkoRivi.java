@@ -1,37 +1,26 @@
 package fi.tfs.liiga.dto;
 
 public class SarjataulukkoRivi {
-	
-	private String joukkue;
-	private int pelit;
-	private int pisteet;
-	
-	public SarjataulukkoRivi() {
-	}
-	
-	public SarjataulukkoRivi(String joukkue, int pelit, int pisteet) {
-		super();
-		this.joukkue = joukkue;
-		this.pelit = pelit;
-		this.pisteet = pisteet;
-	}
-	public String getJoukkue() {
-		return joukkue;
-	}
-	public void setJoukkue(String joukkue) {
-		this.joukkue = joukkue;
-	}
-	public int getPelit() {
-		return pelit;
-	}
-	public void setPelit(int pelit) {
-		this.pelit = pelit;
-	}
-	public int getPisteet() {
-		return pisteet;
-	}
-	public void setPisteet(int pisteet) {
-		this.pisteet = pisteet;
-	}
+
+    public final String joukkue;
+    public final long lohkoId;
+    public final long pelit;
+    public final long voitot;
+    public final long tasapelit;
+    public final long haviot;
+    public final long ottelupisteet;
+    public final long pisteet;
+
+    public SarjataulukkoRivi(String joukkue, long lohkoId, long pelit, long voitot, long tasapelit, long haviot, long ottelupisteet, long pisteet) {
+        super();
+        this.joukkue = joukkue;
+        this.lohkoId = lohkoId;
+        this.pelit = pelit;
+        this.voitot = voitot;
+        this.tasapelit = tasapelit;
+        this.haviot = haviot;
+        this.ottelupisteet = ottelupisteet;
+        this.pisteet = pisteet;
+    }
 
 }

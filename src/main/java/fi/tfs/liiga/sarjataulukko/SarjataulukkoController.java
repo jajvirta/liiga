@@ -11,9 +11,12 @@ public class SarjataulukkoController {
     
     @Autowired
     private SarjataulukkoDao dao;
+    
+    @Autowired
+    private SarjataulukkoService service;
 
     @RequestMapping("/public-api/liiga/sarjataulukko")
     public Sarjataulukko sarjataulukko() {
-        return Sarjataulukko.of(dao.haeSarjatilanne());
+        return Sarjataulukko.of(service.haeSarjatilanne());
     }
 }
