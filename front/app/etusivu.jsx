@@ -10,6 +10,16 @@ export default React.createClass({
 
                 <h1>Ajankohtaista frisbeegolf-joukkueliigasta</h1>
 
+                <h2>lauantai 9.7.: Syyskauden otteluohjelma saitilla</h2>
+
+                <p>Pelit alkavat pääosin keskiviikkona 20.7. Huomatkaa, että länsilohkon joukkueilla
+                Sasta FG ja Nelosketju kotipelien pelipäiväksi on vaihdettu torstai (keskiviikkona kotiradalla
+                    olevien viikkokisojen vuoksi).</p>
+
+                <p>Otteluohjelma löytyy sivulta <Link to='joukkueet'>Joukkueet
+                &amp; Otteluohjelma</Link>. Joukkueen omalla sivulla on erillinen linkki, jolla
+                saat siirrettyä joukkueesi pelit kalenteriin.</p>
+
                 <h2>su 1.5.: Ottelupäiväkirja löytyy nyt sivuilta</h2>
 
                 <p>

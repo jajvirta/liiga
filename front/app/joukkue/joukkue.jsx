@@ -54,6 +54,7 @@ export default React.createClass({
         var current = this.state.joukkue.valittu;
         var kayttaja = this.state.kayttaja;
         var polku = '/public-api/liiga/joukkue/' + current.joukkueId + '/kalenteri';
+        var syyspolku = '/public-api/liiga/joukkue/' + current.joukkueId + '/kalenteri/syksy';
         var t = this;
         return (
             <div>
@@ -88,7 +89,7 @@ export default React.createClass({
 
                 </tbody>
             </Table>
-            <p>Siirrä <a href={ polku }>joukkueen kevätkauden pelit</a> kalenteriisi.</p>
+            <p>Siirrä <a href={ syyspolku }>joukkueen syyskauden pelit</a> kalenteriisi.</p>
             <p>
             iLaitteilla ja ainakin osalla Android-laitteista riittää, että klikkaa linkkiä ja hyväksyy tapahtumien lisäämisen omaan kalenteriin.
             Ohjeet tapahtumisen lisäämiseen Google Calendariin <a href="https://support.google.com/calendar/answer/37118">täällä</a>.
