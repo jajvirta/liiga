@@ -14,5 +14,17 @@ mvn spring-boot:run
 
 
 
+createuser tfsliiga -W
+createdb -O tfsliiga tfsliiga
+
+Backup/restore
+
+
+pg_dump -h localhost -U tfsliiga tfsliiga --format=t -C --file=dump-clear-2016-07-09.tar
+dropdb tfsliiga
+createdb -O tfsliiga tfsliiga
+pg_restore -U tfsliiga -d tfsliiga dump-clear-2016-07-09.tar
+
+
 
 
