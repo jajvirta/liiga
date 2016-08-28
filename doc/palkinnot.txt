@@ -1,0 +1,23 @@
+
+
+loppusijoitukset
+
+1. 240
+2. 160
+3. 80
+
+"kakkoslohko"
+
+50
+
+"kolmoslohko"
+
+50
+
+henkilökohtaiset palkinnot
+
+itälohko
+40
+
+länsilohko
+40
