@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import fi.tfs.liiga.ottelu.dto.TulevaOttelu;
+import fi.tfs.liiga.ottelu.dto.Ottelu;
 
 @RestController
 public class OtteluController {
@@ -17,17 +17,17 @@ public class OtteluController {
     private OtteluService otteluService;
 
     @RequestMapping(value="/public-api/liiga/{lohkoId}/ottelut/tulevat", method=RequestMethod.GET)
-    public List<TulevaOttelu> tulevatOttelut(@PathVariable long lohkoId) {
+    public List<Ottelu> tulevatOttelut(@PathVariable long lohkoId) {
         return otteluService.haeTulevatOttelut();
     }
 
     @RequestMapping(value="/public-api/liiga/{lohkoId}/ottelut/tulevat/{joukkueId}", method=RequestMethod.GET)
-    public List<TulevaOttelu> tulevatOttelut(@PathVariable long lohkoId, @PathVariable long joukkueId) {
+    public List<Ottelu> tulevatOttelut(@PathVariable long lohkoId, @PathVariable long joukkueId) {
         return otteluService.haeTulevatOttelut(joukkueId);
     }
 
     @RequestMapping(value="/public-api/liiga/{lohkoId}/ottelut/syksy/{joukkueId}", method=RequestMethod.GET)
-    public List<TulevaOttelu> tulevatOttelutSyksy(@PathVariable long lohkoId, @PathVariable long joukkueId) {
+    public List<Ottelu> tulevatOttelutSyksy(@PathVariable long lohkoId, @PathVariable long joukkueId) {
         return otteluService.haeTulevatOttelut(joukkueId, "2016-07-01");
     }
 

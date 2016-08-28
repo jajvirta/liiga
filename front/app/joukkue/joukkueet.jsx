@@ -33,7 +33,7 @@ export default React.createClass({
     },
 
     renderOttelu: function(ottelu) {
-        var polku = '/joukkue/' + ottelu.otteluId;
+        var polku = '/ottelu/' + ottelu.otteluId;
         var kj = '/joukkue/' + ottelu.kotijoukkueId;
         var vj = '/joukkue/' + ottelu.vierasjoukkueId;
         var tulos = ottelu.kpiste + ' - ' + ottelu.vpiste;
@@ -43,8 +43,9 @@ export default React.createClass({
                     <td> <Link to={ kj }>{ ottelu.kotijoukkue }</Link></td>
                     <td> <Link to={ vj }>{ ottelu.vierasjoukkue }</Link></td>
                     <td>
-                        { (ottelu.kpiste === 0 && ottelu.vpiste === 0) ?  '' : tulos }
+                        <Link to={ polku }>{ (ottelu.kpiste === 0 && ottelu.vpiste === 0) ?  'n/a' : tulos }</Link>
                     </td>
+                    <td> { ottelu.merkatut > 0 ? 'kirjattu' : null } </td>
                 </tr>
             );
     },

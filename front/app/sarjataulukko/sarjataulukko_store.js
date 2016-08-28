@@ -5,15 +5,19 @@ export default Reflux.createStore({
 
     listenables: [SarjataulukkoActions],
 
-    sarjataulukko: {},
+    sarja: { sarjataulukko: {}, ranking: {}},
 
     onGetTaulukkoCompleted: function(result) {
-        console.log(result);
-        this.sarjataulukko = result;
-        this.trigger(this.sarjataulukko);
+        this.sarja.sarjataulukko = result;
+        this.trigger(this.sarja);
+    },
+
+    onGetRankingCompleted: function(result) {
+        this.sarja.ranking = result;
+        this.trigger(this.sarja);
     },
 
     getInitialState: function() {
-        return this.sarjataulukko;
+        return this.sarja;
     }
 });

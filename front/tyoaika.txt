@@ -1,5 +1,6 @@
 
 todo:
+- database validation query niin ei hajoa tietokannan poksahdukseen
 - bäkkäriin validoinnit ja kokojen tarkistus
 - nimen ja yhteyshenkilön tarkistukset uuden joukkueen ilmoittamiseen
 - pelaajien nimet eivät voi olla uniikkeja, näytä autocompletessa esim. sposti

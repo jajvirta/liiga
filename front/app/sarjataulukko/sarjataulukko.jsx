@@ -20,7 +20,15 @@ export default React.createClass({
     },
 
     componentWillMount: function() {
-        SarjataulukkoService.getSarjataulukko();
+        var t = this;
+        SarjataulukkoService.getSarjataulukko()
+            .then(function(result) {
+                t.setState( { tau: result });
+                SarjataulukkoService.getRanking()
+                    .then(function(result) {
+                        t.setState( { ran: result });
+                    });
+            });
     },
 
     pick: function(o) {
@@ -31,6 +39,18 @@ export default React.createClass({
 
     sortBy: function(which) {
         // 
+    },
+
+    renderPelaaja: function(pelaaja) {
+        return (
+            <tr>
+            <td>{ pelaaja.nimi }</td>
+            <td>{ pelaaja.ottelut }</td>
+            <td>{ pelaaja.tulospisteet }</td>
+            <td>{ pelaaja.reikapelipisteet }</td>
+            <td>{ pelaaja.reikapelipisteet + pelaaja.tulospisteet }</td>
+            </tr>
+        );
     },
 
     renderRivi: function(rivi) {
@@ -49,10 +69,17 @@ export default React.createClass({
 
     render: function () {
         var t = this;
-        var f = this.state.sarjataulukko;
-        var uirivit = this.state.sarjataulukko.rivit;
+        // var f = this.state.sarja.sarjataulukko;
+        var uirivit = this.state.sarja ? this.state.sarja.sarjataulukko.rivit : [];
+        var uirivit = this.state.tau ? this.state.tau.rivit : [];
         // uirivit = _.sortBy(uirivit, function(o) { return 0 - o.sarjapisteet; });
         // uirivit = _.sortBy(uirivit, function(o) { return 0 - o.pisteet; });
+        //
+        var ranking = this.state.ran ? this.state.ran : [];
+        ranking = _.sortBy(ranking, function(p) { return p ? (0 - (p.tulospisteet + p.reikapelipisteet)) : 0; });
+        if (ranking) {
+            console.log(ranking[0]);
+        }
 
         return (
             <div>
@@ -60,7 +87,7 @@ export default React.createClass({
 
                 <Table striped bordered condensed hover>
                     <thead>
-                        <tr><th colspan='5'>Länsilohko</th></tr>
+                        <tr><th colSpan='5'>Länsilohko</th></tr>
                         <tr key='jee'>
                             <th>Nimi</th><th>Pelit</th>
                             <th><span onClick={ this.sortBy(this.voitot) }>Voitot</span></th>
@@ -89,7 +116,43 @@ export default React.createClass({
                     </tbody>
                 </Table>
 
+                <h1>Pelaajaranking ja tilastot</h1>
 
+                <Table striped bordered condensed hover>
+                    <thead>
+                        <tr><th colspan='5'>Länsilohkon ranking</th></tr>
+                        <tr key='jee'>
+                            <th>Nimi</th>
+                            <th>Pelit</th>
+                            <th>Tulospelipisteet</th>
+                            <th>Reikapelipisteet</th>
+                            <th>Yhteispisteet</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    { _.chain(ranking)
+                        .filter(function(o) { return o.joukkuelohko === 1; })
+                        .map(t.renderPelaaja).value() }
+                    </tbody>
+                </Table>
+
+                <Table striped bordered condensed hover>
+                    <thead>
+                        <tr><th colspan='5'>Itälohkon ranking</th></tr>
+                        <tr key='jee'>
+                            <th>Nimi</th>
+                            <th>Pelit</th>
+                            <th>Tulospelipisteet</th>
+                            <th>Reikapelipisteet</th>
+                            <th>Yhteispisteet</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    { _.chain(ranking)
+                        .filter(function(o) { return o.joukkuelohko === 2; })
+                        .map(t.renderPelaaja).value() }
+                    </tbody>
+                </Table>
             </div>
         );
     }

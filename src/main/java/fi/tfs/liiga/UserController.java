@@ -21,9 +21,11 @@ public class UserController {
     public UserInfo userinfo(Principal principal) {
         OAuth2Authentication oauth = (OAuth2Authentication) principal;
         if (oauth != null && oauth.isAuthenticated()) {
-            return new UserInfo(true, current.getRealname());
+            return new UserInfo(true, 
+                    current.getOauth2Id() != null && "10207383003566885".equals(current.getOauth2Id()), 
+                    current.getRealname());
         } else {
-            return new UserInfo(false, null); 
+            return new UserInfo(false, false, null); 
         }
     }
  

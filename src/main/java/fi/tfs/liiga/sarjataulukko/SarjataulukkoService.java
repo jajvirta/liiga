@@ -12,7 +12,7 @@ import fi.tfs.liiga.dto.SarjataulukkoRivi;
 import fi.tfs.liiga.joukkue.JoukkueDao;
 import fi.tfs.liiga.joukkue.dto.Joukkue;
 import fi.tfs.liiga.ottelu.OtteluDao;
-import fi.tfs.liiga.ottelu.dto.TulevaOttelu;
+import fi.tfs.liiga.ottelu.dto.Ottelu;
 
 @Component
 public class SarjataulukkoService {
@@ -28,7 +28,7 @@ public class SarjataulukkoService {
         return (ottelupisteet == 10 ? 1 : (ottelupisteet > 10) ? 3 : 0);
     }
     
-    private static long tietytPelit(List<TulevaOttelu> ottelut, int joukkueId, int pistemaara) {
+    private static long tietytPelit(List<Ottelu> ottelut, int joukkueId, int pistemaara) {
         return ottelut
                 .stream()
                 .filter(o -> o.kotijoukkueId == joukkueId)
@@ -43,7 +43,7 @@ public class SarjataulukkoService {
     }
     
     public List<SarjataulukkoRivi> haeSarjatilanne() {
-        List<TulevaOttelu> ottelut = otteluDao.haeTulevatOttelut();
+        List<Ottelu> ottelut = otteluDao.haeTulevatOttelut();
         
         List<Joukkue> joukkueet = joukkueDao.haeJoukkueet();
         List<SarjataulukkoRivi> sarjataulukko = new ArrayList<>();
@@ -79,7 +79,7 @@ public class SarjataulukkoService {
         Collections.reverse(collect);
 
         for (SarjataulukkoRivi rivi : collect) {
-           System.out.println(rivi.joukkue + " " + rivi.pisteet);
+           // System.out.println(rivi.joukkue + " " + rivi.pisteet);
         }
         
         return collect;

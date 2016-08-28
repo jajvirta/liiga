@@ -10,7 +10,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import fi.tfs.liiga.ottelu.dto.TulevaOttelu;
+import fi.tfs.liiga.ottelu.dto.Ottelu;
 import net.fortuna.ical4j.model.Calendar;
 import net.fortuna.ical4j.model.DateTime;
 import net.fortuna.ical4j.model.TimeZoneRegistry;
@@ -30,17 +30,17 @@ public class OtteluService {
     
     
     @Transactional
-    public List<TulevaOttelu> haeTulevatOttelut() {
+    public List<Ottelu> haeTulevatOttelut() {
         return dao.haeTulevatOttelut();
     }
 
     @Transactional
-    public List<TulevaOttelu> haeTulevatOttelut(long joukkueId) {
+    public List<Ottelu> haeTulevatOttelut(long joukkueId) {
         return dao.haeTulevatOttelut(joukkueId);
     }
 
     @Transactional
-    public List<TulevaOttelu> haeTulevatOttelut(long joukkueId, String earliestDate) {
+    public List<Ottelu> haeTulevatOttelut(long joukkueId, String earliestDate) {
         return dao.haeTulevatOttelut(joukkueId, earliestDate);
     }
     
@@ -52,7 +52,7 @@ public class OtteluService {
         return teeKalenteri(joukkueId, haeTulevatOttelut(joukkueId, "2016-07-01"));
     }
     
-    private String teeKalenteri(long joukkueId, List<TulevaOttelu> ottelut) {
+    private String teeKalenteri(long joukkueId, List<Ottelu> ottelut) {
         Calendar calendar = new Calendar();
         calendar.getProperties().add(new ProdId("-//Ben Fortuna//iCal4j 1.0//EN"));
         calendar.getProperties().add(Version.VERSION_2_0);
@@ -63,7 +63,7 @@ public class OtteluService {
         VTimeZone tz = registry.getTimeZone("Europe/Helsinki").getVTimeZone();
         calendar.getComponents().add(tz); 
         
-        for (TulevaOttelu ottelu : ottelut) {
+        for (Ottelu ottelu : ottelut) {
             java.util.Calendar c = new GregorianCalendar();
             c.setTime(ottelu.pelipaiva);
             LocalDate of = java.time.LocalDate.of(c.get(java.util.Calendar.YEAR), c.get(java.util.Calendar.MONTH)+1, c.get(java.util.Calendar.DAY_OF_MONTH));
