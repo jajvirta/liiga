@@ -4,6 +4,7 @@ target
 .settings
 .DS_Store
 front/node_modules
+ansible/*.retry
 front/dist
 .*sw*
 application.yml
