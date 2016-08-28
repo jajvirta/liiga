@@ -6,7 +6,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-public class TulevaOttelu {
+public class Ottelu {
 
     public final long otteluId;
     public final long lohkoId;
@@ -19,6 +19,7 @@ public class TulevaOttelu {
     public final String kotirata;
     public final int kpiste;
     public final int vpiste;
+    public final int merkatut;
     
     private static String viikonpaiva(int dayOfWeek) {
         switch (dayOfWeek) {
@@ -34,11 +35,11 @@ public class TulevaOttelu {
         return "";
     }
     
-    public TulevaOttelu(long otteluId, long lohkoId, 
+    public Ottelu(long otteluId, long lohkoId, 
             Date pelipaiva, 
             long kotijoukkueId, String kotijoukkue, 
             long vierasjoukkueId, String vierasjoukkue, String kotirata,
-            int kpiste, int vpiste
+            int kpiste, int vpiste, int merkatut
             ) {
         super();
         this.otteluId = otteluId;
@@ -59,7 +60,6 @@ public class TulevaOttelu {
         this.kotirata = kotirata;
         this.kpiste = kpiste;
         this.vpiste = vpiste;
+        this.merkatut = merkatut;
     }
-    
-    
 }
