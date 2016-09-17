@@ -68,7 +68,12 @@ public class SarjataulukkoService {
                     lohkoId,
                     (voitot + tasapelit + haviot), voitot, tasapelit, haviot, 
                     (kotiottelupisteet + vierasottelupisteet),
-                    (kotipisteet + vieraspisteet)));  
+                    kotiottelupisteet,
+                    vierasottelupisteet,
+                    (kotipisteet + vieraspisteet),
+                    kotipisteet,
+                    vieraspisteet
+                    ));  
         }
 
         List<SarjataulukkoRivi> collect = sarjataulukko
@@ -77,7 +82,7 @@ public class SarjataulukkoService {
                 .collect(Collectors.toList());
 
         Collections.reverse(collect);
-
+        
         for (SarjataulukkoRivi rivi : collect) {
            // System.out.println(rivi.joukkue + " " + rivi.pisteet);
         }
