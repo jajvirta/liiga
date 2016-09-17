@@ -62,7 +62,11 @@ export default React.createClass({
                     <td> { rivi.tasapelit }</td>
                     <td> { rivi.haviot }</td>
                     <td> { rivi.ottelupisteet }</td>
+                    <td> { rivi.kotiottelupisteet }</td>
+                    <td> { rivi.vierasottelupisteet }</td>
                     <td> { rivi.pisteet }</td>
+                    <td> { rivi.kotipisteet }</td>
+                    <td> { rivi.vieraspisteet }</td>
                 </tr>
             );
     },
@@ -91,7 +95,10 @@ export default React.createClass({
                         <tr key='jee'>
                             <th>Nimi</th><th>Pelit</th>
                             <th><span onClick={ this.sortBy(this.voitot) }>Voitot</span></th>
-                            <th>Tasapelit</th> <th>Häviöt</th> <th>Ottelupisteet</th> <th>Sarjapisteet</th>
+                            <th>Tasapelit</th> <th>Häviöt</th> <th>Ottelupisteet</th> 
+                            <th>koti</th><th>vieras</th>
+                            <th>Sarjapisteet</th>
+                            <th>koti</th><th>vieras</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -106,7 +113,10 @@ export default React.createClass({
                         <tr key='jee'>
                             <th>Nimi</th><th>Pelit</th>
                             <th><span onClick={ this.sortBy(this.voitot) }>Voitot</span></th>
-                            <th>Tasapelit</th> <th>Häviöt</th> <th>Ottelupisteet</th> <th>Sarjapisteet</th>
+                            <th>Tasapelit</th> <th>Häviöt</th> <th>Ottelupisteet</th>
+                            <th>koti</th><th>vieras</th>
+                            <th>Sarjapisteet</th>
+                            <th>koti</th><th>vieras</th>
                         </tr>
                     </thead>
                     <tbody>

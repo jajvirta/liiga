@@ -10,6 +10,14 @@ export default React.createClass({
 
                 <h1>Ajankohtaista frisbeegolf-joukkueliigasta</h1>
 
+                <h2>sunnuntai 4.9.: Infoa loppupeleistä</h2>
+
+                <p>Alunperin oli tarkoitus ratkoa vain mitalisijat välierillä ja finaaleilla, mutta tuumasimme, että myös "välisarjalaiset" voivat haluta pelata lohkojen välillä. Tekaisimme siis välisarjat, joilla virallisestikin saadaan selville joukkueiden lopulliset sijoitukset. Eli lohkojen sijoille 3.-4. olevat pelaavat lyhyen sarjan ristiin lohkojen väilllä. Vastaavasti sijoille 5.-6. olevat. Näiden välisarjojen voittavat saavat myös pienen lohdutuspalkinnon. Luovutukset ovat tietysti mahdollisia tässäkin, mutta se on tietysti automaattinen putoaminen jatkopeleistä.</p>
+
+                <p>Oli myös tarkoitus, että mitalisijojen välierät ratkaistaan yhdellä ottelulla joka pelattaisiin lohkovoittajien kotona. Sastan yhteyshenkilö esitti tähän vahvan vastalauseen ja päätämme pian liigan porukan kesken kummalla systeemillä mennään. Jos kaikille mitalisijojen joukkueille käy pidempi pelisarja, niin voidaan mennä silläkin. Jos ei niin liigan hallitus päättää kummalla tavalla pelataan. Tarkoitus ei ole antaa kenellekään kohtuutonta etua vaan saada kausi kunnialla päätökseen ennen pimeitä.</p>
+                <p>Muistakaa sekin, että tämä on nopeasti kasaan kyhätty ensimmäinen kausi ja yritämme muokata liigaa aina vain paremmaksi. Ei tätä kerralla täydelliseksi saa.</p>
+                <p>Lopuksi esitän pahoittelut siitä, että kauden ehkä piristävin joukkue eli Kiakkogosset (aalla!) jäi loppupelien ulkopuolelle. Ehdotan hallitukselle että heille keksitään joku lohdutuspalkinto. :-)</p>
+
                 <h2>lauantai 9.7.: Syyskauden otteluohjelma saitilla</h2>
 
                 <p>Pelit alkavat pääosin keskiviikkona 20.7. Huomatkaa, että länsilohkon joukkueilla
