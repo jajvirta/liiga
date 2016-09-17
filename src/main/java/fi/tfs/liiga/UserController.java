@@ -14,7 +14,7 @@ import fi.tfs.liiga.dto.UserInfo;
 @RestController
 @Configuration
 public class UserController {
-   
+
     @Value("${superuser.oauth_id}")
     private String oauthId;
 
@@ -32,5 +32,4 @@ public class UserController {
             return new UserInfo(false, false, null); 
         }
     }
- 
 }
