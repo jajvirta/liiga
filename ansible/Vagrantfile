@@ -1,0 +1,56 @@
+# -*- coding: utf-8 -*-
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
+VAGRANTFILE_API_VERSION = "2"
+
+# Sync VirtualBox GuestAdditions on the guest machine.
+# Needs Vagrant plugin vagrant-vbguest (https://github.com/dotless-de/vagrant-vbguest)
+class MyInstaller < VagrantVbguest::Installers::RedHat
+
+	def install(opts=nil, &block)
+		communicate.sudo('yum update -y', opts, &block)
+		communicate.sudo('yum-config-manager --enable C7-updates', opts, &block)
+		super
+	end
+end
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+	config.vm.box = "centos/7"
+
+    config.hostmanager.enabled = true
+    config.hostmanager.manage_host = true
+    config.hostmanager.ignore_private_ip = false
+    config.hostmanager.include_offline = true
+
+    config.vm.hostname = 'dev-box'
+    config.vm.network :private_network, ip: '10.30.30.2'
+    #config.hostmanager.aliases = %w(asiointi.dev-box intranet.dev-box extranet.dev-box tunnistus.dev-box)
+
+	# Windowsissa saa forwardoida mitä tahansa portteja:
+	if Vagrant::Util::Platform.windows?
+#config.vm.network "forwarded_port", guest: 80, host: 80
+    config.vm.network "forwarded_port", guest: 22, host: 23
+#config.vm.network "forwarded_port", guest: 443, host: 443
+	end
+
+
+    config.vm.synced_folder "..", "/vagrant", :owner=> 'vagrant', :mount_options => ['dmode=755', 'fmode=644']
+
+	options = {}
+	options[:sync_folders] = ENV['sync_folders']=='true'
+	options[:host_build] = ENV['host_build']
+
+	config.vm.provider "virtualbox" do |v|
+		v.name = "dev-box"
+		v.memory = 2000
+		v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+        v.customize ["guestproperty", "set", :id, "/VirtualBox/GuestAdd/VBoxService/--timesync-set-threshold", 10000]
+	end
+
+	config.vm.provision "shell", path: "bootstrap-centos7.sh"
+	config.vm.provision "shell",
+		inline: "sudo ln -sf /usr/share/zoneinfo/Europe/Helsinki /etc/localtime"
+end

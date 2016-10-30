@@ -1,0 +1,13 @@
+---
+
+
+- name: asentaa infran
+  hosts: liiga
+
+  vars:
+    base: ..
+
+  tasks:
+    - yum:
+        package: nginx
+        state: installed
