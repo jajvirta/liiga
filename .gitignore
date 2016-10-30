@@ -16,3 +16,6 @@ src/main/resources/static/img
 src/main/resources/static/styles
 src/main/resources/static/vendor.js
 src/main/resources/application.yml
+.vagrant
+.idea
+*.iml
