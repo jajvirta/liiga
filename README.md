@@ -13,6 +13,7 @@ Running:
 mvn spring-boot:run
 
 
+## Creating the database
 
 createuser tfsliiga -W
 createdb -O tfsliiga tfsliiga
