@@ -29,6 +29,3 @@ Backup/restore
 älä välitä restoren sanomista virheistä (jostain public scheman diipa
 daapasta): kanta toimii silti.
 
-jee
-
-
